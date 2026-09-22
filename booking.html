@@ -1,0 +1,393 @@
+<section class="booking-section">
+
+    <div class="container">
+
+        <div class="booking-layout">
+
+            <!-- =================================
+                 BOOKING FORM
+            ================================= -->
+
+            <form id="bookingForm" class="booking-form">
+
+                <div class="booking-heading">
+
+                    <span class="section-kicker">
+                        حجز جلسة
+                    </span>
+
+                    <h1>
+                        احجز جلستك
+                    </h1>
+
+                    <p>
+                        اختر الخدمة والموعد المناسب لك،
+                        ثم أدخل بيانات التواصل لإتمام الحجز.
+                    </p>
+
+                </div>
+
+
+                <!-- المختص المختار -->
+
+                <div class="selected-provider">
+
+                    <div class="selected-provider-icon">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <div>
+
+                        <span>
+                            المختص المختار
+                        </span>
+
+                        <strong id="providerName">
+                            جاري التحميل...
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- الخدمة -->
+
+                <div class="form-group">
+
+                    <label for="service">
+                        الخدمة
+                    </label>
+
+                    <select
+                        id="service"
+                        name="service"
+                        required
+                    >
+
+                        <option value="">
+                            اختر الخدمة
+                        </option>
+
+                        <option value="Anxiety & Stress">
+                            القلق والتوتر
+                        </option>
+
+                        <option value="Relationships">
+                            العلاقات
+                        </option>
+
+                        <option value="Self Esteem">
+                            تقدير الذات
+                        </option>
+
+                        <option value="Mental Health">
+                            الصحة النفسية
+                        </option>
+
+                        <option value="Family Support">
+                            الدعم الأسري
+                        </option>
+
+                        <option value="Recovery & Change">
+                            رحلة التعافي والتغيير
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- نوع الجلسة -->
+
+                <div class="form-group">
+
+                    <label for="sessionType">
+                        نوع الجلسة
+                    </label>
+
+                    <select
+                        id="sessionType"
+                        name="sessionType"
+                        required
+                    >
+
+                        <option value="">
+                            اختر نوع الجلسة
+                        </option>
+
+                        <option value="online">
+                            جلسة أونلاين
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- التاريخ -->
+
+                <div class="form-group">
+
+                    <label for="bookingDate">
+                        التاريخ
+                    </label>
+
+                    <input
+                        type="date"
+                        id="bookingDate"
+                        name="bookingDate"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- الوقت -->
+
+                <div class="form-group">
+
+                    <label for="bookingTime">
+                        الوقت
+                    </label>
+
+                    <select
+                        id="bookingTime"
+                        name="bookingTime"
+                        required
+                    >
+
+                        <option value="">
+                            اختر الوقت
+                        </option>
+
+                        <option value="10:00">
+                            10:00 صباحًا
+                        </option>
+
+                        <option value="12:00">
+                            12:00 ظهرًا
+                        </option>
+
+                        <option value="14:00">
+                            02:00 ظهرًا
+                        </option>
+
+                        <option value="16:00">
+                            04:00 مساءً
+                        </option>
+
+                        <option value="18:00">
+                            06:00 مساءً
+                        </option>
+
+                        <option value="20:00">
+                            08:00 مساءً
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- الاسم -->
+
+                <div class="form-group">
+
+                    <label for="clientName">
+                        الاسم
+                    </label>
+
+                    <input
+                        type="text"
+                        id="clientName"
+                        name="clientName"
+                        placeholder="اكتب اسمك"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- الهاتف -->
+
+                <div class="form-group">
+
+                    <label for="clientPhone">
+                        رقم الهاتف
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="clientPhone"
+                        name="clientPhone"
+                        placeholder="01xxxxxxxxx"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- البريد -->
+
+                <div class="form-group">
+
+                    <label for="clientEmail">
+                        البريد الإلكتروني
+                    </label>
+
+                    <input
+                        type="email"
+                        id="clientEmail"
+                        name="clientEmail"
+                        placeholder="example@email.com"
+                    >
+
+                </div>
+
+
+                <!-- ملاحظات -->
+
+                <div class="form-group">
+
+                    <label for="notes">
+                        ملاحظات إضافية
+                    </label>
+
+                    <textarea
+                        id="notes"
+                        name="notes"
+                        rows="4"
+                        placeholder="اكتب أي معلومات إضافية تريد توضيحها..."
+                    ></textarea>
+
+                </div>
+
+
+                <!-- تأكيد -->
+
+                <label class="booking-consent">
+
+                    <input
+                        type="checkbox"
+                        id="consent"
+                        required
+                    >
+
+                    <span>
+                        أوافق على إرسال بيانات الحجز
+                        للتواصل معي بخصوص الجلسة.
+                    </span>
+
+                </label>
+
+
+                <!-- زر الحجز -->
+
+                <button
+                    type="submit"
+                    class="btn btn-primary booking-submit"
+                    id="bookingSubmit"
+                >
+
+                    <span>
+                        تأكيد الحجز
+                    </span>
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                </button>
+
+
+                <!-- الرسالة -->
+
+                <div
+                    id="bookingMessage"
+                    class="booking-message"
+                    role="alert"
+                ></div>
+
+            </form>
+
+
+            <!-- =================================
+                 SUMMARY
+            ================================= -->
+
+            <aside class="booking-summary-card">
+
+                <div class="summary-icon">
+                    <i class="fa-solid fa-calendar-check"></i>
+                </div>
+
+                <h2>
+                    ملخص الحجز
+                </h2>
+
+                <div class="summary-item">
+
+                    <span>
+                        المختص
+                    </span>
+
+                    <strong id="summaryProvider">
+                        —
+                    </strong>
+
+                </div>
+
+                <div class="summary-item">
+
+                    <span>
+                        الخدمة
+                    </span>
+
+                    <strong id="summaryService">
+                        —
+                    </strong>
+
+                </div>
+
+                <div class="summary-item">
+
+                    <span>
+                        التاريخ
+                    </span>
+
+                    <strong id="summaryDate">
+                        —
+                    </strong>
+
+                </div>
+
+                <div class="summary-item">
+
+                    <span>
+                        الوقت
+                    </span>
+
+                    <strong id="summaryTime">
+                        —
+                    </strong>
+
+                </div>
+
+                <div class="summary-item">
+
+                    <span>
+                        نوع الجلسة
+                    </span>
+
+                    <strong>
+                        أونلاين
+                    </strong>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </div>
+
+                  </section>
