@@ -1,1563 +1,221 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <title>Tasbeeh Mohamed | العلاج النفسي والصحة النفسية</title>
 
     <meta name="description"
-          content="Tasbeeh Mohamed - منصة للعلاج النفسي والصحة النفسية والرعاية النفسية المتخصصة.">
+          content="Tasbeeh Mohamed - Psychological Therapy & Mental Health">
 
-    <meta name="theme-color" content="#9b743a">
-
-    <title>Tasbeeh Mohamed | Psychological Therapy & Mental Health Care</title>
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap"
           rel="stylesheet">
 
-    <!-- Font Awesome -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- =====================================================
-         HEADER
-    ====================================================== -->
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-    <header class="site-header" id="siteHeader">
+<header class="site-header" id="siteHeader">
 
-        <div class="container header-inner">
+    <div class="container header-inner">
 
-            <a href="#home" class="brand">
+        <a href="#home" class="brand">
 
-                <span class="brand-mark">
-                    <i class="fa-solid fa-sparkles"></i>
+            <div class="brand-mark">
+                <i class="fa-solid fa-brain"></i>
+            </div>
+
+            <div class="brand-text">
+                <span class="brand-name">
+                    Tasbeeh Mohamed
                 </span>
 
-                <span class="brand-text">
-
-                    <strong class="brand-name">
-                        Tasbeeh Mohamed
-                    </strong>
-
-                    <span class="brand-subtitle"
-                          data-i18n="brandSubtitle">
-                        Psychological Therapy & Mental Health
-                    </span>
-
+                <span class="brand-subtitle"
+                      data-i18n="brandSubtitle">
+                    العلاج النفسي والصحة النفسية
                 </span>
+            </div>
 
+        </a>
+
+
+        <!-- DESKTOP / MOBILE NAV -->
+
+        <nav id="navbar" class="navbar">
+
+            <a href="#home" data-i18n="navHome">
+                الرئيسية
             </a>
 
+            <a href="#how" data-i18n="navHow">
+                كيف نعمل
+            </a>
 
-            <!-- Desktop Navigation -->
+            <a href="#services" data-i18n="navServices">
+                الخدمات
+            </a>
 
-            <nav class="navbar" id="navbar">
+            <a href="#journey" data-i18n="navJourney">
+                رحلتك
+            </a>
 
-                <a href="#home"
-                   class="nav-link"
-                   data-i18n="navHome">
-                    الرئيسية
-                </a>
+            <a href="#about" data-i18n="navAbout">
+                من نحن
+            </a>
 
-                <a href="#how"
-                   class="nav-link"
-                   data-i18n="navHow">
-                    كيف يعمل
-                </a>
+            <a href="#faq" data-i18n="navFaq">
+                الأسئلة
+            </a>
 
-                <a href="#services"
-                   class="nav-link"
-                   data-i18n="navServices">
-                    مجالات العلاج
-                </a>
+            <button
+                type="button"
+                id="languageSwitch"
+                class="language-switch">
+                English
+            </button>
 
-                <a href="#experience"
-                   class="nav-link"
-                   data-i18n="navExperience">
-                    تجربتك
-                </a>
+            <a
+                href="#assessment"
+                class="btn btn-primary nav-cta"
+                data-i18n="startNow">
+                ابدأ الآن
+            </a>
 
-                <a href="#about"
-                   class="nav-link"
-                   data-i18n="navAbout">
-                    عن تسبيح
-                </a>
-
-                <a href="#faq"
-                   class="nav-link"
-                   data-i18n="navFaq">
-                    الأسئلة الشائعة
-                </a>
-
-            </nav>
+        </nav>
 
 
-            <div class="header-actions">
+        <!-- MOBILE MENU BUTTON -->
 
-                <!-- Language -->
-                <button type="button"
-                        class="language-switch"
-                        id="languageSwitch"
-                        aria-label="Switch to English">
-                    EN
-                </button>
+        <button
+            type="button"
+            id="menuToggle"
+            class="menu-toggle"
+            aria-label="Open menu"
+            aria-expanded="false">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+    </div>
+
+</header>
 
 
-                <!-- Header CTA -->
-                <a href="#assessment"
-                   class="btn btn-primary header-cta"
-                   data-i18n="startNow">
+<main>
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero" id="home">
+
+    <div class="container hero-grid">
+
+        <div class="hero-content">
+
+            <div class="eyebrow" data-i18n="heroKicker">
+                مساحة للرعاية والصحة النفسية
+            </div>
+
+            <h1 data-i18n="heroTitle">
+                مساحة آمنة للعلاج النفسي والراحة النفسية
+            </h1>
+
+            <p
+                class="hero-description"
+                data-i18n="heroDescription">
+
+                ابدأ رحلة أكثر وعيًا بنفسك من خلال مساحة داعمة
+                تساعدك على فهم مشاعرك والتعامل مع التحديات
+                النفسية بطريقة منظمة وهادئة.
+            </p>
+
+            <div class="hero-actions">
+
+                <a
+                    href="#assessment"
+                    class="btn btn-primary"
+                    data-i18n="startNow">
                     ابدأ الآن
                 </a>
 
-
-                <!-- Mobile Menu -->
-                <button type="button"
-                        class="menu-toggle"
-                        id="menuToggle"
-                        aria-label="فتح القائمة"
-                        aria-expanded="false"
-                        aria-controls="navbar">
-
-                    <span></span>
-                    <span></span>
-                    <span></span>
-
-                </button>
+                <a
+                    href="#how"
+                    class="btn btn-secondary"
+                    data-i18n="discoverHow">
+                    اكتشف كيف نعمل
+                </a>
 
             </div>
+
+            <p
+                class="hero-note"
+                data-i18n="heroNote">
+
+                الخصوصية والاحترام جزء أساسي من التجربة.
+            </p>
 
         </div>
 
-    </header>
 
+        <div class="hero-visual">
 
-    <main>
+            <div class="hero-orbit">
 
-        <!-- =================================================
-             HERO
-        ================================================== -->
-
-        <section class="hero section" id="home">
-
-            <div class="container hero-grid">
-
-                <div class="hero-content">
-
-                    <span class="eyebrow"
-                          data-i18n="heroKicker">
-                        مساحة للرعاية والصحة النفسية
-                    </span>
-
-
-                    <h1 class="hero-title"
-                        data-i18n="heroTitle">
-                        مساحة آمنة للعلاج النفسي والراحة النفسية
-                    </h1>
-
-
-                    <p class="hero-description"
-                       data-i18n="heroDescription">
-                        رحلتك نحو صحة نفسية أفضل تبدأ بخطوة.
-                        احصل على رعاية نفسية متخصصة في بيئة آمنة
-                        ومحترمة تساعدك على فهم ما تمر به والعمل
-                        على ما يهمك.
-                    </p>
-
-
-                    <div class="hero-actions">
-
-                        <a href="#assessment"
-                           class="btn btn-primary"
-                           data-i18n="startNow">
-                            ابدأ الآن
-                        </a>
-
-                        <a href="#how"
-                           class="btn btn-secondary"
-                           data-i18n="discoverHow">
-                            اكتشف كيف يعمل الموقع
-                        </a>
-
-                    </div>
-
-
-                    <div class="hero-note">
-
-                        <i class="fa-solid fa-shield-heart"></i>
-
-                        <span data-i18n="heroNote">
-                            خصوصية واحترام ورعاية بدون أحكام
-                        </span>
-
-                    </div>
-
+                <div class="hero-center">
+                    <i class="fa-solid fa-heart-pulse"></i>
                 </div>
 
+                <div class="floating-card card-one">
 
-                <!-- Hero Visual -->
+                    <strong data-i18n="privacy">
+                        خصوصية
+                    </strong>
 
-                <div class="hero-visual">
-
-                    <div class="hero-orbit"></div>
-
-                    <div class="hero-center">
-
-                        <div class="hero-center-icon">
-                            <i class="fa-solid fa-brain"></i>
-                        </div>
-
-                        <span data-i18n="heroVisualText">
-                            مساحتك الآمنة
-                        </span>
-
-                    </div>
-
-
-                    <div class="floating-card floating-card-one">
-
-                        <i class="fa-solid fa-shield-heart"></i>
-
-                        <div>
-                            <strong data-i18n="safe">
-                                مساحة آمنة
-                            </strong>
-
-                            <span data-i18n="safeText">
-                                تحدث براحة وبدون أحكام
-                            </span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="floating-card floating-card-two">
-
-                        <i class="fa-solid fa-user-doctor"></i>
-
-                        <div>
-                            <strong data-i18n="professionalCare">
-                                رعاية متخصصة
-                            </strong>
-
-                            <span data-i18n="professionalCareText">
-                                اهتمام باحتياجاتك النفسية
-                            </span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="floating-card floating-card-three">
-
-                        <i class="fa-solid fa-clock"></i>
-
-                        <div>
-                            <strong data-i18n="flexible">
-                                تجربة مرنة
-                            </strong>
-
-                            <span data-i18n="flexibleText">
-                                بما يناسب وقتك وروتينك
-                            </span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             TRUST BAR
-        ================================================== -->
-
-        <section class="trust-bar">
-
-            <div class="container trust-grid">
-
-                <div class="trust-item">
-
-                    <i class="fa-solid fa-lock"></i>
-
-                    <span data-i18n="privacy">
-                        خصوصية واحترام
+                    <span data-i18n="privacyText">
+                        مساحة تحترم خصوصيتك
                     </span>
 
                 </div>
 
+                <div class="floating-card card-two">
 
-                <div class="trust-item">
+                    <strong data-i18n="professionalCare">
+                        رعاية متخصصة
+                    </strong>
 
-                    <i class="fa-solid fa-user-doctor"></i>
-
-                    <span data-i18n="professionalCare">
-                        رعاية نفسية متخصصة
+                    <span data-i18n="professionalCareText">
+                        تجربة منظمة وهادئة
                     </span>
 
                 </div>
 
+                <div class="floating-card card-three">
 
-                <div class="trust-item">
+                    <strong data-i18n="flexible">
+                        مرونة
+                    </strong>
 
-                    <i class="fa-solid fa-heart"></i>
-
-                    <span data-i18n="comfortableCare">
-                        تجربة علاجية مريحة
+                    <span data-i18n="flexibleText">
+                        خطوات تناسب احتياجاتك
                     </span>
 
                 </div>
-
-
-                <div class="trust-item">
-
-                    <i class="fa-solid fa-shield-heart"></i>
-
-                    <span data-i18n="safe">
-                        مساحة آمنة
-                    </span>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             HOW IT WORKS
-        ================================================== -->
-
-        <section class="section how-section" id="how">
-
-            <div class="container">
-
-                <div class="section-heading">
-
-                    <span class="eyebrow"
-                          data-i18n="howEyebrow">
-                        كيف يعمل الموقع
-                    </span>
-
-                    <h2 data-i18n="howTitle">
-                        البداية يمكن أن تكون بسيطة.
-                    </h2>
-
-                    <p data-i18n="howDescription">
-                        خطوات واضحة تساعدك على اتخاذ الخطوة الأولى
-                        نحو الرعاية النفسية المناسبة.
-                    </p>
-
-                </div>
-
-
-                <div class="steps-grid">
-
-                    <article class="step-card">
-
-                        <span class="step-number">01</span>
-
-                        <div class="step-icon">
-                            <i class="fa-solid fa-comments"></i>
-                        </div>
-
-                        <h3 data-i18n="step1Title">
-                            أخبرنا بما تمر به
-                        </h3>
-
-                        <p data-i18n="step1Text">
-                            شارك ما تشعر به وما الذي تبحث عنه،
-                            بالقدر الذي تشعر معه بالراحة.
-                        </p>
-
-                    </article>
-
-
-                    <article class="step-card">
-
-                        <span class="step-number">02</span>
-
-                        <div class="step-icon">
-                            <i class="fa-solid fa-compass"></i>
-                        </div>
-
-                        <h3 data-i18n="step2Title">
-                            حدد احتياجك
-                        </h3>
-
-                        <p data-i18n="step2Text">
-                            تعرف على مجالات العلاج والرعاية
-                            النفسية الأقرب إلى احتياجك.
-                        </p>
-
-                    </article>
-
-
-                    <article class="step-card">
-
-                        <span class="step-number">03</span>
-
-                        <div class="step-icon">
-                            <i class="fa-solid fa-calendar-check"></i>
-                        </div>
-
-                        <h3 data-i18n="step3Title">
-                            ابدأ رحلتك العلاجية
-                        </h3>
-
-                        <p data-i18n="step3Text">
-                            انتقل إلى الخطوة التالية المناسبة لك
-                            وابدأ رحلة الرعاية النفسية.
-                        </p>
-
-                    </article>
-
-
-                    <article class="step-card">
-
-                        <span class="step-number">04</span>
-
-                        <div class="step-icon">
-                            <i class="fa-solid fa-seedling"></i>
-                        </div>
-
-                        <h3 data-i18n="step4Title">
-                            استمر في التحسن
-                        </h3>
-
-                        <p data-i18n="step4Text">
-                            تابع رحلتك وتعلم طرقًا تساعدك على
-                            التعامل مع تحدياتك بصورة أفضل.
-                        </p>
-
-                    </article>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             SERVICES
-        ================================================== -->
-
-        <section class="section services-section" id="services">
-
-            <div class="container">
-
-                <div class="section-heading">
-
-                    <span class="eyebrow"
-                          data-i18n="servicesEyebrow">
-                        مجالات العلاج النفسي
-                    </span>
-
-                    <h2 data-i18n="servicesTitle">
-                        اختر المجال الأقرب إلى احتياجك.
-                    </h2>
-
-                    <p data-i18n="servicesDescription">
-                        تختلف احتياجات الصحة النفسية من شخص لآخر،
-                        لذلك يمكنك التعرف على المجالات المختلفة
-                        واختيار ما يناسب حالتك.
-                    </p>
-
-                </div>
-
-
-                <div class="services-grid">
-
-                    <!-- Service 1 -->
-
-                    <article class="service-card">
-
-                        <div class="service-icon">
-                            <i class="fa-solid fa-cloud"></i>
-                        </div>
-
-                        <h3 class="service-title"
-                            data-i18n="service1Title">
-                            القلق والتوتر
-                        </h3>
-
-                        <p data-i18n="service1Short">
-                            فهم القلق والتوتر والتعامل مع الضغوط
-                            اليومية بصورة أكثر صحة.
-                        </p>
-
-
-                        <button type="button"
-                                class="service-expand"
-                                aria-expanded="false">
-
-                            <span data-i18n="showDetails">
-                                تعرف على التفاصيل
-                            </span>
-
-                            <i class="fa-solid fa-chevron-left"></i>
-
-                        </button>
-
-
-                        <div class="service-details">
-
-                            <p data-i18n="service1Details">
-                                مساحة لفهم مصادر القلق والتوتر
-                                والتعامل مع الأفكار والمواقف التي
-                                تزيد من الضغط النفسي.
-                            </p>
-
-                            <ul>
-                                <li data-i18n="service1Point1">
-                                    فهم مصادر القلق والضغط
-                                </li>
-
-                                <li data-i18n="service1Point2">
-                                    التعامل مع الأفكار المقلقة
-                                </li>
-
-                                <li data-i18n="service1Point3">
-                                    تطوير طرق أفضل للتعامل مع الضغوط
-                                </li>
-                            </ul>
-
-                            <a href="#assessment"
-                               class="service-start"
-                               data-i18n="startWithThis">
-                                ابدأ من هنا
-                            </a>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- Service 2 -->
-
-                    <article class="service-card">
-
-                        <div class="service-icon">
-                            <i class="fa-solid fa-heart"></i>
-                        </div>
-
-                        <h3 class="service-title"
-                            data-i18n="service2Title">
-                            العلاقات
-                        </h3>
-
-                        <p data-i18n="service2Short">
-                            تحسين التواصل وفهم العلاقات ووضع
-                            حدود صحية.
-                        </p>
-
-                        <button type="button"
-                                class="service-expand"
-                                aria-expanded="false">
-
-                            <span data-i18n="showDetails">
-                                تعرف على التفاصيل
-                            </span>
-
-                            <i class="fa-solid fa-chevron-left"></i>
-
-                        </button>
-
-                        <div class="service-details">
-
-                            <p data-i18n="service2Details">
-                                مساحة لفهم العلاقات بشكل أعمق
-                                وتحسين التواصل والتعامل مع الخلافات.
-                            </p>
-
-                            <ul>
-                                <li data-i18n="service2Point1">
-                                    تحسين التواصل
-                                </li>
-
-                                <li data-i18n="service2Point2">
-                                    وضع حدود صحية
-                                </li>
-
-                                <li data-i18n="service2Point3">
-                                    التعامل مع الخلافات
-                                </li>
-                            </ul>
-
-                            <a href="#assessment"
-                               class="service-start"
-                               data-i18n="startWithThis">
-                                ابدأ من هنا
-                            </a>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- Service 3 -->
-
-                    <article class="service-card">
-
-                        <div class="service-icon">
-                            <i class="fa-solid fa-user"></i>
-                        </div>
-
-                        <h3 class="service-title"
-                            data-i18n="service3Title">
-                            الثقة بالنفس
-                        </h3>
-
-                        <p data-i18n="service3Short">
-                            فهم الذات والتعامل مع النقد الذاتي
-                            وبناء صورة أكثر توازنًا عن النفس.
-                        </p>
-
-                        <button type="button"
-                                class="service-expand"
-                                aria-expanded="false">
-
-                            <span data-i18n="showDetails">
-                                تعرف على التفاصيل
-                            </span>
-
-                            <i class="fa-solid fa-chevron-left"></i>
-
-                        </button>
-
-                        <div class="service-details">
-
-                            <p data-i18n="service3Details">
-                                التركيز على علاقتك بنفسك وفهم
-                                نقاط القوة والتعامل مع النقد الذاتي.
-                            </p>
-
-                            <ul>
-                                <li data-i18n="service3Point1">
-                                    فهم نفسك بشكل أفضل
-                                </li>
-
-                                <li data-i18n="service3Point2">
-                                    التعامل مع النقد الذاتي
-                                </li>
-
-                                <li data-i18n="service3Point3">
-                                    بناء ثقة أكثر توازنًا
-                                </li>
-                            </ul>
-
-                            <a href="#assessment"
-                               class="service-start"
-                               data-i18n="startWithThis">
-                                ابدأ من هنا
-                            </a>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- Service 4 -->
-
-                    <article class="service-card">
-
-                        <div class="service-icon">
-                            <i class="fa-solid fa-compass"></i>
-                        </div>
-
-                        <h3 class="service-title"
-                            data-i18n="service4Title">
-                            الصحة النفسية والتطور
-                        </h3>
-
-                        <p data-i18n="service4Short">
-                            اكتسب وضوحًا وفهمًا أفضل لنفسك
-                            وحياتك وأهدافك.
-                        </p>
-
-                        <button type="button"
-                                class="service-expand"
-                                aria-expanded="false">
-
-                            <span data-i18n="showDetails">
-                                تعرف على التفاصيل
-                            </span>
-
-                            <i class="fa-solid fa-chevron-left"></i>
-
-                        </button>
-
-                        <div class="service-details">
-
-                            <p data-i18n="service4Details">
-                                مساحة للعمل على التحديات الشخصية
-                                وفهم الأفكار والمشاعر وتحديد
-                                الخطوات المناسبة.
-                            </p>
-
-                            <ul>
-                                <li data-i18n="service4Point1">
-                                    فهم الأولويات
-                                </li>
-
-                                <li data-i18n="service4Point2">
-                                    تحديد أهداف واضحة
-                                </li>
-
-                                <li data-i18n="service4Point3">
-                                    بناء خطوات عملية
-                                </li>
-                            </ul>
-
-                            <a href="#assessment"
-                               class="service-start"
-                               data-i18n="startWithThis">
-                                ابدأ من هنا
-                            </a>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- Service 5 -->
-
-                    <article class="service-card">
-
-                        <div class="service-icon">
-                            <i class="fa-solid fa-house"></i>
-                        </div>
-
-                        <h3 class="service-title"
-                            data-i18n="service5Title">
-                            الدعم النفسي الأسري
-                        </h3>
-
-                        <p data-i18n="service5Short">
-                            التعامل مع التحديات الأسرية وتحسين
-                            التواصل داخل الأسرة.
-                        </p>
-
-                        <button type="button"
-                                class="service-expand"
-                                aria-expanded="false">
-
-                            <span data-i18n="showDetails">
-                                تعرف على التفاصيل
-                            </span>
-
-                            <i class="fa-solid fa-chevron-left"></i>
-
-                        </button>
-
-                        <div class="service-details">
-
-                            <p data-i18n="service5Details">
-                                مساحة لفهم المواقف الأسرية
-                                ووجهات النظر المختلفة والتعامل
-                                مع التحديات بصورة أكثر وعيًا.
-                            </p>
-
-                            <ul>
-                                <li data-i18n="service5Point1">
-                                    فهم المواقف الأسرية
-                                </li>
-
-                                <li data-i18n="service5Point2">
-                                    تحسين الحوار
-                                </li>
-
-                                <li data-i18n="service5Point3">
-                                    التعامل مع التحديات
-                                </li>
-                            </ul>
-
-                            <a href="#assessment"
-                               class="service-start"
-                               data-i18n="startWithThis">
-                                ابدأ من هنا
-                            </a>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- Service 6 -->
-
-                    <article class="service-card">
-
-                        <div class="service-icon">
-                            <i class="fa-solid fa-wand-magic-sparkles"></i>
-                        </div>
-
-                        <h3 class="service-title"
-                            data-i18n="service6Title">
-                            العلاج والدعم النفسي
-                        </h3>
-
-                        <p data-i18n="service6Short">
-                            مساحة للرعاية النفسية والتعامل
-                            مع التحديات التي تؤثر على حياتك.
-                        </p>
-
-                        <button type="button"
-                                class="service-expand"
-                                aria-expanded="false">
-
-                            <span data-i18n="showDetails">
-                                تعرف على التفاصيل
-                            </span>
-
-                            <i class="fa-solid fa-chevron-left"></i>
-
-                        </button>
-
-                        <div class="service-details">
-
-                            <p data-i18n="service6Details">
-                                يعتمد نوع الرعاية على احتياج كل شخص
-                                وطبيعة ما يمر به، مع توجيه الحالات
-                                التي تحتاج إلى تقييم متخصص إلى
-                                المختص المناسب.
-                            </p>
-
-                            <ul>
-                                <li data-i18n="service6Point1">
-                                    فهم احتياجاتك النفسية
-                                </li>
-
-                                <li data-i18n="service6Point2">
-                                    التعامل مع التحديات النفسية
-                                </li>
-
-                                <li data-i18n="service6Point3">
-                                    تحديد الخطوة العلاجية المناسبة
-                                </li>
-                            </ul>
-
-                            <a href="#assessment"
-                               class="service-start"
-                               data-i18n="startWithThis">
-                                ابدأ من هنا
-                            </a>
-
-                        </div>
-
-                    </article>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             JOURNEY
-        ================================================== -->
-
-        <section class="section journey-section" id="journey">
-
-            <div class="container">
-
-                <div class="section-heading">
-
-                    <span class="eyebrow"
-                          data-i18n="journeyEyebrow">
-                        رحلتك
-                    </span>
-
-                    <h2 data-i18n="journeyTitle">
-                        خطوة بخطوة، وبالوتيرة التي تناسبك.
-                    </h2>
-
-                    <p data-i18n="journeyDescription">
-                        العلاج النفسي رحلة تختلف من شخص لآخر،
-                        والمهم أن تبدأ بالخطوة المناسبة لك.
-                    </p>
-
-                </div>
-
-
-                <div class="journey-list">
-
-                    <article class="journey-item">
-
-                        <div class="journey-marker">
-                            01
-                        </div>
-
-                        <div>
-                            <span data-i18n="journey1Status">
-                                البداية
-                            </span>
-
-                            <h3 data-i18n="journey1Title">
-                                فهم ما تمر به
-                            </h3>
-
-                            <p data-i18n="journey1Text">
-                                ابدأ بالتعرف على احتياجاتك وما
-                                تريد أن تعمل عليه.
-                            </p>
-                        </div>
-
-                    </article>
-
-
-                    <article class="journey-item">
-
-                        <div class="journey-marker">
-                            02
-                        </div>
-
-                        <div>
-                            <span data-i18n="journey2Status">
-                                الخطوة التالية
-                            </span>
-
-                            <h3 data-i18n="journey2Title">
-                                تحديد الاحتياجات
-                            </h3>
-
-                            <p data-i18n="journey2Text">
-                                حدد المجال الأقرب إلى ما تمر به.
-                            </p>
-                        </div>
-
-                    </article>
-
-
-                    <article class="journey-item">
-
-                        <div class="journey-marker">
-                            03
-                        </div>
-
-                        <div>
-                            <span data-i18n="journey3Status">
-                                قيد التقدم
-                            </span>
-
-                            <h3 data-i18n="journey3Title">
-                                العمل على التغيير
-                            </h3>
-
-                            <p data-i18n="journey3Text">
-                                اعمل تدريجيًا على التغييرات
-                                التي تريدها.
-                            </p>
-                        </div>
-
-                    </article>
-
-
-                    <article class="journey-item">
-
-                        <div class="journey-marker">
-                            04
-                        </div>
-
-                        <div>
-                            <span data-i18n="journey4Status">
-                                مستمر
-                            </span>
-
-                            <h3 data-i18n="journey4Title">
-                                متابعة رحلتك
-                            </h3>
-
-                            <p data-i18n="journey4Text">
-                                استمر في فهم نفسك والتقدم
-                                بما يناسب حالتك واحتياجاتك.
-                            </p>
-                        </div>
-
-                    </article>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             EXPERIENCE
-        ================================================== -->
-
-        <section class="section experience-section" id="experience">
-
-            <div class="container experience-grid">
-
-                <div class="experience-visual">
-
-                    <div class="experience-card">
-
-                        <i class="fa-solid fa-brain"></i>
-
-                        <strong data-i18n="experienceVisual">
-                            مساحة للرعاية النفسية
-                        </strong>
-
-                    </div>
-
-                </div>
-
-
-                <div class="experience-content">
-
-                    <span class="eyebrow"
-                          data-i18n="experienceEyebrow">
-                        تجربتك
-                    </span>
-
-                    <h2 data-i18n="experienceTitle">
-                        العلاج يبدأ بفهمك.
-                    </h2>
-
-                    <p data-i18n="experienceDescription">
-                        لكل شخص رحلة مختلفة، لذلك يجب أن تكون
-                        تجربتك العلاجية محترمة ومريحة وتركز
-                        على ما يهمك.
-                    </p>
-
-
-                    <div class="experience-points">
-
-                        <div class="experience-point">
-
-                            <i class="fa-solid fa-user-doctor"></i>
-
-                            <div>
-
-                                <h3 data-i18n="experience1Title">
-                                    رعاية تناسب احتياجك
-                                </h3>
-
-                                <p data-i18n="experience1Text">
-                                    احتياجاتك وتجربتك في قلب
-                                    عملية الرعاية النفسية.
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="experience-point">
-
-                            <i class="fa-solid fa-heart"></i>
-
-                            <div>
-
-                                <h3 data-i18n="experience2Title">
-                                    بيئة مريحة
-                                </h3>
-
-                                <p data-i18n="experience2Text">
-                                    مساحة هادئة يمكنك فيها
-                                    التحدث بحرية وصدق.
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="experience-point">
-
-                            <i class="fa-solid fa-shield-heart"></i>
-
-                            <div>
-
-                                <h3 data-i18n="experience3Title">
-                                    احترام وخصوصية
-                                </h3>
-
-                                <p data-i18n="experience3Text">
-                                    التعامل مع تجربتك وخصوصيتك
-                                    باحترام وحرص.
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             ABOUT
-        ================================================== -->
-
-        <section class="section about-section" id="about">
-
-            <div class="container about-grid">
-
-                <div class="about-content">
-
-                    <span class="eyebrow"
-                          data-i18n="aboutEyebrow">
-                        عن تسبيح
-                    </span>
-
-                    <h2 data-i18n="aboutTitle">
-                        مساحة يمكنك أن تشعر فيها بالأمان.
-                    </h2>
-
-                    <p data-i18n="aboutText1">
-                        تم بناء Tasbeeh Mohamed حول فكرة بسيطة:
-                        الرعاية النفسية تبدأ عندما تشعر أن هناك
-                        من يسمعك ويفهم ما تمر به.
-                    </p>
-
-                    <p data-i18n="aboutText2">
-                        الهدف هو تقديم تجربة محترمة ومريحة
-                        تساعدك على فهم احتياجاتك النفسية
-                        والوصول إلى الخطوة المناسبة لك.
-                    </p>
-
-                    <a href="#assessment"
-                       class="btn btn-secondary"
-                       data-i18n="learnMore">
-                        ابدأ التعرف على احتياجك
-                    </a>
-
-                </div>
-
-
-                <div class="about-card">
-
-                    <div class="about-shape"></div>
-
-                    <div class="about-card-content">
-
-                        <i class="fa-solid fa-brain"></i>
-
-                        <strong data-i18n="aboutCardText">
-                            الرعاية النفسية تبدأ بخطوة.
-                        </strong>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             CTA
-        ================================================== -->
-
-        <section class="section cta-section">
-
-            <div class="container">
-
-                <div class="cta-box">
-
-                    <span class="eyebrow"
-                          data-i18n="ctaEyebrow">
-                        الخطوة الأولى
-                    </span>
-
-                    <h2 data-i18n="ctaTitle">
-                        ابدأ رحلتك نحو صحة نفسية أفضل.
-                    </h2>
-
-                    <p data-i18n="ctaText">
-                        لست بحاجة إلى امتلاك جميع الإجابات
-                        من البداية. أخبرنا قليلًا عما تبحث عنه
-                        وسنساعدك على فهم الخطوة التالية.
-                    </p>
-
-                    <button type="button"
-                            class="btn btn-primary"
-                            id="openAssessment"
-                            data-i18n="startNow">
-                        ابدأ الآن
-                    </button>
-
-                    <small data-i18n="ctaNote">
-                        لن يستغرق الأمر سوى بضع دقائق
-                    </small>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             FAQ
-        ================================================== -->
-
-        <section class="section faq-section" id="faq">
-
-            <div class="container">
-
-                <div class="section-heading">
-
-                    <span class="eyebrow"
-                          data-i18n="faqEyebrow">
-                        الأسئلة الشائعة
-                    </span>
-
-                    <h2 data-i18n="faqTitle">
-                        أسئلة قد تكون في ذهنك.
-                    </h2>
-
-                    <p data-i18n="faqDescription">
-                        بعض الإجابات التي قد تساعدك قبل أن تبدأ.
-                    </p>
-
-                </div>
-
-
-                <div class="faq-list">
-
-
-                    <article class="faq-item">
-
-                        <button type="button"
-                                class="faq-question"
-                                aria-expanded="false">
-
-                            <span data-i18n="faq1Question">
-                                كيف تعمل العملية؟
-                            </span>
-
-                            <i class="fa-solid fa-plus"></i>
-
-                        </button>
-
-                        <div class="faq-answer">
-
-                            <div>
-
-                                <p data-i18n="faq1Answer">
-                                    تبدأ بخطوة بسيطة للتعرف على
-                                    احتياجاتك وما تبحث عنه.
-                                    بعد ذلك يمكنك تحديد المجال
-                                    المناسب والخطوة التالية.
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-                    <article class="faq-item">
-
-                        <button type="button"
-                                class="faq-question"
-                                aria-expanded="false">
-
-                            <span data-i18n="faq2Question">
-                                هل معلوماتي خاصة؟
-                            </span>
-
-                            <i class="fa-solid fa-plus"></i>
-
-                        </button>
-
-                        <div class="faq-answer">
-
-                            <div>
-
-                                <p data-i18n="faq2Answer">
-                                    الخصوصية جزء أساسي من تجربة
-                                    الرعاية النفسية. شارك فقط
-                                    المعلومات التي تشعر بالراحة
-                                    تجاهها.
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-                    <article class="faq-item">
-
-                        <button type="button"
-                                class="faq-question"
-                                aria-expanded="false">
-
-                            <span data-i18n="faq3Question">
-                                هل يمكنني اختيار وقت مناسب؟
-                            </span>
-
-                            <i class="fa-solid fa-plus"></i>
-
-                        </button>
-
-                        <div class="faq-answer">
-
-                            <div>
-
-                                <p data-i18n="faq3Answer">
-                                    يمكنك اختيار الوقت الأنسب لك
-                                    وفقًا للمواعيد المتاحة.
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-                    <article class="faq-item">
-
-                        <button type="button"
-                                class="faq-question"
-                                aria-expanded="false">
-
-                            <span data-i18n="faq4Question">
-                                هل هذا علاج نفسي؟
-                            </span>
-
-                            <i class="fa-solid fa-plus"></i>
-
-                        </button>
-
-                        <div class="faq-answer">
-
-                            <div>
-
-                                <p data-i18n="faq4Answer">
-                                    تختلف طبيعة الرعاية حسب احتياج
-                                    كل شخص. الحالات التي تتطلب
-                                    تقييمًا أو علاجًا متخصصًا ينبغي
-                                    التعامل معها مع مختص مؤهل
-                                    ومرخص.
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-                    <article class="faq-item">
-
-                        <button type="button"
-                                class="faq-question"
-                                aria-expanded="false">
-
-                            <span data-i18n="faq5Question">
-                                كيف أبدأ؟
-                            </span>
-
-                            <i class="fa-solid fa-plus"></i>
-
-                        </button>
-
-                        <div class="faq-answer">
-
-                            <div>
-
-                                <p data-i18n="faq5Answer">
-                                    اضغط على «ابدأ الآن» وأخبرنا
-                                    بشكل بسيط عما تبحث عنه.
-                                    الخطوة الأولى هي أن توضح
-                                    احتياجك.
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-                </div>
-
-
-                <div class="faq-bottom">
-
-                    <h3 data-i18n="faqCtaTitle">
-                        ما زال لديك سؤال؟
-                    </h3>
-
-                    <p data-i18n="faqCtaText">
-                        يمكنك التواصل معنا إذا كنت تحتاج
-                        إلى معرفة المزيد قبل أن تبدأ.
-                    </p>
-
-                    <a href="#assessment"
-                       class="btn btn-primary"
-                       data-i18n="contactUs">
-                        تواصل معنا
-                    </a>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- =====================================================
-         ASSESSMENT MODAL
-    ====================================================== -->
-
-    <div class="modal"
-         id="assessmentModal"
-         aria-hidden="true">
-
-        <div class="modal-overlay"
-             id="modalOverlay"></div>
-
-
-        <div class="modal-dialog"
-             role="dialog"
-             aria-modal="true"
-             aria-labelledby="assessmentTitle">
-
-
-            <button type="button"
-                    class="modal-close"
-                    id="modalClose"
-                    aria-label="إغلاق">
-
-                <i class="fa-solid fa-xmark"></i>
-
-            </button>
-
-
-            <span class="eyebrow"
-                  data-i18n="assessmentEyebrow">
-                ابدأ من هنا
-            </span>
-
-
-            <h2 id="assessmentTitle"
-                data-i18n="assessmentTitle">
-                ما الذي تبحث عنه الآن؟
-            </h2>
-
-
-            <p data-i18n="assessmentDescription">
-                اختر المجال الأقرب إلى احتياجك.
-            </p>
-
-
-            <div class="assessment-content">
-
-                <h3 data-i18n="assessmentQuestion">
-                    ما المجال الأقرب لما تمر به؟
-                </h3>
-
-
-                <div class="assessment-options">
-
-
-                    <button type="button"
-                            class="assessment-option"
-                            data-assessment="anxiety"
-                            aria-pressed="false">
-
-                        <i class="fa-solid fa-cloud"></i>
-
-                        <span data-i18n="assessmentAnxiety">
-                            القلق والتوتر
-                        </span>
-
-                    </button>
-
-
-                    <button type="button"
-                            class="assessment-option"
-                            data-assessment="relationships"
-                            aria-pressed="false">
-
-                        <i class="fa-solid fa-heart"></i>
-
-                        <span data-i18n="assessmentRelationships">
-                            العلاقات
-                        </span>
-
-                    </button>
-
-
-                    <button type="button"
-                            class="assessment-option"
-                            data-assessment="self"
-                            aria-pressed="false">
-
-                        <i class="fa-solid fa-user"></i>
-
-                        <span data-i18n="assessmentSelf">
-                            الثقة بالنفس
-                        </span>
-
-                    </button>
-
-
-                    <button type="button"
-                            class="assessment-option"
-                            data-assessment="growth"
-                            aria-pressed="false">
-
-                        <i class="fa-solid fa-brain"></i>
-
-                        <span data-i18n="assessmentGrowth">
-                            الصحة النفسية والتطور
-                        </span>
-
-                    </button>
-
-                </div>
-
-
-                <small data-i18n="assessmentHint">
-                    يمكنك تغيير اختيارك في أي وقت.
-                </small>
-
-
-                <a href="#"
-                   target="_blank"
-                   rel="noopener"
-                   class="btn btn-primary modal-whatsapp"
-                   id="modalWhatsApp"
-                   data-i18n="continueWhatsApp">
-
-                    تواصل عبر واتساب
-
-                </a>
 
             </div>
 
@@ -1565,91 +223,1363 @@
 
     </div>
 
+</section>
 
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
 
-    <footer class="site-footer">
+<!-- =====================================================
+     TRUST
+===================================================== -->
 
-        <div class="container footer-grid">
+<section class="trust-bar">
 
+    <div class="container trust-grid">
+
+        <div class="trust-item">
+
+            <div class="trust-icon">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+
+            <div>
+                <strong data-i18n="privacy">
+                    خصوصية
+                </strong>
+
+                <span data-i18n="privacyText">
+                    مساحة تحترم خصوصيتك
+                </span>
+            </div>
+
+        </div>
+
+
+        <div class="trust-item">
+
+            <div class="trust-icon">
+                <i class="fa-solid fa-user-doctor"></i>
+            </div>
+
+            <div>
+                <strong data-i18n="professionalCare">
+                    رعاية متخصصة
+                </strong>
+
+                <span data-i18n="professionalCareText">
+                    تجربة منظمة وهادئة
+                </span>
+            </div>
+
+        </div>
+
+
+        <div class="trust-item">
+
+            <div class="trust-icon">
+                <i class="fa-solid fa-calendar-check"></i>
+            </div>
+
+            <div>
+                <strong data-i18n="flexible">
+                    مرونة
+                </strong>
+
+                <span data-i18n="flexibleText">
+                    خطوات تناسب احتياجاتك
+                </span>
+            </div>
+
+        </div>
+
+
+        <div class="trust-item">
+
+            <div class="trust-icon">
+                <i class="fa-solid fa-comments"></i>
+            </div>
+
+            <div>
+                <strong data-i18n="humanCare">
+                    اهتمام إنساني
+                </strong>
+
+                <span data-i18n="humanCareText">
+                    استماع واحترام بدون أحكام
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     HOW IT WORKS
+===================================================== -->
+
+<section class="section how-section" id="how">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div class="eyebrow" data-i18n="howEyebrow">
+                كيف نعمل
+            </div>
+
+            <h2 data-i18n="howTitle">
+                خطوات بسيطة لبداية واضحة
+            </h2>
+
+            <p data-i18n="howDescription">
+                تبدأ الرحلة بفهم احتياجاتك ثم الانتقال تدريجيًا
+                إلى الخطوات المناسبة لك.
+            </p>
+
+        </div>
+
+
+        <div class="steps-grid">
+
+            <article class="step-card">
+
+                <span class="step-number">01</span>
+
+                <h3 data-i18n="step1Title">
+                    التعرف على احتياجك
+                </h3>
+
+                <p data-i18n="step1Text">
+                    نبدأ بفهم ما تمر به وما الذي تبحث عن المساعدة فيه.
+                </p>
+
+            </article>
+
+
+            <article class="step-card">
+
+                <span class="step-number">02</span>
+
+                <h3 data-i18n="step2Title">
+                    اختيار المسار المناسب
+                </h3>
+
+                <p data-i18n="step2Text">
+                    يتم توجيهك إلى الخدمة أو المسار الأكثر ارتباطًا باحتياجك.
+                </p>
+
+            </article>
+
+
+            <article class="step-card">
+
+                <span class="step-number">03</span>
+
+                <h3 data-i18n="step3Title">
+                    حجز الموعد
+                </h3>
+
+                <p data-i18n="step3Text">
+                    اختر الموعد المناسب وابدأ خطواتك بشكل منظم.
+                </p>
+
+            </article>
+
+
+            <article class="step-card">
+
+                <span class="step-number">04</span>
+
+                <h3 data-i18n="step4Title">
+                    بدء الرحلة
+                </h3>
+
+                <p data-i18n="step4Text">
+                    تبدأ جلساتك وخطتك بناءً على احتياجاتك وأهدافك العلاجية.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SERVICES
+===================================================== -->
+
+<section class="section services-section" id="services">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div class="eyebrow" data-i18n="servicesEyebrow">
+                الخدمات
+            </div>
+
+            <h2 data-i18n="servicesTitle">
+                دعم نفسي متخصص لمجالات مختلفة
+            </h2>
+
+            <p data-i18n="servicesDescription">
+                تعرف على المسارات المتاحة واختر المجال الأقرب إلى احتياجك.
+            </p>
+
+        </div>
+
+
+        <div class="services-grid">
+
+
+            <!-- SERVICE 1 -->
+
+            <article class="service-card">
+
+                <div class="service-icon">
+                    <i class="fa-solid fa-cloud"></i>
+                </div>
+
+                <h3 data-i18n="service1Title">
+                    القلق والتوتر
+                </h3>
+
+                <p data-i18n="service1Short">
+                    التعامل مع القلق والضغط النفسي والمشاعر المتكررة.
+                </p>
+
+                <button
+                    type="button"
+                    class="service-expand">
+
+                    <span data-i18n="showDetails">
+                        التفاصيل
+                    </span>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </button>
+
+                <div class="service-details">
+
+                    <ul>
+                        <li data-i18n="service1Point1">
+                            فهم مصادر القلق
+                        </li>
+
+                        <li data-i18n="service1Point2">
+                            التعامل مع الضغط النفسي
+                        </li>
+
+                        <li data-i18n="service1Point3">
+                            تطوير أساليب أكثر توازنًا
+                        </li>
+                    </ul>
+
+                    <button
+                        type="button"
+                        class="btn btn-primary service-start"
+                        data-service="Anxiety & Stress"
+                        data-i18n="startService">
+                        ابدأ هذا المسار
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- SERVICE 2 -->
+
+            <article class="service-card">
+
+                <div class="service-icon">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <h3 data-i18n="service2Title">
+                    العلاقات
+                </h3>
+
+                <p data-i18n="service2Short">
+                    فهم الأنماط العاطفية والتعامل مع تحديات العلاقات.
+                </p>
+
+                <button
+                    type="button"
+                    class="service-expand">
+
+                    <span data-i18n="showDetails">
+                        التفاصيل
+                    </span>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </button>
+
+                <div class="service-details">
+
+                    <ul>
+                        <li data-i18n="service2Point1">
+                            فهم أنماط العلاقات
+                        </li>
+
+                        <li data-i18n="service2Point2">
+                            التواصل ووضع الحدود
+                        </li>
+
+                        <li data-i18n="service2Point3">
+                            التعامل مع الخلافات
+                        </li>
+                    </ul>
+
+                    <button
+                        type="button"
+                        class="btn btn-primary service-start"
+                        data-service="Relationships"
+                        data-i18n="startService">
+                        ابدأ هذا المسار
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- SERVICE 3 -->
+
+            <article class="service-card">
+
+                <div class="service-icon">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+                <h3 data-i18n="service3Title">
+                    تقدير الذات
+                </h3>
+
+                <p data-i18n="service3Short">
+                    العمل على الصورة الذاتية والثقة بالنفس بطريقة صحية.
+                </p>
+
+                <button
+                    type="button"
+                    class="service-expand">
+
+                    <span data-i18n="showDetails">
+                        التفاصيل
+                    </span>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </button>
+
+                <div class="service-details">
+
+                    <ul>
+                        <li data-i18n="service3Point1">
+                            فهم الأفكار السلبية عن الذات
+                        </li>
+
+                        <li data-i18n="service3Point2">
+                            بناء نظرة أكثر توازنًا
+                        </li>
+
+                        <li data-i18n="service3Point3">
+                            تطوير الثقة بالنفس
+                        </li>
+                    </ul>
+
+                    <button
+                        type="button"
+                        class="btn btn-primary service-start"
+                        data-service="Self Esteem"
+                        data-i18n="startService">
+                        ابدأ هذا المسار
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- SERVICE 4 -->
+
+            <article class="service-card">
+
+                <div class="service-icon">
+                    <i class="fa-solid fa-compass"></i>
+                </div>
+
+                <h3 data-i18n="service4Title">
+                    الصحة النفسية
+                </h3>
+
+                <p data-i18n="service4Short">
+                    مساحة لفهم المشاعر والتحديات النفسية بشكل أعمق.
+                </p>
+
+                <button
+                    type="button"
+                    class="service-expand">
+
+                    <span data-i18n="showDetails">
+                        التفاصيل
+                    </span>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </button>
+
+                <div class="service-details">
+
+                    <ul>
+                        <li data-i18n="service4Point1">
+                            فهم الحالة النفسية
+                        </li>
+
+                        <li data-i18n="service4Point2">
+                            متابعة التغيرات والمشاعر
+                        </li>
+
+                        <li data-i18n="service4Point3">
+                            بناء خطة مناسبة
+                        </li>
+                    </ul>
+
+                    <button
+                        type="button"
+                        class="btn btn-primary service-start"
+                        data-service="Mental Health"
+                        data-i18n="startService">
+                        ابدأ هذا المسار
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- SERVICE 5 -->
+
+            <article class="service-card">
+
+                <div class="service-icon">
+                    <i class="fa-solid fa-house"></i>
+                </div>
+
+                <h3 data-i18n="service5Title">
+                    الدعم الأسري
+                </h3>
+
+                <p data-i18n="service5Short">
+                    التعامل مع التحديات الأسرية وتحسين التواصل.
+                </p>
+
+                <button
+                    type="button"
+                    class="service-expand">
+
+                    <span data-i18n="showDetails">
+                        التفاصيل
+                    </span>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </button>
+
+                <div class="service-details">
+
+                    <ul>
+                        <li data-i18n="service5Point1">
+                            فهم المشكلات الأسرية
+                        </li>
+
+                        <li data-i18n="service5Point2">
+                            تحسين التواصل
+                        </li>
+
+                        <li data-i18n="service5Point3">
+                            التعامل مع الخلافات
+                        </li>
+                    </ul>
+
+                    <button
+                        type="button"
+                        class="btn btn-primary service-start"
+                        data-service="Family Support"
+                        data-i18n="startService">
+                        ابدأ هذا المسار
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- SERVICE 6 -->
+
+            <article class="service-card">
+
+                <div class="service-icon">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+
+                <h3 data-i18n="service6Title">
+                    رحلة التعافي والتغيير
+                </h3>
+
+                <p data-i18n="service6Short">
+                    العمل على أنماط التفكير والسلوك التي تحتاج إلى تغيير.
+                </p>
+
+                <button
+                    type="button"
+                    class="service-expand">
+
+                    <span data-i18n="showDetails">
+                        التفاصيل
+                    </span>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </button>
+
+                <div class="service-details">
+
+                    <ul>
+                        <li data-i18n="service6Point1">
+                            تحديد الأنماط التي تحتاج إلى تغيير
+                        </li>
+
+                        <li data-i18n="service6Point2">
+                            وضع أهداف واقعية
+                        </li>
+
+                        <li data-i18n="service6Point3">
+                            متابعة التقدم تدريجيًا
+                        </li>
+                    </ul>
+
+                    <button
+                        type="button"
+                        class="btn btn-primary service-start"
+                        data-service="Recovery & Change"
+                        data-i18n="startService">
+                        ابدأ هذا المسار
+                    </button>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     JOURNEY
+===================================================== -->
+
+<section class="section journey-section" id="journey">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div class="eyebrow" data-i18n="journeyEyebrow">
+                رحلتك
+            </div>
+
+            <h2 data-i18n="journeyTitle">
+                لا تحتاج إلى معرفة كل الإجابات من البداية
+            </h2>
+
+            <p data-i18n="journeyDescription">
+                المهم أن تبدأ بخطوة واضحة، ثم نتحرك تدريجيًا.
+            </p>
+
+        </div>
+
+
+        <div class="journey-list">
+
+            <article class="journey-item">
+
+                <div
+                    class="journey-status"
+                    data-i18n="journey1Status">
+                    البداية
+                </div>
+
+                <div>
+                    <h3 data-i18n="journey1Title">
+                        ما الذي يحدث الآن؟
+                    </h3>
+
+                    <p data-i18n="journey1Text">
+                        نفهم التحدي الأساسي والمشاعر المرتبطة به.
+                    </p>
+                </div>
+
+            </article>
+
+
+            <article class="journey-item">
+
+                <div
+                    class="journey-status"
+                    data-i18n="journey2Status">
+                    الفهم
+                </div>
+
+                <div>
+                    <h3 data-i18n="journey2Title">
+                        فهم الأنماط
+                    </h3>
+
+                    <p data-i18n="journey2Text">
+                        نتعرف على الأفكار والمشاعر والسلوكيات المتكررة.
+                    </p>
+                </div>
+
+            </article>
+
+
+            <article class="journey-item">
+
+                <div
+                    class="journey-status"
+                    data-i18n="journey3Status">
+                    العمل
+                </div>
+
+                <div>
+                    <h3 data-i18n="journey3Title">
+                        خطوات عملية
+                    </h3>
+
+                    <p data-i18n="journey3Text">
+                        نعمل على مهارات واستراتيجيات مناسبة للاحتياج.
+                    </p>
+                </div>
+
+            </article>
+
+
+            <article class="journey-item">
+
+                <div
+                    class="journey-status"
+                    data-i18n="journey4Status">
+                    المتابعة
+                </div>
+
+                <div>
+                    <h3 data-i18n="journey4Title">
+                        تقييم التقدم
+                    </h3>
+
+                    <p data-i18n="journey4Text">
+                        نراجع التقدم ونحدد الخطوات التالية.
+                    </p>
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     EXPERIENCE
+===================================================== -->
+
+<section class="section experience-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div class="eyebrow" data-i18n="experienceEyebrow">
+                التجربة
+            </div>
+
+            <h2 data-i18n="experienceTitle">
+                تجربة هادئة ومنظمة من أول خطوة
+            </h2>
+
+            <p data-i18n="experienceDescription">
+                الهدف هو جعل الوصول إلى الدعم النفسي أكثر وضوحًا وبساطة.
+            </p>
+
+        </div>
+
+
+        <div class="experience-grid">
+
+            <div class="experience-visual">
+                <i class="fa-solid fa-hands-holding-heart"></i>
+            </div>
+
+
+            <div class="experience-list">
+
+                <article class="experience-item">
+
+                    <div class="experience-number">
+                        01
+                    </div>
+
+                    <div>
+                        <h3 data-i18n="experience1Title">
+                            استماع بدون أحكام
+                        </h3>
+
+                        <p data-i18n="experience1Text">
+                            مساحة للتعبير عن أفكارك ومشاعرك باحترام.
+                        </p>
+                    </div>
+
+                </article>
+
+
+                <article class="experience-item">
+
+                    <div class="experience-number">
+                        02
+                    </div>
+
+                    <div>
+                        <h3 data-i18n="experience2Title">
+                            وضوح في الخطوات
+                        </h3>
+
+                        <p data-i18n="experience2Text">
+                            تعرف ما هي الخطوة التالية بدلًا من الشعور بالتشتت.
+                        </p>
+                    </div>
+
+                </article>
+
+
+                <article class="experience-item">
+
+                    <div class="experience-number">
+                        03
+                    </div>
+
+                    <div>
+                        <h3 data-i18n="experience3Title">
+                            احترام الخصوصية
+                        </h3>
+
+                        <p data-i18n="experience3Text">
+                            التعامل مع المعلومات الشخصية والنفسية باحترام.
+                        </p>
+                    </div>
+
+                </article>
+
+
+                <article class="experience-item">
+
+                    <div class="experience-number">
+                        04
+                    </div>
+
+                    <div>
+                        <h3 data-i18n="experience4Title">
+                            تقدم تدريجي
+                        </h3>
+
+                        <p data-i18n="experience4Text">
+                            التغيير النفسي رحلة تحتاج إلى وقت واستمرارية.
+                        </p>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section class="section about-section" id="about">
+
+    <div class="container about-grid">
+
+        <div class="about-content">
+
+            <div class="eyebrow" data-i18n="aboutEyebrow">
+                من نحن
+            </div>
+
+            <h2 data-i18n="aboutTitle">
+                مساحة تهتم بالإنسان قبل كل شيء
+            </h2>
+
+            <p data-i18n="aboutText1">
+                Tasbeeh Mohamed هي مساحة مخصصة للعلاج النفسي
+                والصحة النفسية، تهدف إلى جعل الوصول إلى الدعم
+                النفسي أكثر وضوحًا وتنظيمًا.
+            </p>
+
+            <p data-i18n="aboutText2">
+                نؤمن أن طلب المساعدة خطوة طبيعية عندما يواجه الإنسان
+                تحديات تؤثر على حياته ومشاعره وعلاقاته.
+            </p>
+
+            <a
+                href="#assessment"
+                class="btn btn-primary"
+                data-i18n="learnMore">
+                ابدأ من هنا
+            </a>
+
+        </div>
+
+
+        <div class="about-card">
+
+            <div class="about-shape"></div>
+
+            <div
+                class="about-card-text"
+                data-i18n="aboutCardText">
+
+                البداية لا تحتاج إلى أن تكون مثالية،
+                يكفي أن تكون خطوة إلى الأمام.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="cta-section">
+
+    <div class="container cta-inner">
+
+        <div class="eyebrow" data-i18n="ctaEyebrow">
+            ابدأ رحلتك
+        </div>
+
+        <h2 data-i18n="ctaTitle">
+            مستعد تأخذ أول خطوة؟
+        </h2>
+
+        <p data-i18n="ctaText">
+            أخبرنا بالمجال الأقرب لما تحتاجه وسنبدأ من هناك.
+        </p>
+
+        <button
+            type="button"
+            class="btn btn-light"
+            id="openAssessment"
+            data-i18n="startNow">
+            ابدأ الآن
+        </button>
+
+        <p
+            class="cta-note"
+            data-i18n="ctaNote">
+            هذا التقييم الأولي لا يُعد تشخيصًا طبيًا.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FAQ
+===================================================== -->
+
+<section class="section faq-section" id="faq">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div class="eyebrow" data-i18n="faqEyebrow">
+                الأسئلة الشائعة
+            </div>
+
+            <h2 data-i18n="faqTitle">
+                أسئلة قد تساعدك قبل البداية
+            </h2>
+
+            <p data-i18n="faqDescription">
+                بعض الإجابات الأساسية قبل اختيار الخطوة التالية.
+            </p>
+
+        </div>
+
+
+        <div class="faq-list">
+
+
+            <article class="faq-item">
+
+                <button
+                    type="button"
+                    class="faq-question">
+
+                    <span data-i18n="faq1Question">
+                        هل أحتاج إلى معرفة مشكلتي بالتحديد؟
+                    </span>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    <div>
+                        <p data-i18n="faq1Answer">
+                            لا. يمكنك البدء بوصف ما تشعر به أو ما يسبب
+                            لك صعوبة، ثم يتم تحديد الخطوة المناسبة.
+                        </p>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="faq-item">
+
+                <button
+                    type="button"
+                    class="faq-question">
+
+                    <span data-i18n="faq2Question">
+                        هل التقييم الأولي يعتبر تشخيصًا؟
+                    </span>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    <div>
+                        <p data-i18n="faq2Answer">
+                            لا. التقييم الموجود على الموقع خطوة أولية
+                            لفهم احتياجك وليس بديلًا عن التقييم السريري.
+                        </p>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="faq-item">
+
+                <button
+                    type="button"
+                    class="faq-question">
+
+                    <span data-i18n="faq3Question">
+                        هل يمكنني اختيار نوع الخدمة؟
+                    </span>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    <div>
+                        <p data-i18n="faq3Answer">
+                            نعم، يمكنك اختيار المجال الأقرب لما تبحث عنه
+                            ثم الانتقال إلى الخطوة التالية.
+                        </p>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="faq-item">
+
+                <button
+                    type="button"
+                    class="faq-question">
+
+                    <span data-i18n="faq4Question">
+                        هل الجلسات متاحة أونلاين؟
+                    </span>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    <div>
+                        <p data-i18n="faq4Answer">
+                            تعتمد طريقة الجلسة على النظام والخدمات المتاحة
+                            وسيتم توضيح التفاصيل عند الحجز.
+                        </p>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="faq-item">
+
+                <button
+                    type="button"
+                    class="faq-question">
+
+                    <span data-i18n="faq5Question">
+                        ماذا لو كنت في حالة طارئة؟
+                    </span>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    <div>
+                        <p data-i18n="faq5Answer">
+                            في حالات الطوارئ النفسية أو وجود خطر مباشر
+                            على نفسك أو الآخرين، يجب طلب المساعدة الطارئة
+                            المحلية فورًا بدلًا من الاعتماد على الموقع.
+                        </p>
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+
+        <div class="faq-bottom">
+
+            <h3 data-i18n="faqCtaTitle">
+                لديك سؤال آخر؟
+            </h3>
+
+            <p data-i18n="faqCtaText">
+                يمكنك البدء من خلال التواصل معنا.
+            </p>
+
+            <a
+                href="#assessment"
+                class="btn btn-primary"
+                data-i18n="contactUs">
+                تواصل معنا
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =====================================================
+     ASSESSMENT MODAL
+===================================================== -->
+
+<div
+    class="modal"
+    id="assessmentModal"
+    aria-hidden="true">
+
+    <div
+        class="modal-overlay"
+        id="modalOverlay">
+    </div>
+
+
+    <div
+        class="modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="assessmentTitle">
+
+        <button
+            type="button"
+            id="modalClose"
+            aria-label="Close">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+
+        <div class="modal-header">
+
+            <div
+                class="eyebrow"
+                data-i18n="assessmentEyebrow">
+                البداية
+            </div>
+
+            <h2
+                id="assessmentTitle"
+                data-i18n="assessmentTitle">
+                ما المجال الأقرب لاحتياجك؟
+            </h2>
+
+            <p data-i18n="assessmentDescription">
+                اختر الخيار الأقرب لما تمر به حاليًا.
+            </p>
+
+        </div>
+
+
+        <p
+            class="assessment-question"
+            data-i18n="assessmentQuestion">
+            ما الذي ترغب في الحصول على دعم بشأنه؟
+        </p>
+
+        <p
+            class="assessment-hint"
+            data-i18n="assessmentHint">
+            يمكنك اختيار خيار واحد.
+        </p>
+
+
+        <div class="assessment-options">
+
+            <button
+                type="button"
+                class="assessment-option"
+                data-assessment="anxiety">
+
+                <i class="fa-solid fa-cloud"></i>
+
+                <span data-i18n="assessmentAnxiety">
+                    القلق والتوتر
+                </span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="assessment-option"
+                data-assessment="relationships">
+
+                <i class="fa-solid fa-heart"></i>
+
+                <span data-i18n="assessmentRelationships">
+                    العلاقات
+                </span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="assessment-option"
+                data-assessment="self">
+
+                <i class="fa-solid fa-user"></i>
+
+                <span data-i18n="assessmentSelf">
+                    تقدير الذات
+                </span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="assessment-option"
+                data-assessment="growth">
+
+                <i class="fa-solid fa-compass"></i>
+
+                <span data-i18n="assessmentGrowth">
+                    الصحة النفسية والتغيير
+                </span>
+
+            </button>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <a
+                href="#"
+                id="modalWhatsApp"
+                class="btn btn-primary"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-i18n="continueWhatsApp">
+
+                متابعة عبر WhatsApp
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <div class="footer-grid">
 
             <div class="footer-brand">
 
                 <a href="#home" class="brand">
 
-                    <span class="brand-mark">
-                        <i class="fa-solid fa-sparkles"></i>
-                    </span>
+                    <div class="brand-mark">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
 
-                    <span class="brand-text">
+                    <div class="brand-text">
 
-                        <strong class="brand-name">
+                        <span class="brand-name">
                             Tasbeeh Mohamed
-                        </strong>
-
-                        <span class="brand-subtitle">
-                            Psychological Therapy & Mental Health
                         </span>
 
-                    </span>
+                        <span
+                            class="brand-subtitle"
+                            data-i18n="brandSubtitle">
+                            العلاج النفسي والصحة النفسية
+                        </span>
+
+                    </div>
 
                 </a>
 
 
-                <p data-i18n="footerDescription">
-                    منصة للرعاية النفسية والعلاج النفسي
-                    في مساحة محترمة ومريحة.
+                <p
+                    class="footer-description"
+                    data-i18n="footerDescription">
+
+                    مساحة رقمية للعلاج النفسي والصحة النفسية
+                    مبنية على الخصوصية والاحترام والوضوح.
+
                 </p>
 
+
+                <div class="footer-social">
+
+                    <a href="#" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+
+                    <a href="#" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                </div>
+
             </div>
 
 
-            <div class="footer-column">
+            <div>
 
-                <h4 data-i18n="footerExplore">
+                <h3
+                    class="footer-title"
+                    data-i18n="footerExplore">
                     استكشف
-                </h4>
+                </h3>
 
-                <a href="#home"
-                   data-i18n="navHome">
-                    الرئيسية
-                </a>
+                <div class="footer-links">
 
-                <a href="#services"
-                   data-i18n="navServices">
-                    مجالات العلاج
-                </a>
+                    <a href="#home" data-i18n="navHome">
+                        الرئيسية
+                    </a>
 
-                <a href="#experience"
-                   data-i18n="navExperience">
-                    تجربتك
-                </a>
+                    <a href="#services" data-i18n="navServices">
+                        الخدمات
+                    </a>
 
-                <a href="#faq"
-                   data-i18n="navFaq">
-                    الأسئلة الشائعة
-                </a>
+                    <a href="#about" data-i18n="navAbout">
+                        من نحن
+                    </a>
+
+                    <a href="#faq" data-i18n="navFaq">
+                        الأسئلة
+                    </a>
+
+                </div>
 
             </div>
 
 
-            <div class="footer-column">
+            <div>
 
-                <h4 data-i18n="footerStart">
-                    ابدأ رحلتك
-                </h4>
+                <h3
+                    class="footer-title"
+                    data-i18n="footerStart">
+                    ابدأ
+                </h3>
 
-                <a href="#assessment"
-                   data-i18n="startNow">
-                    ابدأ الآن
-                </a>
+                <div class="footer-links">
 
-                <a href="#about"
-                   data-i18n="navAbout">
-                    عن تسبيح
-                </a>
+                    <a
+                        href="#assessment"
+                        data-i18n="startNow">
+                        ابدأ الآن
+                    </a>
+
+                    <a
+                        href="#how"
+                        data-i18n="navHow">
+                        كيف نعمل
+                    </a>
+
+                    <a
+                        href="#journey"
+                        data-i18n="navJourney">
+                        رحلتك
+                    </a>
+
+                </div>
 
             </div>
 
@@ -1658,28 +1588,25 @@
 
         <div class="footer-bottom">
 
-            <div class="container footer-bottom-inner">
+            <span>
+                © <span id="currentYear"></span>
+                Tasbeeh Mohamed
+            </span>
 
-                <p>
-                    ©
-                    <span id="currentYear"></span>
-                    Tasbeeh Mohamed
-                </p>
-
-                <p>
-                    Prepared By: Eng Ahmad Ramadan
-                </p>
-
-            </div>
+            <span
+                class="footer-credit"
+                data-i18n="preparedBy">
+                Prepared By: Eng Ahmad Ramadan
+            </span>
 
         </div>
 
-    </footer>
+    </div>
+
+</footer>
 
 
-    <!-- Main JavaScript -->
-    <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
-
-</html>
+                </html>
