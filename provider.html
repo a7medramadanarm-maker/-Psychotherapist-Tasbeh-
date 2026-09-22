@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="تعرف على المختص واحجز جلسة نفسية مناسبة لك."
+    >
+
+    <title>المختص | Tasbeeh Mohamed</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =====================================================
+           Provider Page
+        ===================================================== */
+
+        .provider-page {
+            min-height: 100vh;
+            padding: 120px 20px 90px;
+            background: var(--bg, #fbfaf7);
+        }
+
+        .provider-container {
+            width: min(100%, 1180px);
+            margin: 0 auto;
+        }
+
+        .provider-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            color: var(--text-soft, #6f6961);
+            font-size: 14px;
+            font-weight: 600;
+
+            margin-bottom: 30px;
+
+            transition: .3s ease;
+        }
+
+        .provider-back:hover {
+            color: var(--primary, #9b743a);
+        }
+
+        .provider-profile {
+            display: grid;
+            grid-template-columns: 330px minmax(0, 1fr);
+            gap: 50px;
+            align-items: center;
+
+            padding: 50px;
+
+            background: #fff;
+
+            border: 1px solid rgba(45, 39, 31, .10);
+            border-radius: 32px;
+
+            box-shadow:
+                0 25px 70px rgba(42, 35, 26, .09);
+        }
+
+        .provider-photo {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 28px;
+
+            background:
+                radial-gradient(
+                    circle at 30% 20%,
+                    rgba(199, 166, 106, .28),
+                    transparent 38%
+                ),
+                linear-gradient(
+                    145deg,
+                    #f7f1e6,
+                    #eee4d4
+                );
+
+            border: 1px solid rgba(155, 116, 58, .20);
+
+            color: var(--primary, #9b743a);
+
+            font-size: 80px;
+        }
+
+        .provider-photo i {
+            opacity: .75;
+        }
+
+        .provider-content {
+            min-width: 0;
+        }
+
+        .provider-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            color: var(--primary, #9b743a);
+
+            font-size: 13px;
+            font-weight: 700;
+
+            margin-bottom: 12px;
+        }
+
+        .provider-label::before {
+            content: "";
+
+            width: 28px;
+            height: 1px;
+
+            background: var(--primary-light, #c7a66a);
+        }
+
+        .provider-content h1 {
+            margin: 0 0 12px;
+
+            font-family: "Playfair Display", serif;
+
+            font-size: clamp(38px, 5vw, 58px);
+            line-height: 1.15;
+
+            font-weight: 600;
+
+            color: var(--text, #292621);
+        }
+
+        .provider-role {
+            color: var(--primary, #9b743a);
+
+            font-size: 16px;
+            font-weight: 700;
+
+            margin-bottom: 20px;
+        }
+
+        .provider-description {
+            max-width: 720px;
+
+            color: var(--text-soft, #6f6961);
+
+            font-size: 15px;
+            line-height: 2;
+
+            margin-bottom: 25px;
+        }
+
+        /* =====================================================
+           Specialties
+        ===================================================== */
+
+        .provider-specialties {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+
+            margin-bottom: 30px;
+        }
+
+        .provider-specialty {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+
+            padding: 8px 13px;
+
+            background: #faf7f1;
+
+            border: 1px solid rgba(155, 116, 58, .18);
+            border-radius: 50px;
+
+            color: #665943;
+
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .provider-specialty i {
+            color: var(--primary, #9b743a);
+            font-size: 11px;
+        }
+
+        /* =====================================================
+           Actions
+        ===================================================== */
+
+        .provider-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .provider-book-btn {
+            min-height: 53px;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            padding: 0 28px;
+
+            border-radius: 12px;
+
+            background: var(--primary, #9b743a);
+            color: #fff;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            box-shadow:
+                0 10px 25px rgba(155, 116, 58, .20);
+
+            transition: .3s ease;
+        }
+
+        .provider-book-btn:hover {
+            background: var(--primary-dark, #765525);
+            transform: translateY(-2px);
+        }
+
+        .provider-back-btn {
+            min-height: 53px;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+
+            padding: 0 22px;
+
+            border-radius: 12px;
+
+            background: transparent;
+
+            border: 1px solid rgba(45, 39, 31, .12);
+
+            color: var(--text-soft, #6f6961);
+
+            font-size: 13px;
+            font-weight: 700;
+
+            transition: .3s ease;
+        }
+
+        .provider-back-btn:hover {
+            border-color: rgba(155, 116, 58, .35);
+            color: var(--primary, #9b743a);
+        }
+
+        /* =====================================================
+           Info Cards
+        ===================================================== */
+
+        .provider-info-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 18px;
+
+            margin-top: 25px;
+        }
+
+        .provider-info-card {
+            padding: 24px;
+
+            background: #fff;
+
+            border: 1px solid rgba(45, 39, 31, .09);
+            border-radius: 20px;
+
+            box-shadow:
+                0 12px 35px rgba(42, 35, 26, .05);
+        }
+
+        .provider-info-icon {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 15px;
+
+            border-radius: 12px;
+
+            background: rgba(155, 116, 58, .09);
+            color: var(--primary, #9b743a);
+        }
+
+        .provider-info-card h3 {
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .provider-info-card p {
+            color: var(--text-soft, #6f6961);
+
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        /* =====================================================
+           Error State
+        ===================================================== */
+
+        .provider-error {
+            display: none;
+
+            max-width: 650px;
+
+            margin: 80px auto;
+
+            padding: 50px 30px;
+
+            text-align: center;
+
+            background: #fff;
+
+            border: 1px solid rgba(45, 39, 31, .10);
+            border-radius: 28px;
+
+            box-shadow:
+                0 20px 60px rgba(42, 35, 26, .08);
+        }
+
+        .provider-error-icon {
+            width: 70px;
+            height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin: 0 auto 20px;
+
+            border-radius: 50%;
+
+            background: rgba(168, 75, 75, .08);
+            color: #a84b4b;
+
+            font-size: 24px;
+        }
+
+        .provider-error h2 {
+            font-family: "Playfair Display", serif;
+
+            font-size: 30px;
+
+            margin-bottom: 10px;
+        }
+
+        .provider-error p {
+            color: var(--text-soft, #6f6961);
+
+            font-size: 14px;
+
+            margin-bottom: 25px;
+        }
+
+        .provider-error a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            min-height: 48px;
+
+            padding: 0 24px;
+
+            border-radius: 11px;
+
+            background: var(--primary, #9b743a);
+            color: #fff;
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        /* =====================================================
+           Mobile
+        ===================================================== */
+
+        @media (max-width: 850px) {
+
+            .provider-page {
+                padding-top: 100px;
+            }
+
+            .provider-profile {
+                grid-template-columns: 1fr;
+
+                gap: 30px;
+
+                padding: 30px;
+            }
+
+            .provider-photo {
+                width: min(100%, 300px);
+                margin: 0 auto;
+            }
+
+            .provider-content {
+                text-align: center;
+            }
+
+            .provider-description {
+                margin-inline: auto;
+            }
+
+            .provider-specialties {
+                justify-content: center;
+            }
+
+            .provider-actions {
+                justify-content: center;
+            }
+
+            .provider-info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 550px) {
+
+            .provider-page {
+                padding:
+                    90px
+                    14px
+                    60px;
+            }
+
+            .provider-profile {
+                padding: 22px 18px;
+
+                border-radius: 23px;
+            }
+
+            .provider-photo {
+                width: 230px;
+
+                border-radius: 22px;
+            }
+
+            .provider-photo i {
+                font-size: 60px;
+            }
+
+            .provider-content h1 {
+                font-size: 38px;
+            }
+
+            .provider-description {
+                font-size: 13px;
+            }
+
+            .provider-actions {
+                flex-direction: column;
+            }
+
+            .provider-book-btn,
+            .provider-back-btn {
+                width: 100%;
+            }
+        }
+
+        /* =====================================================
+           English
+        ===================================================== */
+
+        [dir="ltr"] .provider-content {
+            text-align: left;
+        }
+
+        [dir="ltr"] .provider-specialties {
+            justify-content: flex-start;
+        }
+
+        @media (max-width: 850px) {
+            [dir="ltr"] .provider-content {
+                text-align: center;
+            }
+
+            [dir="ltr"] .provider-specialties {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =====================================================
+         Header
+    ===================================================== -->
+
+    <header class="site-header" id="siteHeader">
+
+        <div class="container">
+
+            <a href="index.html" class="logo">
+                <span class="logo-text">
+                    Tasbeeh Mohamed
+                </span>
+            </a>
+
+            <nav class="navbar" id="navbar">
+
+                <a href="index.html#home">
+                    الرئيسية
+                </a>
+
+                <a href="index.html#how">
+                    كيف نساعدك
+                </a>
+
+                <a href="index.html#services">
+                    الخدمات
+                </a>
+
+                <a href="index.html#about">
+                    من نحن
+                </a>
+
+                <a href="providers.html">
+                    المختصون
+                </a>
+
+            </nav>
+
+            <div class="header-actions">
+
+                <button
+                    type="button"
+                    class="language-switch"
+                    id="languageSwitch"
+                    aria-label="Change language"
+                >
+                    EN
+                </button>
+
+                <button
+                    type="button"
+                    class="menu-toggle"
+                    id="menuToggle"
+                    aria-label="Open menu"
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         Main
+    ===================================================== -->
+
+    <main class="provider-page">
+
+        <div class="provider-container">
+
+            <!-- Back -->
+
+            <a
+                href="providers.html"
+                class="provider-back"
+            >
+                <i class="fa-solid fa-arrow-right"></i>
+
+                <span>
+                    العودة إلى المختصين
+                </span>
+            </a>
+
+
+            <!-- =================================================
+                 Provider Profile
+            ================================================= -->
+
+            <section
+                class="provider-profile"
+                id="providerProfile"
+            >
+
+                <!-- Photo Placeholder -->
+
+                <div
+                    class="provider-photo"
+                    aria-label="Provider profile"
+                >
+                    <i class="fa-regular fa-user"></i>
+                </div>
+
+
+                <!-- Content -->
+
+                <div class="provider-content">
+
+                    <div class="provider-label">
+                        المختص
+                    </div>
+
+
+                    <h1 id="providerName">
+                        —
+                    </h1>
+
+
+                    <div
+                        class="provider-role"
+                        id="providerRole"
+                    >
+                        مختصة في الدعم النفسي
+                    </div>
+
+
+                    <p
+                        class="provider-description"
+                        id="providerDescription"
+                    >
+                        يمكنك التعرف على أسلوب الجلسة والخدمات
+                        المتاحة ثم اختيار الموعد المناسب لك.
+                    </p>
+
+
+                    <!-- Specialties -->
+
+                    <div
+                        class="provider-specialties"
+                        id="providerSpecialties"
+                    >
+
+                        <span class="provider-specialty">
+                            <i class="fa-solid fa-heart"></i>
+                            القلق والتوتر
+                        </span>
+
+                        <span class="provider-specialty">
+                            <i class="fa-solid fa-heart"></i>
+                            العلاقات
+                        </span>
+
+                        <span class="provider-specialty">
+                            <i class="fa-solid fa-heart"></i>
+                            تقدير الذات
+                        </span>
+
+                        <span class="provider-specialty">
+                            <i class="fa-solid fa-heart"></i>
+                            الصحة النفسية
+                        </span>
+
+                    </div>
+
+
+                    <!-- Actions -->
+
+                    <div class="provider-actions">
+
+                        <a
+                            href="#"
+                            class="provider-book-btn"
+                            id="bookingButton"
+                        >
+                            <i class="fa-regular fa-calendar-check"></i>
+
+                            <span>
+                                احجز جلسة
+                            </span>
+                        </a>
+
+
+                        <a
+                            href="providers.html"
+                            class="provider-back-btn"
+                        >
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                            <span>
+                                اختيار مختص آخر
+                            </span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 Information Cards
+            ================================================= -->
+
+            <section
+                class="provider-info-grid"
+                aria-label="Provider information"
+            >
+
+                <article class="provider-info-card">
+
+                    <div class="provider-info-icon">
+                        <i class="fa-regular fa-calendar"></i>
+                    </div>
+
+                    <h3>
+                        مواعيد مرنة
+                    </h3>
+
+                    <p>
+                        اختر التاريخ والوقت المناسبين لك
+                        أثناء عملية الحجز.
+                    </p>
+
+                </article>
+
+
+                <article class="provider-info-card">
+
+                    <div class="provider-info-icon">
+                        <i class="fa-solid fa-video"></i>
+                    </div>
+
+                    <h3>
+                        جلسات أونلاين
+                    </h3>
+
+                    <p>
+                        يمكنك طلب جلسة عبر الإنترنت
+                        من خلال نظام الحجز.
+                    </p>
+
+                </article>
+
+
+                <article class="provider-info-card">
+
+                    <div class="provider-info-icon">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+
+                    <h3>
+                        خصوصية واهتمام
+                    </h3>
+
+                    <p>
+                        يتم التعامل مع بيانات الحجز
+                        بطريقة منظمة وخصوصية.
+                    </p>
+
+                </article>
+
+            </section>
+
+
+            <!-- =================================================
+                 Error
+            ================================================= -->
+
+            <section
+                class="provider-error"
+                id="providerError"
+            >
+
+                <div class="provider-error-icon">
+                    <i class="fa-solid fa-user-xmark"></i>
+                </div>
+
+                <h2>
+                    المختص غير موجود
+                </h2>
+
+                <p>
+                    لم نتمكن من العثور على المختص المطلوب.
+                    يمكنك العودة واختيار أحد المختصين المتاحين.
+                </p>
+
+                <a href="providers.html">
+                    العودة إلى المختصين
+                </a>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         JavaScript
+    ===================================================== -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            "use strict";
+
+
+            /* =================================================
+               Providers
+            ================================================= */
+
+            const providers = {
+
+                "tasbeeh-mohamed": {
+
+                    name: "Tasbeeh Mohamed",
+
+                    nameAr: "تسبيح محمد",
+
+                    roleAr:
+                        "مختصة في الدعم النفسي",
+
+                    roleEn:
+                        "Psychological Support Specialist",
+
+                    descriptionAr:
+                        "مساحة هادئة وآمنة تساعدك على فهم ما تمر به، والتعرف على الخيارات المناسبة لرحلتك النفسية.",
+
+                    descriptionEn:
+                        "A calm and supportive space to help you understand what you are going through and explore suitable options for your personal journey.",
+
+                    services: [
+                        "القلق والتوتر",
+                        "العلاقات",
+                        "تقدير الذات",
+                        "الصحة النفسية",
+                        "الدعم الأسري",
+                        "رحلة التعافي والتغيير"
+                    ]
+
+                },
+
+
+                "mariam-mahmoud": {
+
+                    name: "Mariam Mahmoud",
+
+                    nameAr: "مريم محمود",
+
+                    roleAr:
+                        "مختصة في الدعم النفسي",
+
+                    roleEn:
+                        "Psychological Support Specialist",
+
+                    descriptionAr:
+                        "جلسات ومساحة داعمة تساعدك على التعبير عن مشاعرك وفهم احتياجاتك واختيار الخطوات المناسبة لك.",
+
+                    descriptionEn:
+                        "A supportive space where you can express your feelings, understand your needs and explore suitable next steps.",
+
+                    services: [
+                        "القلق والتوتر",
+                        "العلاقات",
+                        "تقدير الذات",
+                        "الصحة النفسية",
+                        "الدعم الأسري",
+                        "رحلة التعافي والتغيير"
+                    ]
+
+                }
+
+            };
+
+
+            /* =================================================
+               URL
+            ================================================= */
+
+            const params =
+                new URLSearchParams(
+                    window.location.search
+                );
+
+            const providerId =
+                params.get("id");
+
+
+            const provider =
+                providers[providerId];
+
+
+            /* =================================================
+               Elements
+            ================================================= */
+
+            const profile =
+                document.getElementById(
+                    "providerProfile"
+                );
+
+            const error =
+                document.getElementById(
+                    "providerError"
+                );
+
+            const name =
+                document.getElementById(
+                    "providerName"
+                );
+
+            const role =
+                document.getElementById(
+                    "providerRole"
+                );
+
+            const description =
+                document.getElementById(
+                    "providerDescription"
+                );
+
+            const specialties =
+                document.getElementById(
+                    "providerSpecialties"
+                );
+
+            const bookingButton =
+                document.getElementById(
+                    "bookingButton"
+                );
+
+
+            /* =================================================
+               Invalid Provider
+            ================================================= */
+
+            if (!provider) {
+
+                if (profile) {
+                    profile.style.display = "none";
+                }
+
+                if (error) {
+                    error.style.display = "block";
+                }
+
+                document.title =
+                    "المختص غير موجود | Tasbeeh Mohamed";
+
+                return;
+            }
+
+
+            /* =================================================
+               Language
+            ================================================= */
+
+            let language =
+                localStorage.getItem(
+                    "tasbeehLanguage"
+                ) || "ar";
+
+
+            function renderProvider() {
+
+                const isArabic =
+                    language === "ar";
+
+
+                document.documentElement.lang =
+                    isArabic ? "ar" : "en";
+
+                document.documentElement.dir =
+                    isArabic ? "rtl" : "ltr";
+
+
+                if (name) {
+
+                    name.textContent =
+                        isArabic
+                            ? provider.nameAr
+                            : provider.name;
+                }
+
+
+                if (role) {
+
+                    role.textContent =
+                        isArabic
+                            ? provider.roleAr
+                            : provider.roleEn;
+                }
+
+
+                if (description) {
+
+                    description.textContent =
+                        isArabic
+                            ? provider.descriptionAr
+                            : provider.descriptionEn;
+                }
+
+
+                if (specialties) {
+
+                    specialties.innerHTML = "";
+
+                    provider.services.forEach(
+                        service => {
+
+                            const item =
+                                document.createElement(
+                                    "span"
+                                );
+
+                            item.className =
+                                "provider-specialty";
+
+                            item.innerHTML =
+                                `
+                                <i class="fa-solid fa-heart"></i>
+                                ${service}
+                                `;
+
+                            specialties.appendChild(
+                                item
+                            );
+                        }
+                    );
+                }
+
+
+                if (bookingButton) {
+
+                    bookingButton.href =
+                        `booking.html?provider=${encodeURIComponent(providerId)}`;
+
+                    bookingButton.innerHTML =
+                        isArabic
+                            ? `
+                                <i class="fa-regular fa-calendar-check"></i>
+                                <span>احجز جلسة</span>
+                              `
+                            : `
+                                <i class="fa-regular fa-calendar-check"></i>
+                                <span>Book a Session</span>
+                              `;
+                }
+
+
+                document.title =
+                    isArabic
+                        ? `${provider.nameAr} | Tasbeeh Mohamed`
+                        : `${provider.name} | Tasbeeh Mohamed`;
+            }
+
+
+            renderProvider();
+
+
+            /* =================================================
+               Language Button
+            ================================================= */
+
+            const languageSwitch =
+                document.getElementById(
+                    "languageSwitch"
+                );
+
+
+            if (languageSwitch) {
+
+                languageSwitch.textContent =
+                    language === "ar"
+                        ? "EN"
+                        : "AR";
+
+
+                languageSwitch.addEventListener(
+                    "click",
+                    () => {
+
+                        language =
+                            language === "ar"
+                                ? "en"
+                                : "ar";
+
+
+                        localStorage.setItem(
+                            "tasbeehLanguage",
+                            language
+                        );
+
+
+                        languageSwitch.textContent =
+                            language === "ar"
+                                ? "EN"
+                                : "AR";
+
+
+                        renderProvider();
+                    }
+                );
+            }
+
+
+            /* =================================================
+               Mobile Menu
+            ================================================= */
+
+            const menuToggle =
+                document.getElementById(
+                    "menuToggle"
+                );
+
+            const navbar =
+                document.getElementById(
+                    "navbar"
+                );
+
+
+            if (menuToggle && navbar) {
+
+                menuToggle.addEventListener(
+                    "click",
+                    () => {
+
+                        navbar.classList.toggle(
+                            "active"
+                        );
+
+                        menuToggle.classList.toggle(
+                            "active"
+                        );
+                    }
+                );
+
+
+                const navLinks =
+                    navbar.querySelectorAll(
+                        "a"
+                    );
+
+
+                navLinks.forEach(
+                    link => {
+
+                        link.addEventListener(
+                            "click",
+                            () => {
+
+                                navbar.classList.remove(
+                                    "active"
+                                );
+
+                                menuToggle.classList.remove(
+                                    "active"
+                                );
+                            }
+                        );
+                    }
+                );
+            }
+
+
+        });
+    </script>
+
+</body>
+  </html>
