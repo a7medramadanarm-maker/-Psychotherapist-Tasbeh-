@@ -1,813 +1,1615 @@
-heredocument.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     "use strict";
 
     /* =========================================================
-       Tasbeeh Mohamed
-       Personal Support & Growth
-       Prepared By: Eng Ahmad Ramadan
+       TASBEEH MOHAMED
+       Psychological Therapy & Mental Health Platform
+       Main JavaScript
     ========================================================= */
 
+
     /* =========================================================
-       CONFIG
+       CONFIGURATION
     ========================================================= */
 
     const WHATSAPP_NUMBER = "201003089153";
     const LANGUAGE_KEY = "tasbeehLanguage";
 
-    let currentLanguage = localStorage.getItem(LANGUAGE_KEY) || "ar";
-    let selectedAssessment = null;
+    const html = document.documentElement;
+    const body = document.body;
+
+
+    /* =========================================================
+       DOM ELEMENTS
+    ========================================================= */
+
+    const siteHeader = document.getElementById("siteHeader");
+
+    const languageSwitch =
+        document.getElementById("languageSwitch");
+
+    const menuToggle =
+        document.getElementById("menuToggle");
+
+    const navbar =
+        document.getElementById("navbar");
+
+    const assessmentModal =
+        document.getElementById("assessmentModal");
+
+    const modalOverlay =
+        document.getElementById("modalOverlay");
+
+    const modalClose =
+        document.getElementById("modalClose");
+
+    const openAssessment =
+        document.getElementById("openAssessment");
+
+    const modalWhatsApp =
+        document.getElementById("modalWhatsApp");
+
+    const currentYear =
+        document.getElementById("currentYear");
+
 
     /* =========================================================
        TRANSLATIONS
     ========================================================= */
 
     const translations = {
+
         ar: {
+
+            /* Brand */
+            brandSubtitle:
+                "العلاج النفسي والصحة النفسية",
+
             /* Navigation */
-            navHome: "الرئيسية",
-            navHow: "كيف يعمل",
-            navServices: "مجالات الدعم",
-            navExperience: "تجربتك",
-            navAbout: "عن تسبيح",
-            navFaq: "الأسئلة الشائعة",
-            startNow: "ابدأ الآن",
+            navHome:
+                "الرئيسية",
+
+            navHow:
+                "كيف يعمل",
+
+            navServices:
+                "مجالات العلاج",
+
+            navExperience:
+                "تجربتك",
+
+            navAbout:
+                "عن تسبيح",
+
+            navFaq:
+                "الأسئلة الشائعة",
+
+            /* General */
+            startNow:
+                "ابدأ الآن",
+
+            discoverHow:
+                "اكتشف كيف يعمل الموقع",
+
+            safe:
+                "مساحة آمنة",
+
+            safeText:
+                "تحدث براحة وبدون أحكام",
+
+            professionalCare:
+                "رعاية نفسية متخصصة",
+
+            professionalCareText:
+                "اهتمام باحتياجاتك النفسية",
+
+            flexible:
+                "تجربة مرنة",
+
+            flexibleText:
+                "بما يناسب وقتك وروتينك",
+
+            privacy:
+                "خصوصية واحترام",
+
+            comfortableCare:
+                "تجربة علاجية مريحة",
 
             /* Hero */
-            heroKicker: "مساحة للدعم والنمو الشخصي",
-            heroTitle: "مساحة آمنة ومريحة لك",
+            heroKicker:
+                "مساحة للرعاية والصحة النفسية",
+
+            heroTitle:
+                "مساحة آمنة للعلاج النفسي والراحة النفسية",
+
             heroDescription:
-                "رحلتك نحو الشعور بشكل أفضل تبدأ من هنا. احصل على دعم شخصي في بيئة آمنة ومريحة مصممة حول احتياجاتك وأهدافك ورحلتك الشخصية.",
-            discoverHow: "اكتشف كيف يعمل الموقع",
-            heroNote: "خصوصية واحترام ومساحة بدون أحكام",
-            heroVisualText: "مساحتك",
-            safe: "مساحة آمنة",
-            safeText: "تحدث براحة وبدون أحكام",
-            personalSupport: "دعم شخصي",
-            personalSupportText: "تجربة تناسب احتياجاتك",
-            flexible: "دعم مرن",
-            flexibleText: "بما يناسب وقتك وروتينك",
-            privacy: "خصوصية واحترام",
-            supportSession: "دعم شخصي",
+                "رحلتك نحو صحة نفسية أفضل تبدأ بخطوة. احصل على رعاية نفسية متخصصة في بيئة آمنة ومحترمة تساعدك على فهم ما تمر به والعمل على ما يهمك.",
 
-            /* How It Works */
-            howEyebrow: "كيف يعمل الموقع",
-            howTitle: "البداية يمكن أن تكون بسيطة.",
+            heroNote:
+                "خصوصية واحترام ورعاية بدون أحكام",
+
+            heroVisualText:
+                "مساحتك الآمنة",
+
+            /* How */
+            howEyebrow:
+                "كيف يعمل الموقع",
+
+            howTitle:
+                "البداية يمكن أن تكون بسيطة.",
+
             howDescription:
-                "خطوات بسيطة تساعدك على اتخاذ الخطوة الأولى دون الشعور بالضغط.",
+                "خطوات واضحة تساعدك على اتخاذ الخطوة الأولى نحو الرعاية النفسية المناسبة.",
 
-            step1Title: "أخبرنا بما تحتاجه",
+            step1Title:
+                "أخبرنا بما تمر به",
+
             step1Text:
-                "شاركنا ما تمر به ونوع الدعم الذي تبحث عنه، بالقدر الذي تشعر معه بالراحة.",
+                "شارك ما تشعر به وما الذي تبحث عنه، بالقدر الذي تشعر معه بالراحة.",
 
-            step2Title: "اختر الأسلوب المناسب",
+            step2Title:
+                "حدد احتياجك",
+
             step2Text:
-                "استكشف مجالات الدعم المختلفة واختر ما يتناسب مع أهدافك واحتياجاتك الشخصية.",
+                "تعرف على مجالات العلاج والرعاية النفسية الأقرب إلى احتياجك.",
 
-            step3Title: "ابدأ جلساتك",
+            step3Title:
+                "ابدأ رحلتك العلاجية",
+
             step3Text:
-                "اختر الوقت المناسب لك وابدأ رحلتك بالوتيرة التي تناسب حياتك.",
+                "انتقل إلى الخطوة التالية المناسبة لك وابدأ رحلة الرعاية النفسية.",
 
-            step4Title: "استمر في التطور",
+            step4Title:
+                "استمر في التحسن",
+
             step4Text:
-                "استمر في بناء عادات أفضل وفهم أعمق لنفسك وأهدافك.",
+                "تابع رحلتك وتعلم طرقًا تساعدك على التعامل مع تحدياتك بصورة أفضل.",
 
             /* Services */
-            servicesEyebrow: "مجالات الدعم",
-            servicesTitle: "اختر المساحة الأقرب لما تحتاجه.",
+            servicesEyebrow:
+                "مجالات العلاج النفسي",
+
+            servicesTitle:
+                "اختر المجال الأقرب إلى احتياجك.",
+
             servicesDescription:
-                "كل شخص لديه تجربة مختلفة، لذلك يمكنك اختيار المجال الذي تشعر أنه الأقرب لما تمر به.",
+                "تختلف احتياجات الصحة النفسية من شخص لآخر، لذلك يمكنك التعرف على المجالات المختلفة واختيار ما يناسب حالتك.",
 
-            service1Title: "القلق والتوتر",
+            showDetails:
+                "تعرف على التفاصيل",
+
+            hideDetails:
+                "إخفاء التفاصيل",
+
+            startWithThis:
+                "ابدأ من هنا",
+
+            service1Title:
+                "القلق والتوتر",
+
             service1Short:
-                "افهم التوتر وتعامل مع القلق وطوّر طرقًا أكثر صحة للتعامل مع الضغوط.",
+                "فهم القلق والتوتر والتعامل مع الضغوط اليومية بصورة أكثر صحة.",
+
             service1Details:
-                "يمكن أن تساعدك هذه المساحة على فهم مصادر الضغط والقلق لديك، والتعرف على الأفكار والمواقف التي تزيد من التوتر، والعمل على تطوير أساليب أكثر هدوءًا ووعيًا للتعامل مع المواقف اليومية.",
-            service1Point1: "فهم مصادر القلق والضغط",
-            service1Point2: "التعامل مع الأفكار المقلقة",
-            service1Point3: "بناء طرق أكثر هدوءًا للتعامل مع الضغوط",
+                "مساحة لفهم مصادر القلق والتوتر والتعامل مع الأفكار والمواقف التي تزيد من الضغط النفسي.",
 
-            service2Title: "العلاقات",
+            service1Point1:
+                "فهم مصادر القلق والضغط",
+
+            service1Point2:
+                "التعامل مع الأفكار المقلقة",
+
+            service1Point3:
+                "تطوير طرق أفضل للتعامل مع الضغوط",
+
+            service2Title:
+                "العلاقات",
+
             service2Short:
-                "طوّر التواصل، وضع حدودًا صحية، وابنِ علاقات أكثر توازنًا.",
+                "تحسين التواصل وفهم العلاقات ووضع حدود صحية.",
+
             service2Details:
-                "مساحة لفهم العلاقات بشكل أعمق، وتحسين التواصل، والتعرف على الاحتياجات والحدود الشخصية، والتعامل مع الخلافات بطريقة أكثر وعيًا وتوازنًا.",
-            service2Point1: "تحسين التواصل",
-            service2Point2: "وضع حدود صحية",
-            service2Point3: "التعامل مع الخلافات بشكل أفضل",
+                "مساحة لفهم العلاقات بشكل أعمق وتحسين التواصل والتعامل مع الخلافات.",
 
-            service3Title: "الثقة بالنفس",
+            service2Point1:
+                "تحسين التواصل",
+
+            service2Point2:
+                "وضع حدود صحية",
+
+            service2Point3:
+                "التعامل مع الخلافات",
+
+            service3Title:
+                "الثقة بالنفس",
+
             service3Short:
-                "طوّر فهمك لنفسك وثقتك بها وعلاقتك بذاتك.",
+                "فهم الذات والتعامل مع النقد الذاتي وبناء صورة أكثر توازنًا عن النفس.",
+
             service3Details:
-                "ركّز على علاقتك بنفسك، وفهم نقاط قوتك، والتعامل مع النقد الذاتي، وبناء صورة أكثر توازنًا عن ذاتك وقدراتك.",
-            service3Point1: "فهم نفسك بشكل أفضل",
-            service3Point2: "تقليل النقد الذاتي",
-            service3Point3: "بناء ثقة أكثر توازنًا",
+                "التركيز على علاقتك بنفسك وفهم نقاط القوة والتعامل مع النقد الذاتي.",
 
-            service4Title: "التطور الشخصي",
+            service3Point1:
+                "فهم نفسك بشكل أفضل",
+
+            service3Point2:
+                "التعامل مع النقد الذاتي",
+
+            service3Point3:
+                "بناء ثقة أكثر توازنًا",
+
+            service4Title:
+                "الصحة النفسية والتطور",
+
             service4Short:
-                "اكتسب وضوحًا، وحدد أهدافًا مهمة، وتقدم في حياتك بوعي وهدف.",
+                "اكتسب وضوحًا وفهمًا أفضل لنفسك وحياتك وأهدافك.",
+
             service4Details:
-                "إذا كنت تشعر أنك تريد تغيير شيء في حياتك أو تحتاج إلى وضوح أكبر، يمكن أن تساعدك هذه المساحة على ترتيب أفكارك وتحديد أهدافك والخطوات التي تريد العمل عليها.",
-            service4Point1: "تحديد الأولويات",
-            service4Point2: "وضع أهداف واضحة",
-            service4Point3: "بناء خطوات عملية للتغيير",
+                "مساحة للعمل على التحديات الشخصية وفهم الأفكار والمشاعر وتحديد الخطوات المناسبة.",
 
-            service5Title: "الدعم الأسري",
+            service4Point1:
+                "فهم الأولويات",
+
+            service4Point2:
+                "تحديد أهداف واضحة",
+
+            service4Point3:
+                "بناء خطوات عملية",
+
+            service5Title:
+                "الدعم النفسي الأسري",
+
             service5Short:
-                "تعامل مع المواقف والتحديات الأسرية بوعي وفهم أكبر.",
+                "التعامل مع التحديات الأسرية وتحسين التواصل داخل الأسرة.",
+
             service5Details:
-                "مساحة تساعدك على التفكير في المواقف الأسرية وفهم وجهات النظر المختلفة، وتحسين أسلوب التواصل والتعامل مع التحديات اليومية.",
-            service5Point1: "فهم المواقف الأسرية",
-            service5Point2: "تحسين الحوار",
-            service5Point3: "التعامل مع التحديات بوعي",
+                "مساحة لفهم المواقف الأسرية ووجهات النظر المختلفة والتعامل مع التحديات بصورة أكثر وعيًا.",
 
-            service6Title: "التدريب على الحياة",
+            service5Point1:
+                "فهم المواقف الأسرية",
+
+            service5Point2:
+                "تحسين الحوار",
+
+            service5Point3:
+                "التعامل مع التحديات",
+
+            service6Title:
+                "العلاج والدعم النفسي",
+
             service6Short:
-                "اعمل على أهدافك الشخصية ودافعك نحو التغيير الإيجابي في حياتك.",
-            service6Details:
-                "يركز هذا المسار على الأهداف الشخصية، والوضوح، والدافع، وتحويل الأفكار إلى خطوات عملية يمكن دمجها في حياتك اليومية.",
-            service6Point1: "تحديد أهدافك",
-            service6Point2: "زيادة الوضوح والدافع",
-            service6Point3: "تحويل الأهداف إلى خطوات",
+                "مساحة للرعاية النفسية والتعامل مع التحديات التي تؤثر على حياتك.",
 
-            startWithThis: "ابدأ من هنا",
+            service6Details:
+                "يعتمد نوع الرعاية على احتياج كل شخص وطبيعة ما يمر به، مع توجيه الحالات التي تحتاج إلى تقييم متخصص إلى المختص المناسب.",
+
+            service6Point1:
+                "فهم احتياجاتك النفسية",
+
+            service6Point2:
+                "التعامل مع التحديات النفسية",
+
+            service6Point3:
+                "تحديد الخطوة العلاجية المناسبة",
 
             /* Journey */
-            journeyEyebrow: "رحلتك",
-            journeyTitle: "خطوة بخطوة، وبالوتيرة التي تناسبك.",
+            journeyEyebrow:
+                "رحلتك",
+
+            journeyTitle:
+                "خطوة بخطوة، وبالوتيرة التي تناسبك.",
+
             journeyDescription:
-                "التغيير ليس سباقًا. المهم أن تبدأ بخطوة تشعر أنها مناسبة لك.",
+                "العلاج النفسي رحلة تختلف من شخص لآخر، والمهم أن تبدأ بالخطوة المناسبة لك.",
 
-            journey1Status: "البداية",
-            journey1Title: "فهم أهدافك",
+            journey1Status:
+                "البداية",
+
+            journey1Title:
+                "فهم ما تمر به",
+
             journey1Text:
-                "ابدأ بفهم ما تبحث عنه وما تريد أن تعمل عليه.",
+                "ابدأ بالتعرف على احتياجاتك وما تريد أن تعمل عليه.",
 
-            journey2Status: "مكتمل",
-            journey2Title: "تحديد احتياجاتك",
+            journey2Status:
+                "الخطوة التالية",
+
+            journey2Title:
+                "تحديد الاحتياجات",
+
             journey2Text:
-                "اختر مجال الدعم الأقرب لما تمر به.",
+                "حدد المجال الأقرب إلى ما تمر به.",
 
-            journey3Status: "قيد التقدم",
-            journey3Title: "بناء عادات جديدة",
+            journey3Status:
+                "قيد التقدم",
+
+            journey3Title:
+                "العمل على التغيير",
+
             journey3Text:
                 "اعمل تدريجيًا على التغييرات التي تريدها.",
 
-            journey4Status: "مستمر",
-            journey4Title: "تجربتك",
+            journey4Status:
+                "مستمر",
+
+            journey4Title:
+                "متابعة رحلتك",
+
             journey4Text:
-                "استمر في فهم نفسك والتقدم بما يناسبك.",
+                "استمر في فهم نفسك والتقدم بما يناسب حالتك واحتياجاتك.",
 
             /* Experience */
-            experienceEyebrow: "تجربتك",
-            experienceTitle: "الدعم يبدأ بفهمك.",
+            experienceEyebrow:
+                "تجربتك",
+
+            experienceTitle:
+                "العلاج يبدأ بفهمك.",
+
             experienceDescription:
-                "لكل شخص رحلة مختلفة، لذلك يجب أن تكون تجربتك شخصية ومريحة وتركز على ما يهمك.",
-            experienceVisual: "مساحة لك",
+                "لكل شخص رحلة مختلفة، لذلك يجب أن تكون تجربتك العلاجية محترمة ومريحة وتركز على ما يهمك.",
 
-            experience1Title: "أسلوب شخصي",
+            experienceVisual:
+                "مساحة للرعاية النفسية",
+
+            experience1Title:
+                "رعاية تناسب احتياجك",
+
             experience1Text:
-                "أهدافك وتجاربك تظل في قلب عملية الدعم.",
+                "احتياجاتك وتجربتك في قلب عملية الرعاية النفسية.",
 
-            experience2Title: "بيئة مريحة",
+            experience2Title:
+                "بيئة مريحة",
+
             experience2Text:
                 "مساحة هادئة يمكنك فيها التحدث بحرية وصدق.",
 
-            experience3Title: "دعم مرن",
+            experience3Title:
+                "احترام وخصوصية",
+
             experience3Text:
-                "كوّن روتينًا يتناسب مع حياتك وجدولك اليومي.",
+                "التعامل مع تجربتك وخصوصيتك باحترام وحرص.",
 
             /* About */
-            aboutEyebrow: "عن تسبيح",
-            aboutTitle: "مساحة يمكنك أن تكون فيها على طبيعتك.",
+            aboutEyebrow:
+                "عن تسبيح",
+
+            aboutTitle:
+                "مساحة يمكنك أن تشعر فيها بالأمان.",
+
             aboutText1:
-                "تم بناء Tasbeeh Mohamed حول فكرة بسيطة: الدعم الحقيقي يبدأ عندما تشعر أن هناك من يسمعك ويفهمك.",
+                "تم بناء Tasbeeh Mohamed حول فكرة بسيطة: الرعاية النفسية تبدأ عندما تشعر أن هناك من يسمعك ويفهم ما تمر به.",
+
             aboutText2:
-                "الهدف هو تقديم تجربة مريحة ومحترمة وداعمة تساعدك على فهم ما تمر به والعمل نحو التغييرات التي تريدها.",
-            learnMore: "اعرف المزيد",
-            aboutCardText: "الدعم يبدأ بخطوة.",
+                "الهدف هو تقديم تجربة محترمة ومريحة تساعدك على فهم احتياجاتك النفسية والوصول إلى الخطوة المناسبة لك.",
+
+            learnMore:
+                "ابدأ التعرف على احتياجك",
+
+            aboutCardText:
+                "الرعاية النفسية تبدأ بخطوة.",
 
             /* CTA */
-            ctaEyebrow: "الخطوة الأولى",
-            ctaTitle: "اتخذ الخطوة الأولى",
+            ctaEyebrow:
+                "الخطوة الأولى",
+
+            ctaTitle:
+                "ابدأ رحلتك نحو صحة نفسية أفضل.",
+
             ctaText:
-                "لست بحاجة إلى امتلاك جميع الإجابات من البداية. ابدأ بإخبارنا قليلًا عما تبحث عنه، وسنساعدك على فهم الخطوة التالية.",
-            ctaNote: "لن يستغرق الأمر سوى بضع دقائق",
+                "لست بحاجة إلى امتلاك جميع الإجابات من البداية. أخبرنا قليلًا عما تبحث عنه وسنساعدك على فهم الخطوة التالية.",
+
+            ctaNote:
+                "لن يستغرق الأمر سوى بضع دقائق",
 
             /* FAQ */
-            faqEyebrow: "الأسئلة الشائعة",
-            faqTitle: "هل لديك سؤال؟",
+            faqEyebrow:
+                "الأسئلة الشائعة",
+
+            faqTitle:
+                "أسئلة قد تكون في ذهنك.",
+
             faqDescription:
-                "إليك بعض الإجابات التي قد تساعدك قبل أن تبدأ.",
+                "بعض الإجابات التي قد تساعدك قبل أن تبدأ.",
 
-            faq1Question: "كيف تعمل العملية؟",
+            faq1Question:
+                "كيف تعمل العملية؟",
+
             faq1Answer:
-                "تبدأ بخطوة بسيطة للتعرف على احتياجاتك وما تبحث عنه. بعد ذلك يمكنك استكشاف مجال الدعم المناسب لك، ثم اختيار الخطوة التالية التي تناسبك.",
+                "تبدأ بخطوة بسيطة للتعرف على احتياجاتك وما تبحث عنه. بعد ذلك يمكنك تحديد المجال المناسب والخطوة التالية.",
 
-            faq2Question: "هل معلوماتي خاصة؟",
+            faq2Question:
+                "هل معلوماتي خاصة؟",
+
             faq2Answer:
-                "الخصوصية جزء أساسي من تجربة Tasbeeh Mohamed. شارك فقط المعلومات التي تشعر بالراحة تجاهها، ويتم التعامل مع ما تقدمه باحترام وحرص.",
+                "الخصوصية جزء أساسي من تجربة الرعاية النفسية. شارك فقط المعلومات التي تشعر بالراحة تجاهها.",
 
-            faq3Question: "هل يمكنني اختيار وقت مناسب؟",
+            faq3Question:
+                "هل يمكنني اختيار وقت مناسب؟",
+
             faq3Answer:
-                "يمكنك اختيار الوقت الأنسب لك وفقًا للمواعيد المتاحة، بحيث تكون التجربة أكثر ملاءمة لروتينك اليومي والتزاماتك.",
+                "يمكنك اختيار الوقت الأنسب لك وفقًا للمواعيد المتاحة.",
 
-            faq4Question: "هل هذا علاج نفسي أم تدريب شخصي؟",
+            faq4Question:
+                "هل هذا علاج نفسي؟",
+
             faq4Answer:
-                "تختلف طبيعة الدعم حسب احتياجك. بعض المسارات تركز على الدعم الشخصي والنمو وتحديد الأهداف، بينما الحالات التي تتطلب تقييمًا أو علاجًا متخصصًا ينبغي التعامل معها مع مختص مؤهل ومرخّص.",
+                "تختلف طبيعة الرعاية حسب احتياج كل شخص. الحالات التي تتطلب تقييمًا أو علاجًا متخصصًا ينبغي التعامل معها مع مختص مؤهل ومرخص.",
 
-            faq5Question: "كيف أبدأ؟",
+            faq5Question:
+                "كيف أبدأ؟",
+
             faq5Answer:
-                "اضغط على «ابدأ الآن» وأخبرنا بشكل بسيط عما تبحث عنه. لا تحتاج إلى امتلاك جميع الإجابات من البداية؛ الخطوة الأولى فقط هي أن توضح ما تحتاج إليه.",
+                "اضغط على «ابدأ الآن» وأخبرنا بشكل بسيط عما تبحث عنه. الخطوة الأولى هي أن توضح احتياجك.",
 
-            faqCtaTitle: "ما زال لديك سؤال؟",
+            faqCtaTitle:
+                "ما زال لديك سؤال؟",
+
             faqCtaText:
                 "يمكنك التواصل معنا إذا كنت تحتاج إلى معرفة المزيد قبل أن تبدأ.",
-            contactUs: "تواصل معنا",
+
+            contactUs:
+                "تواصل معنا",
 
             /* Assessment */
-            assessmentEyebrow: "ابدأ من هنا",
-            assessmentTitle: "ما الذي تبحث عنه الآن؟",
+            assessmentEyebrow:
+                "ابدأ من هنا",
+
+            assessmentTitle:
+                "ما الذي تبحث عنه الآن؟",
+
             assessmentDescription:
-                "اختر ما يشبه احتياجك أكثر، ولا توجد إجابة صحيحة أو خاطئة.",
-            assessmentQuestion: "ما المجال الأقرب لما تمر به؟",
-            assessmentHint: "يمكنك تغيير اختيارك في أي وقت.",
+                "اختر المجال الأقرب إلى احتياجك.",
 
-            assessmentAnxiety: "القلق والتوتر",
-            assessmentRelationships: "العلاقات",
-            assessmentSelf: "الثقة بالنفس",
-            assessmentGrowth: "التطور الشخصي",
+            assessmentQuestion:
+                "ما المجال الأقرب لما تمر به؟",
 
-            continueWhatsApp: "تواصل عبر واتساب",
+            assessmentAnxiety:
+                "القلق والتوتر",
+
+            assessmentRelationships:
+                "العلاقات",
+
+            assessmentSelf:
+                "الثقة بالنفس",
+
+            assessmentGrowth:
+                "الصحة النفسية والتطور",
+
+            assessmentHint:
+                "يمكنك تغيير اختيارك في أي وقت.",
+
+            continueWhatsApp:
+                "تواصل عبر واتساب",
 
             /* Footer */
             footerDescription:
-                "مساحة مريحة ومحترمة للدعم الشخصي والنمو وفهم ما يهمك.",
-            footerExplore: "استكشف",
-            footerStart: "ابدأ رحلتك"
+                "منصة للرعاية النفسية والعلاج النفسي في مساحة محترمة ومريحة.",
+
+            footerExplore:
+                "استكشف",
+
+            footerStart:
+                "ابدأ رحلتك"
         },
 
+
+        /* =====================================================
+           ENGLISH
+        ===================================================== */
+
         en: {
+
+            /* Brand */
+            brandSubtitle:
+                "Psychological Therapy & Mental Health",
+
             /* Navigation */
-            navHome: "Home",
-            navHow: "How It Works",
-            navServices: "Support Areas",
-            navExperience: "Your Experience",
-            navAbout: "About Tasbeeh",
-            navFaq: "FAQ",
-            startNow: "Start Now",
+            navHome:
+                "Home",
+
+            navHow:
+                "How It Works",
+
+            navServices:
+                "Therapy Areas",
+
+            navExperience:
+                "Your Experience",
+
+            navAbout:
+                "About Tasbeeh",
+
+            navFaq:
+                "FAQ",
+
+            /* General */
+            startNow:
+                "Get Started",
+
+            discoverHow:
+                "How It Works",
+
+            safe:
+                "A Safe Space",
+
+            safeText:
+                "Talk comfortably without judgment",
+
+            professionalCare:
+                "Specialized Care",
+
+            professionalCareText:
+                "Care focused on your mental health needs",
+
+            flexible:
+                "Flexible Experience",
+
+            flexibleText:
+                "Designed around your time and routine",
+
+            privacy:
+                "Privacy & Respect",
+
+            comfortableCare:
+                "Comfortable Care",
 
             /* Hero */
-            heroKicker: "A Space for Support & Personal Growth",
-            heroTitle: "A Safe and Comfortable Space for You",
+            heroKicker:
+                "A Space for Mental Health & Care",
+
+            heroTitle:
+                "A Safe Space for Psychological Therapy & Mental Wellbeing",
+
             heroDescription:
-                "Your journey toward feeling better can start here. Find personal support in a safe and comfortable environment designed around your needs, goals, and personal journey.",
-            discoverHow: "See How It Works",
-            heroNote: "Privacy, respect, and a judgment-free space",
-            heroVisualText: "Your Space",
-            safe: "Safe Space",
-            safeText: "Talk comfortably and without judgment",
-            personalSupport: "Personal Support",
-            personalSupportText: "An experience shaped around your needs",
-            flexible: "Flexible Support",
-            flexibleText: "Designed around your time and routine",
-            privacy: "Privacy & Respect",
-            supportSession: "Personal Support",
+                "Your journey toward better mental health starts with a step. Explore psychological care in a respectful and supportive environment designed around your needs.",
 
-            /* How It Works */
-            howEyebrow: "How It Works",
-            howTitle: "Starting can be simple.",
+            heroNote:
+                "Privacy, respect and care without judgment",
+
+            heroVisualText:
+                "Your Safe Space",
+
+            /* How */
+            howEyebrow:
+                "How It Works",
+
+            howTitle:
+                "Getting started can be simple.",
+
             howDescription:
-                "Simple steps to help you take the first step without feeling pressured.",
+                "Clear steps to help you take the first step toward the care that fits your needs.",
 
-            step1Title: "Tell Us What You Need",
+            step1Title:
+                "Tell Us What You're Experiencing",
+
             step1Text:
-                "Share what you are going through and the type of support you are looking for, as much as you feel comfortable sharing.",
+                "Share what you're feeling and what you're looking for, only as much as you feel comfortable sharing.",
 
-            step2Title: "Choose What Fits You",
+            step2Title:
+                "Identify Your Needs",
+
             step2Text:
-                "Explore the different support areas and choose what fits your goals and personal needs.",
+                "Explore different therapy and mental-health areas and identify what is closest to your needs.",
 
-            step3Title: "Start Your Sessions",
+            step3Title:
+                "Start Your Journey",
+
             step3Text:
-                "Choose a suitable time and begin your journey at a pace that fits your life.",
+                "Move to the next step that fits you and begin your mental-health care journey.",
 
-            step4Title: "Keep Growing",
+            step4Title:
+                "Continue Your Progress",
+
             step4Text:
-                "Continue building healthier habits and a deeper understanding of yourself and your goals.",
+                "Continue learning about yourself and developing healthier ways to deal with challenges.",
 
             /* Services */
-            servicesEyebrow: "Support Areas",
-            servicesTitle: "Choose the space that feels closest to what you need.",
+            servicesEyebrow:
+                "Psychological Therapy Areas",
+
+            servicesTitle:
+                "Explore the area closest to your needs.",
+
             servicesDescription:
-                "Everyone has a different experience, so you can choose the area that feels most relevant to what you are going through.",
+                "Mental-health needs are different for everyone. Explore the available areas and identify what fits your situation.",
 
-            service1Title: "Anxiety & Stress",
+            showDetails:
+                "View Details",
+
+            hideDetails:
+                "Hide Details",
+
+            startWithThis:
+                "Start Here",
+
+            service1Title:
+                "Anxiety & Stress",
+
             service1Short:
-                "Understand stress, manage anxiety, and develop healthier ways to handle pressure.",
+                "Understand anxiety and stress and develop healthier ways to manage daily pressure.",
+
             service1Details:
-                "This space can help you understand sources of stress and anxiety, recognize thoughts and situations that increase pressure, and develop calmer and more mindful ways to handle everyday situations.",
-            service1Point1: "Understand sources of anxiety and stress",
-            service1Point2: "Work with anxious thoughts",
-            service1Point3: "Build calmer ways to handle pressure",
+                "A space to understand sources of anxiety and stress, recognize thoughts and situations that increase pressure, and develop healthier coping approaches.",
 
-            service2Title: "Relationships",
+            service1Point1:
+                "Understand sources of anxiety and stress",
+
+            service1Point2:
+                "Work with anxious thoughts",
+
+            service1Point3:
+                "Develop healthier coping strategies",
+
+            service2Title:
+                "Relationships",
+
             service2Short:
-                "Improve communication, build healthy boundaries, and create more balanced relationships.",
+                "Improve communication, understand relationships and build healthier boundaries.",
+
             service2Details:
-                "A space to understand relationships more deeply, improve communication, recognize personal needs and boundaries, and approach disagreements with greater awareness and balance.",
-            service2Point1: "Improve communication",
-            service2Point2: "Build healthy boundaries",
-            service2Point3: "Handle disagreements more effectively",
+                "A space to understand relationships more deeply, improve communication and approach disagreements with greater awareness.",
 
-            service3Title: "Self-Confidence",
+            service2Point1:
+                "Improve communication",
+
+            service2Point2:
+                "Build healthy boundaries",
+
+            service2Point3:
+                "Handle disagreements",
+
+            service3Title:
+                "Self-Confidence",
+
             service3Short:
-                "Develop a better understanding of yourself, your confidence, and your relationship with yourself.",
+                "Understand yourself, work with self-criticism and develop a more balanced view of yourself.",
+
             service3Details:
-                "Focus on your relationship with yourself, understand your strengths, work with self-criticism, and build a more balanced view of yourself and your abilities.",
-            service3Point1: "Understand yourself better",
-            service3Point2: "Reduce self-criticism",
-            service3Point3: "Build more balanced confidence",
+                "Focus on your relationship with yourself, understand your strengths and work with patterns of self-criticism.",
 
-            service4Title: "Personal Growth",
+            service3Point1:
+                "Understand yourself better",
+
+            service3Point2:
+                "Work with self-criticism",
+
+            service3Point3:
+                "Build balanced confidence",
+
+            service4Title:
+                "Mental Wellbeing & Personal Development",
+
             service4Short:
-                "Gain clarity, set meaningful goals, and move forward with awareness and purpose.",
+                "Gain greater clarity and understanding of yourself, your life and your goals.",
+
             service4Details:
-                "If you feel ready to change something in your life or need more clarity, this space can help you organize your thoughts, define your goals, and identify practical steps to work on.",
-            service4Point1: "Set your priorities",
-            service4Point2: "Create clear goals",
-            service4Point3: "Build practical steps for change",
+                "A space to work through personal challenges, understand thoughts and emotions, and identify appropriate next steps.",
 
-            service5Title: "Family Support",
+            service4Point1:
+                "Understand your priorities",
+
+            service4Point2:
+                "Set clear goals",
+
+            service4Point3:
+                "Build practical steps",
+
+            service5Title:
+                "Family Mental Health Support",
+
             service5Short:
-                "Approach family situations and challenges with greater awareness and understanding.",
+                "Approach family challenges and communication with greater awareness.",
+
             service5Details:
-                "A space to reflect on family situations, understand different perspectives, improve communication, and deal with everyday challenges more consciously.",
-            service5Point1: "Understand family situations",
-            service5Point2: "Improve dialogue",
-            service5Point3: "Handle challenges with awareness",
+                "A space to understand family situations and different perspectives while developing healthier ways to communicate.",
 
-            service6Title: "Life Coaching",
+            service5Point1:
+                "Understand family situations",
+
+            service5Point2:
+                "Improve communication",
+
+            service5Point3:
+                "Handle challenges with awareness",
+
+            service6Title:
+                "Psychological Care",
+
             service6Short:
-                "Work on personal goals, motivation, and positive change in your life.",
-            service6Details:
-                "This path focuses on personal goals, clarity, motivation, and turning ideas into practical steps that can become part of your everyday life.",
-            service6Point1: "Define your goals",
-            service6Point2: "Increase clarity and motivation",
-            service6Point3: "Turn goals into practical steps",
+                "A space for mental-health care and support with challenges affecting your life.",
 
-            startWithThis: "Start Here",
+            service6Details:
+                "The appropriate type of care depends on each person's needs and circumstances. Situations requiring specialized assessment should be directed to an appropriately qualified professional.",
+
+            service6Point1:
+                "Understand your mental-health needs",
+
+            service6Point2:
+                "Work through psychological challenges",
+
+            service6Point3:
+                "Identify appropriate next steps",
 
             /* Journey */
-            journeyEyebrow: "Your Journey",
-            journeyTitle: "Step by step, at your own pace.",
+            journeyEyebrow:
+                "Your Journey",
+
+            journeyTitle:
+                "One step at a time, at your own pace.",
+
             journeyDescription:
-                "Change is not a race. What matters is starting with a step that feels right for you.",
+                "Mental-health journeys are different for everyone. What matters is starting with the step that fits you.",
 
-            journey1Status: "Starting",
-            journey1Title: "Understand Your Goals",
+            journey1Status:
+                "Starting",
+
+            journey1Title:
+                "Understand What You're Experiencing",
+
             journey1Text:
-                "Start by understanding what you are looking for and what you want to work on.",
+                "Begin by understanding your needs and what you want to work on.",
 
-            journey2Status: "Complete",
-            journey2Title: "Identify Your Needs",
+            journey2Status:
+                "Next Step",
+
+            journey2Title:
+                "Identify Your Needs",
+
             journey2Text:
-                "Choose the support area that feels closest to what you are experiencing.",
+                "Identify the area closest to what you're experiencing.",
 
-            journey3Status: "In Progress",
-            journey3Title: "Build New Habits",
+            journey3Status:
+                "In Progress",
+
+            journey3Title:
+                "Work Toward Change",
+
             journey3Text:
                 "Gradually work on the changes you want to make.",
 
-            journey4Status: "Ongoing",
-            journey4Title: "Your Experience",
+            journey4Status:
+                "Ongoing",
+
+            journey4Title:
+                "Continue Your Journey",
+
             journey4Text:
-                "Keep understanding yourself and moving forward in a way that fits you.",
+                "Continue understanding yourself and moving forward in a way that fits your needs.",
 
             /* Experience */
-            experienceEyebrow: "Your Experience",
-            experienceTitle: "Support starts with understanding you.",
+            experienceEyebrow:
+                "Your Experience",
+
+            experienceTitle:
+                "Therapy Starts With Understanding You.",
+
             experienceDescription:
-                "Everyone has a different journey, so your experience should feel personal, comfortable, and focused on what matters to you.",
-            experienceVisual: "A Space for You",
+                "Everyone's journey is different, so your experience should be respectful, comfortable and focused on what matters to you.",
 
-            experience1Title: "Personal Approach",
+            experienceVisual:
+                "A Space for Mental Health Care",
+
+            experience1Title:
+                "Care That Fits Your Needs",
+
             experience1Text:
-                "Your goals and experiences remain at the heart of the support process.",
+                "Your needs and experience remain central to the care process.",
 
-            experience2Title: "Comfortable Environment",
+            experience2Title:
+                "A Comfortable Environment",
+
             experience2Text:
-                "A calm space where you can speak freely and honestly.",
+                "A calm space where you can speak openly and honestly.",
 
-            experience3Title: "Flexible Support",
+            experience3Title:
+                "Privacy & Respect",
+
             experience3Text:
-                "Build a routine that works with your life and daily schedule.",
+                "Your experience and privacy are treated with care and respect.",
 
             /* About */
-            aboutEyebrow: "About Tasbeeh",
-            aboutTitle: "A space where you can be yourself.",
+            aboutEyebrow:
+                "About Tasbeeh",
+
+            aboutTitle:
+                "A Space Where You Can Feel Safe.",
+
             aboutText1:
-                "Tasbeeh Mohamed was built around a simple idea: real support begins when you feel that someone is listening to you and understanding you.",
+                "Tasbeeh Mohamed was built around a simple idea: mental-health care begins when you feel heard and understood.",
+
             aboutText2:
-                "The goal is to provide a comfortable, respectful, and supportive experience that helps you understand what you are going through and work toward the changes you want.",
-            learnMore: "Learn More",
-            aboutCardText: "Support starts with one step.",
+                "The goal is to provide a respectful and comfortable experience that helps you understand your needs and identify an appropriate next step.",
+
+            learnMore:
+                "Explore Your Needs",
+
+            aboutCardText:
+                "Mental-health care starts with a step.",
 
             /* CTA */
-            ctaEyebrow: "The First Step",
-            ctaTitle: "Take the First Step",
+            ctaEyebrow:
+                "The First Step",
+
+            ctaTitle:
+                "Start Your Journey Toward Better Mental Health.",
+
             ctaText:
-                "You do not need to have all the answers from the beginning. Start by telling us a little about what you are looking for, and we will help you understand the next step.",
-            ctaNote: "It only takes a few minutes",
+                "You do not need to have all the answers from the beginning. Tell us a little about what you're looking for and we'll help you understand the next step.",
+
+            ctaNote:
+                "It only takes a few minutes",
 
             /* FAQ */
-            faqEyebrow: "Frequently Asked Questions",
-            faqTitle: "Have a question?",
+            faqEyebrow:
+                "Frequently Asked Questions",
+
+            faqTitle:
+                "Questions You May Have.",
+
             faqDescription:
-                "Here are some answers that may help before you get started.",
+                "Here are some answers that may help before you begin.",
 
-            faq1Question: "How does the process work?",
+            faq1Question:
+                "How does the process work?",
+
             faq1Answer:
-                "It starts with a simple step to understand your needs and what you are looking for. You can then explore the right support area and choose the next step that fits you.",
+                "It starts with a simple step to understand your needs and what you're looking for. You can then identify the relevant area and next step.",
 
-            faq2Question: "Is my information private?",
+            faq2Question:
+                "Is my information private?",
+
             faq2Answer:
-                "Privacy is an important part of the Tasbeeh Mohamed experience. Share only what you feel comfortable sharing, and the information you provide should be treated with care and respect.",
+                "Privacy is an important part of the mental-health care experience. Share only the information you feel comfortable sharing.",
 
-            faq3Question: "Can I choose a suitable time?",
+            faq3Question:
+                "Can I choose a suitable time?",
+
             faq3Answer:
-                "You can choose a time that works best for you based on available appointments, making the experience easier to fit into your routine and commitments.",
+                "You can choose the time that works best for you based on the available appointments.",
 
-            faq4Question: "Is this therapy or life coaching?",
+            faq4Question:
+                "Is this psychological therapy?",
+
             faq4Answer:
-                "The type of support depends on your needs. Some paths focus on personal support, growth, and goals, while situations requiring assessment or specialized treatment should be handled by a qualified and licensed professional.",
+                "The type of care depends on each person's needs. Situations requiring specialized assessment or treatment should be handled by an appropriately qualified and licensed professional.",
 
-            faq5Question: "How do I get started?",
+            faq5Question:
+                "How do I get started?",
+
             faq5Answer:
-                "Click “Start Now” and tell us simply what you are looking for. You do not need to have all the answers from the beginning; the first step is simply explaining what you need.",
+                "Click “Get Started” and tell us briefly what you're looking for. The first step is simply to identify your needs.",
 
-            faqCtaTitle: "Still have a question?",
+            faqCtaTitle:
+                "Still Have a Question?",
+
             faqCtaText:
-                "You can contact us if you would like to know more before getting started.",
-            contactUs: "Contact Us",
+                "Contact us if you need more information before getting started.",
+
+            contactUs:
+                "Contact Us",
 
             /* Assessment */
-            assessmentEyebrow: "Start Here",
-            assessmentTitle: "What are you looking for right now?",
+            assessmentEyebrow:
+                "Start Here",
+
+            assessmentTitle:
+                "What Are You Looking For?",
+
             assessmentDescription:
-                "Choose the option that feels closest to what you need. There is no right or wrong answer.",
-            assessmentQuestion: "Which area feels closest to what you are experiencing?",
-            assessmentHint: "You can change your choice at any time.",
+                "Choose the area closest to your needs.",
 
-            assessmentAnxiety: "Anxiety & Stress",
-            assessmentRelationships: "Relationships",
-            assessmentSelf: "Self-Confidence",
-            assessmentGrowth: "Personal Growth",
+            assessmentQuestion:
+                "Which area is closest to what you're experiencing?",
 
-            continueWhatsApp: "Continue on WhatsApp",
+            assessmentAnxiety:
+                "Anxiety & Stress",
+
+            assessmentRelationships:
+                "Relationships",
+
+            assessmentSelf:
+                "Self-Confidence",
+
+            assessmentGrowth:
+                "Mental Wellbeing & Development",
+
+            assessmentHint:
+                "You can change your selection at any time.",
+
+            continueWhatsApp:
+                "Continue on WhatsApp",
 
             /* Footer */
             footerDescription:
-                "A comfortable and respectful space for personal support, growth, and understanding what matters to you.",
-            footerExplore: "Explore",
-            footerStart: "Start Your Journey"
+                "A respectful and comfortable platform for psychological care and mental-health support.",
+
+            footerExplore:
+                "Explore",
+
+            footerStart:
+                "Start Your Journey"
         }
     };
 
-    /* =========================================================
-       ELEMENTS
-    ========================================================= */
-
-    const html = document.documentElement;
-    const body = document.body;
-
-    const languageSwitch = document.getElementById("languageSwitch");
-
-    const menuToggle = document.getElementById("menuToggle");
-    const navbar = document.getElementById("navbar");
-
-    const siteHeader = document.getElementById("siteHeader");
-
-    const assessmentModal = document.getElementById("assessmentModal");
-    const modalOverlay = document.getElementById("modalOverlay");
-    const modalClose = document.getElementById("modalClose");
-    const modalWhatsApp = document.getElementById("modalWhatsApp");
-
-    const currentYear = document.getElementById("currentYear");
 
     /* =========================================================
-       LANGUAGE
+       LANGUAGE FUNCTIONS
     ========================================================= */
 
-    function translatePage(lang) {
-        const dictionary = translations[lang];
+    let currentLanguage =
+        localStorage.getItem(LANGUAGE_KEY) || "ar";
 
-        if (!dictionary) return;
 
-        document.querySelectorAll("[data-i18n]").forEach((element) => {
-            const key = element.getAttribute("data-i18n");
+    function getTranslation(key) {
 
-            if (dictionary[key] !== undefined) {
-                element.textContent = dictionary[key];
+        if (
+            translations[currentLanguage] &&
+            translations[currentLanguage][key]
+        ) {
+            return translations[currentLanguage][key];
+        }
+
+        return null;
+    }
+
+
+    function applyTranslations() {
+
+        const elements =
+            document.querySelectorAll("[data-i18n]");
+
+        elements.forEach((element) => {
+
+            const key =
+                element.getAttribute("data-i18n");
+
+            const translated =
+                getTranslation(key);
+
+            if (translated === null) {
+                return;
             }
+
+            /*
+             * Use textContent for normal elements.
+             * This prevents HTML injection and keeps
+             * translations clean.
+             */
+            element.textContent = translated;
+
         });
-    }
 
-    function updateLanguageButton() {
-        if (!languageSwitch) return;
 
-        languageSwitch.textContent = currentLanguage === "ar" ? "EN" : "AR";
+        /* HTML direction */
 
-        languageSwitch.setAttribute(
-            "aria-label",
+        if (currentLanguage === "ar") {
+
+            html.lang = "ar";
+            html.dir = "rtl";
+
+        } else {
+
+            html.lang = "en";
+            html.dir = "ltr";
+
+        }
+
+
+        /* Language button */
+
+        if (languageSwitch) {
+
+            languageSwitch.textContent =
+                currentLanguage === "ar" ? "EN" : "AR";
+
+            languageSwitch.setAttribute(
+                "aria-label",
+                currentLanguage === "ar"
+                    ? "Switch to English"
+                    : "التبديل إلى العربية"
+            );
+
+        }
+
+
+        /* Document title */
+
+        document.title =
             currentLanguage === "ar"
-                ? "Switch to English"
-                : "التبديل إلى العربية"
+                ? "Tasbeeh Mohamed | العلاج النفسي والصحة النفسية"
+                : "Tasbeeh Mohamed | Psychological Therapy & Mental Health";
+
+
+        /*
+         * Re-sync service button text after translation.
+         */
+        updateServiceButtonLabels();
+
+    }
+
+
+    function switchLanguage() {
+
+        currentLanguage =
+            currentLanguage === "ar"
+                ? "en"
+                : "ar";
+
+        localStorage.setItem(
+            LANGUAGE_KEY,
+            currentLanguage
         );
+
+        applyTranslations();
+
     }
 
-    function applyLanguage(lang) {
-        currentLanguage = lang === "en" ? "en" : "ar";
-
-        html.lang = currentLanguage;
-        html.dir = currentLanguage === "ar" ? "rtl" : "ltr";
-
-        translatePage(currentLanguage);
-        updateLanguageButton();
-
-        localStorage.setItem(LANGUAGE_KEY, currentLanguage);
-
-        updateWhatsAppLink();
-    }
 
     if (languageSwitch) {
-        languageSwitch.addEventListener("click", () => {
-            const nextLanguage =
-                currentLanguage === "ar" ? "en" : "ar";
 
-            applyLanguage(nextLanguage);
-        });
+        languageSwitch.addEventListener(
+            "click",
+            switchLanguage
+        );
+
     }
+
 
     /* =========================================================
        MOBILE MENU
     ========================================================= */
 
     function openMenu() {
-        if (!menuToggle || !navbar) return;
 
-        menuToggle.classList.add("active");
+        if (!navbar || !menuToggle) {
+            return;
+        }
+
         navbar.classList.add("active");
+        menuToggle.classList.add("active");
 
-        menuToggle.setAttribute("aria-expanded", "true");
+        menuToggle.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+
         body.classList.add("menu-open");
+
     }
+
 
     function closeMenu() {
-        if (!menuToggle || !navbar) return;
 
-        menuToggle.classList.remove("active");
+        if (!navbar || !menuToggle) {
+            return;
+        }
+
         navbar.classList.remove("active");
+        menuToggle.classList.remove("active");
 
-        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
         body.classList.remove("menu-open");
+
     }
 
-    if (menuToggle && navbar) {
-        menuToggle.setAttribute("aria-expanded", "false");
 
-        menuToggle.addEventListener("click", () => {
-            const isOpen = navbar.classList.contains("active");
+    function toggleMenu() {
 
-            if (isOpen) {
-                closeMenu();
-            } else {
-                openMenu();
+        if (!navbar) {
+            return;
+        }
+
+        const isOpen =
+            navbar.classList.contains("active");
+
+        if (isOpen) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+
+    }
+
+
+    if (menuToggle) {
+
+        menuToggle.addEventListener(
+            "click",
+            toggleMenu
+        );
+
+    }
+
+
+    /*
+     * Close menu after clicking a navigation link.
+     */
+
+    document
+        .querySelectorAll(".nav-link")
+        .forEach((link) => {
+
+            link.addEventListener(
+                "click",
+                closeMenu
+            );
+
+        });
+
+
+    /*
+     * Close menu when clicking outside.
+     */
+
+    document.addEventListener(
+        "click",
+        (event) => {
+
+            if (!navbar || !menuToggle) {
+                return;
             }
-        });
 
-        navbar.querySelectorAll("a").forEach((link) => {
-            link.addEventListener("click", () => {
+            const clickedInsideMenu =
+                navbar.contains(event.target);
+
+            const clickedToggle =
+                menuToggle.contains(event.target);
+
+            if (
+                navbar.classList.contains("active") &&
+                !clickedInsideMenu &&
+                !clickedToggle
+            ) {
                 closeMenu();
-            });
-        });
-    }
+            }
+
+        }
+    );
+
 
     /* =========================================================
-       HEADER SCROLL
+       HEADER SCROLL EFFECT
     ========================================================= */
 
     function handleHeaderScroll() {
-        if (!siteHeader) return;
+
+        if (!siteHeader) {
+            return;
+        }
 
         if (window.scrollY > 30) {
+
             siteHeader.classList.add("scrolled");
+
         } else {
+
             siteHeader.classList.remove("scrolled");
+
         }
+
     }
 
-    window.addEventListener("scroll", handleHeaderScroll, {
-        passive: true
-    });
+
+    window.addEventListener(
+        "scroll",
+        handleHeaderScroll,
+        { passive: true }
+    );
 
     handleHeaderScroll();
+
 
     /* =========================================================
        SERVICE ACCORDION
     ========================================================= */
 
-    const serviceCards = document.querySelectorAll(".service-card");
+    const serviceCards =
+        document.querySelectorAll(".service-card");
+
+
+    function updateServiceButtonLabels() {
+
+        serviceCards.forEach((card) => {
+
+            const button =
+                card.querySelector(".service-expand");
+
+            const text =
+                button?.querySelector("span");
+
+            if (!button || !text) {
+                return;
+            }
+
+            const isExpanded =
+                card.classList.contains("expanded");
+
+            text.textContent =
+                isExpanded
+                    ? getTranslation("hideDetails")
+                    : getTranslation("showDetails");
+
+            button.setAttribute(
+                "aria-expanded",
+                String(isExpanded)
+            );
+
+        });
+
+    }
+
 
     serviceCards.forEach((card) => {
-        const expandButton = card.querySelector(".service-expand");
 
-        if (!expandButton) return;
+        const button =
+            card.querySelector(".service-expand");
 
-        expandButton.setAttribute("aria-expanded", "false");
+        if (!button) {
+            return;
+        }
 
-        expandButton.addEventListener("click", () => {
-            const isExpanded = card.classList.contains("expanded");
+        button.addEventListener(
+            "click",
+            () => {
 
-            serviceCards.forEach((otherCard) => {
-                otherCard.classList.remove("expanded");
+                const wasExpanded =
+                    card.classList.contains("expanded");
 
-                const otherButton =
-                    otherCard.querySelector(".service-expand");
 
-                if (otherButton) {
-                    otherButton.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-                }
-            });
+                /*
+                 * Close other cards.
+                 */
 
-            if (!isExpanded) {
-                card.classList.add("expanded");
-                expandButton.setAttribute("aria-expanded", "true");
+                serviceCards.forEach((otherCard) => {
+
+                    if (otherCard !== card) {
+
+                        otherCard.classList.remove(
+                            "expanded"
+                        );
+
+                        const otherButton =
+                            otherCard.querySelector(
+                                ".service-expand"
+                            );
+
+                        if (otherButton) {
+
+                            otherButton.setAttribute(
+                                "aria-expanded",
+                                "false"
+                            );
+
+                        }
+
+                    }
+
+                });
+
+
+                /*
+                 * Toggle selected card.
+                 */
+
+                card.classList.toggle(
+                    "expanded",
+                    !wasExpanded
+                );
+
+
+                updateServiceButtonLabels();
+
             }
-        });
+        );
+
     });
+
 
     /* =========================================================
        FAQ ACCORDION
     ========================================================= */
 
-    const faqItems = document.querySelectorAll(".faq-item");
+    const faqItems =
+        document.querySelectorAll(".faq-item");
+
 
     faqItems.forEach((item) => {
-        const question = item.querySelector(".faq-question");
 
-        if (!question) return;
+        const question =
+            item.querySelector(".faq-question");
 
-        question.setAttribute("aria-expanded", "false");
+        if (!question) {
+            return;
+        }
 
-        question.addEventListener("click", () => {
-            const isActive = item.classList.contains("active");
 
-            faqItems.forEach((otherItem) => {
-                otherItem.classList.remove("active");
+        question.addEventListener(
+            "click",
+            () => {
 
-                const otherQuestion =
-                    otherItem.querySelector(".faq-question");
+                const isActive =
+                    item.classList.contains("active");
 
-                if (otherQuestion) {
-                    otherQuestion.setAttribute(
+
+                /*
+                 * Close all FAQ items.
+                 */
+
+                faqItems.forEach((otherItem) => {
+
+                    otherItem.classList.remove("active");
+
+                    const otherQuestion =
+                        otherItem.querySelector(
+                            ".faq-question"
+                        );
+
+                    if (otherQuestion) {
+
+                        otherQuestion.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
+
+                });
+
+
+                /*
+                 * Open selected item.
+                 */
+
+                if (!isActive) {
+
+                    item.classList.add("active");
+
+                    question.setAttribute(
                         "aria-expanded",
-                        "false"
+                        "true"
                     );
-                }
-            });
 
-            if (!isActive) {
-                item.classList.add("active");
-                question.setAttribute("aria-expanded", "true");
+                }
+
             }
-        });
+        );
+
     });
+
 
     /* =========================================================
        ASSESSMENT MODAL
     ========================================================= */
 
-    const assessmentButtons = document.querySelectorAll(
-        "[data-assessment]"
-    );
+    let selectedAssessment = null;
 
-    function getAssessmentText() {
-        const dictionary = translations[currentLanguage];
 
-        const assessmentMap = {
-            anxiety: dictionary.assessmentAnxiety,
-            relationships: dictionary.assessmentRelationships,
-            self: dictionary.assessmentSelf,
-            growth: dictionary.assessmentGrowth
-        };
+    function openAssessmentModal() {
 
-        return (
-            assessmentMap[selectedAssessment] ||
-            (currentLanguage === "ar"
-                ? "أحتاج إلى معرفة المجال المناسب لي"
-                : "I need help choosing the right area")
-        );
-    }
-
-    function buildWhatsAppMessage() {
-        const selectedText = getAssessmentText();
-
-        if (currentLanguage === "ar") {
-            return (
-                "مرحبًا تسبيح، أريد أن أبدأ وأحتاج إلى دعم في مجال: " +
-                selectedText +
-                ". أود معرفة الخطوة التالية."
-            );
+        if (!assessmentModal) {
+            return;
         }
 
-        return (
-            "Hello Tasbeeh, I would like to get started and I am looking for support with: " +
-            selectedText +
-            ". I would like to know the next step."
-        );
-    }
-
-    function updateWhatsAppLink() {
-        if (!modalWhatsApp) return;
-
-        const message = encodeURIComponent(
-            buildWhatsAppMessage()
-        );
-
-        modalWhatsApp.href =
-            `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
-    }
-
-    function selectAssessment(button) {
-        assessmentButtons.forEach((option) => {
-            option.classList.remove("selected");
-            option.setAttribute("aria-pressed", "false");
-        });
-
-        button.classList.add("selected");
-        button.setAttribute("aria-pressed", "true");
-
-        selectedAssessment =
-            button.getAttribute("data-assessment");
-
-        updateWhatsAppLink();
-    }
-
-    assessmentButtons.forEach((button) => {
-        button.setAttribute("aria-pressed", "false");
-
-        button.addEventListener("click", () => {
-            selectAssessment(button);
-        });
-    });
-
-    function openAssessment() {
-        if (!assessmentModal) return;
-
         assessmentModal.classList.add("active");
-        assessmentModal.setAttribute("aria-hidden", "false");
+
+        assessmentModal.setAttribute(
+            "aria-hidden",
+            "false"
+        );
 
         body.classList.add("modal-open");
 
-        updateWhatsAppLink();
+
+        /*
+         * Focus close button for accessibility.
+         */
 
         setTimeout(() => {
+
             if (modalClose) {
                 modalClose.focus();
             }
-        }, 50);
+
+        }, 100);
+
     }
 
-    function closeAssessment() {
-        if (!assessmentModal) return;
+
+    function closeAssessmentModal() {
+
+        if (!assessmentModal) {
+            return;
+        }
 
         assessmentModal.classList.remove("active");
-        assessmentModal.setAttribute("aria-hidden", "true");
+
+        assessmentModal.setAttribute(
+            "aria-hidden",
+            "true"
+        );
 
         body.classList.remove("modal-open");
+
     }
 
+
+    if (openAssessment) {
+
+        openAssessment.addEventListener(
+            "click",
+            (event) => {
+
+                event.preventDefault();
+
+                openAssessmentModal();
+
+            }
+        );
+
+    }
+
+
+    if (modalClose) {
+
+        modalClose.addEventListener(
+            "click",
+            closeAssessmentModal
+        );
+
+    }
+
+
+    if (modalOverlay) {
+
+        modalOverlay.addEventListener(
+            "click",
+            closeAssessmentModal
+        );
+
+    }
+
+
     /* =========================================================
-       OPEN ASSESSMENT BUTTONS
+       ASSESSMENT OPTIONS
     ========================================================= */
 
-    const assessmentTriggers = document.querySelectorAll(
-        'a[href="#assessment"], button[data-open-assessment], #openAssessment'
-    );
+    const assessmentOptions =
+        document.querySelectorAll(
+            ".assessment-option"
+        );
 
-    assessmentTriggers.forEach((trigger) => {
-        trigger.addEventListener("click", (event) => {
-            event.preventDefault();
 
-            closeMenu();
-            openAssessment();
-        });
+    const assessmentNames = {
+
+        ar: {
+
+            anxiety:
+                "القلق والتوتر",
+
+            relationships:
+                "العلاقات",
+
+            self:
+                "الثقة بالنفس",
+
+            growth:
+                "الصحة النفسية والتطور"
+
+        },
+
+        en: {
+
+            anxiety:
+                "Anxiety & Stress",
+
+            relationships:
+                "Relationships",
+
+            self:
+                "Self-Confidence",
+
+            growth:
+                "Mental Wellbeing & Development"
+
+        }
+
+    };
+
+
+    function updateWhatsAppLink() {
+
+        if (!modalWhatsApp) {
+            return;
+        }
+
+
+        let message;
+
+        if (selectedAssessment) {
+
+            const selectedName =
+                assessmentNames[currentLanguage][
+                    selectedAssessment
+                ];
+
+            message =
+                currentLanguage === "ar"
+                    ? `مرحبًا، أريد الاستفسار عن الرعاية النفسية. المجال الذي أبحث عنه: ${selectedName}`
+                    : `Hello, I would like to ask about psychological care. The area I am looking for is: ${selectedName}`;
+
+        } else {
+
+            message =
+                currentLanguage === "ar"
+                    ? "مرحبًا، أريد الاستفسار عن الرعاية النفسية."
+                    : "Hello, I would like to ask about psychological care.";
+
+        }
+
+
+        modalWhatsApp.href =
+            `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+    }
+
+
+    assessmentOptions.forEach((option) => {
+
+        option.addEventListener(
+            "click",
+            () => {
+
+                /*
+                 * Remove previous selection.
+                 */
+
+                assessmentOptions.forEach(
+                    (otherOption) => {
+
+                        otherOption.classList.remove(
+                            "selected"
+                        );
+
+                        otherOption.setAttribute(
+                            "aria-pressed",
+                            "false"
+                        );
+
+                    }
+                );
+
+
+                /*
+                 * Select current option.
+                 */
+
+                option.classList.add("selected");
+
+                option.setAttribute(
+                    "aria-pressed",
+                    "true"
+                );
+
+
+                selectedAssessment =
+                    option.dataset.assessment || null;
+
+
+                /*
+                 * Update WhatsApp.
+                 */
+
+                updateWhatsAppLink();
+
+            }
+        );
+
     });
+
 
     /* =========================================================
        SERVICE START BUTTONS
@@ -816,173 +1618,218 @@ heredocument.addEventListener("DOMContentLoaded", () => {
     const serviceStartButtons =
         document.querySelectorAll(".service-start");
 
+
     serviceStartButtons.forEach((button) => {
-        button.addEventListener("click", (event) => {
-            event.preventDefault();
 
-            const card = button.closest(".service-card");
+        button.addEventListener(
+            "click",
+            (event) => {
 
-            if (card) {
-                const assessmentType =
-                    getAssessmentFromService(card);
+                event.preventDefault();
 
-                if (assessmentType) {
-                    selectedAssessment = assessmentType;
+                const card =
+                    button.closest(".service-card");
 
-                    assessmentButtons.forEach((option) => {
-                        const isSelected =
-                            option.getAttribute("data-assessment") ===
-                            assessmentType;
+                const serviceTitle =
+                    card?.querySelector(
+                        ".service-title"
+                    )?.textContent.trim();
 
-                        option.classList.toggle(
-                            "selected",
-                            isSelected
-                        );
 
-                        option.setAttribute(
-                            "aria-pressed",
-                            isSelected ? "true" : "false"
-                        );
-                    });
+                /*
+                 * Store selected service for the next
+                 * providers / booking stage.
+                 */
+
+                if (serviceTitle) {
+
+                    sessionStorage.setItem(
+                        "tasbeehSelectedService",
+                        serviceTitle
+                    );
+
                 }
+
+
+                /*
+                 * For now open the assessment modal.
+                 * Later this can become:
+                 *
+                 * providers.html?service=...
+                 *
+                 */
+
+                openAssessmentModal();
+
             }
+        );
 
-            openAssessment();
+    });
+
+
+    /* =========================================================
+       HEADER / NAV CTA LINKS
+    ========================================================= */
+
+    document
+        .querySelectorAll(
+            'a[href="#assessment"]'
+        )
+        .forEach((link) => {
+
+            link.addEventListener(
+                "click",
+                (event) => {
+
+                    event.preventDefault();
+
+                    closeMenu();
+
+                    openAssessmentModal();
+
+                }
+            );
+
         });
-    });
 
-    function getAssessmentFromService(card) {
-        const titleElement =
-            card.querySelector(".service-title");
-
-        if (!titleElement) return null;
-
-        const title =
-            titleElement.textContent.trim().toLowerCase();
-
-        if (
-            title.includes("القلق") ||
-            title.includes("stress") ||
-            title.includes("anxiety")
-        ) {
-            return "anxiety";
-        }
-
-        if (
-            title.includes("العلاقات") ||
-            title.includes("relationship")
-        ) {
-            return "relationships";
-        }
-
-        if (
-            title.includes("الثقة") ||
-            title.includes("confidence")
-        ) {
-            return "self";
-        }
-
-        if (
-            title.includes("التطور") ||
-            title.includes("growth")
-        ) {
-            return "growth";
-        }
-
-        return null;
-    }
-
-    /* =========================================================
-       MODAL CONTROLS
-    ========================================================= */
-
-    if (modalClose) {
-        modalClose.addEventListener("click", closeAssessment);
-    }
-
-    if (modalOverlay) {
-        modalOverlay.addEventListener("click", closeAssessment);
-    }
-
-    /* =========================================================
-       ESCAPE KEY
-    ========================================================= */
-
-    document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
-            closeMenu();
-            closeAssessment();
-        }
-    });
-
-    /* =========================================================
-       CLOSE MENU ON RESIZE
-    ========================================================= */
-
-    window.addEventListener("resize", () => {
-        if (window.innerWidth > 900) {
-            closeMenu();
-        }
-    });
 
     /* =========================================================
        SMOOTH SCROLL
     ========================================================= */
 
-    document.querySelectorAll('a[href^="#"]').forEach((link) => {
-        link.addEventListener("click", (event) => {
-            const targetId =
-                link.getAttribute("href");
+    document
+        .querySelectorAll(
+            'a[href^="#"]:not([href="#"])'
+        )
+        .forEach((link) => {
 
-            if (
-                !targetId ||
-                targetId === "#" ||
-                targetId === "#assessment"
-            ) {
+            link.addEventListener(
+                "click",
+                (event) => {
+
+                    const targetId =
+                        link.getAttribute("href");
+
+                    /*
+                     * Assessment is handled separately.
+                     */
+
+                    if (
+                        targetId === "#assessment"
+                    ) {
+                        return;
+                    }
+
+
+                    const target =
+                        document.querySelector(
+                            targetId
+                        );
+
+                    if (!target) {
+                        return;
+                    }
+
+                    event.preventDefault();
+
+                    closeMenu();
+
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+                }
+            );
+
+        });
+
+
+    /* =========================================================
+       ESCAPE KEY
+    ========================================================= */
+
+    document.addEventListener(
+        "keydown",
+        (event) => {
+
+            if (event.key !== "Escape") {
                 return;
             }
 
-            const target =
-                document.querySelector(targetId);
 
-            if (!target) return;
+            if (
+                assessmentModal &&
+                assessmentModal.classList.contains(
+                    "active"
+                )
+            ) {
 
-            event.preventDefault();
+                closeAssessmentModal();
 
-            closeMenu();
+                return;
 
-            target.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-        });
-    });
+            }
+
+
+            if (
+                navbar &&
+                navbar.classList.contains("active")
+            ) {
+
+                closeMenu();
+
+            }
+
+        }
+    );
+
+
+    /* =========================================================
+       RESIZE
+    ========================================================= */
+
+    window.addEventListener(
+        "resize",
+        () => {
+
+            /*
+             * Prevent mobile menu from remaining open
+             * after switching to desktop.
+             */
+
+            if (
+                window.innerWidth > 900 &&
+                navbar &&
+                navbar.classList.contains("active")
+            ) {
+
+                closeMenu();
+
+            }
+
+        }
+    );
+
 
     /* =========================================================
        FOOTER YEAR
     ========================================================= */
 
     if (currentYear) {
+
         currentYear.textContent =
             new Date().getFullYear();
+
     }
 
-    /* =========================================================
-       ACCESSIBILITY
-    ========================================================= */
-
-    if (assessmentModal) {
-        assessmentModal.setAttribute("aria-hidden", "true");
-    }
 
     /* =========================================================
-       INITIALIZE
+       INITIALIZATION
     ========================================================= */
 
-    applyLanguage(currentLanguage);
+    applyTranslations();
+
+    updateWhatsAppLink();
 
 });
-
-ده كده الـ JS الكامل ومفروض تحطه مكان "script.js" الحالي بالكامل، من غير ما تضيف JavaScript تاني داخل "index.html".
-
-والنسخة دي متوافقة مع الـ "index.html" والـ "style.css" اللي اشتغلنا عليهم، خصوصًا فتح تفاصيل الخدمات + FAQ + تبديل اللغة + نافذة ابدأ الآن + التحويل لواتساب.
