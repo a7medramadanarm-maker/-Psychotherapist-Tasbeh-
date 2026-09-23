@@ -1,80 +1,517 @@
+/* =========================================================
+   Booking System
+   Tasbeeh Mohamed - Psychotherapy Website
+   Supabase Version
+========================================================= */
+
 document.addEventListener("DOMContentLoaded", () => {
 
     "use strict";
 
 
-    /* =========================================
-       PROVIDERS
-    ========================================= */
+    /* =====================================================
+       Providers
+    ===================================================== */
 
     const providers = {
 
         "tasbeeh-mohamed": {
-            name: "Tasbeeh Mohamed"
+            nameAr: "تسبيح محمد",
+            nameEn: "Tasbeeh Mohamed"
         },
 
         "mariam-mahmoud": {
-            name: "Mariam Mahmoud"
+            nameAr: "مريم محمود",
+            nameEn: "Mariam Mahmoud"
         }
 
     };
 
 
-    /* =========================================
-       GET PROVIDER FROM URL
-    ========================================= */
+    /* =====================================================
+       Elements
+    ===================================================== */
 
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
+    const bookingForm = document.getElementById("bookingForm");
+
+    const providerName =
+        document.getElementById("providerName");
+
+    const summaryProvider =
+        document.getElementById("summaryProvider");
+
+    const service =
+        document.getElementById("service");
+
+    const sessionType =
+        document.getElementById("sessionType");
+
+    const bookingDate =
+        document.getElementById("bookingDate");
+
+    const bookingTime =
+        document.getElementById("bookingTime");
+
+    const clientName =
+        document.getElementById("clientName");
+
+    const clientPhone =
+        document.getElementById("clientPhone");
+
+    const clientEmail =
+        document.getElementById("clientEmail");
+
+    const notes =
+        document.getElementById("notes");
+
+    const consent =
+        document.getElementById("consent");
+
+    const bookingSubmit =
+        document.getElementById("bookingSubmit");
+
+    const bookingMessage =
+        document.getElementById("bookingMessage");
+
+    const submitText =
+        document.querySelector(".submit-text");
+
+    const submitLoading =
+        document.querySelector(".submit-loading");
+
+    const summaryService =
+        document.getElementById("summaryService");
+
+    const summaryDate =
+        document.getElementById("summaryDate");
+
+    const summaryTime =
+        document.getElementById("summaryTime");
+
+
+    /* =====================================================
+       Get Provider
+    ===================================================== */
+
+    const params = new URLSearchParams(
+        window.location.search
+    );
 
     const providerId =
         params.get("provider");
 
-    const provider =
-        providers[providerId];
 
+    if (!providerId || !providers[providerId]) {
 
-    if (!provider) {
-
-        window.location.href =
-            "providers.html";
+        window.location.href = "providers.html";
 
         return;
     }
 
 
-    /* =========================================
-       SHOW PROVIDER
-    ========================================= */
-
-    document.getElementById(
-        "providerName"
-    ).textContent = provider.name;
+    const provider =
+        providers[providerId];
 
 
-    document.getElementById(
-        "summaryProvider"
-    ).textContent = provider.name;
+    /* =====================================================
+       Display Provider
+    ===================================================== */
+
+    if (providerName) {
+        providerName.textContent = provider.nameAr;
+    }
+
+    if (summaryProvider) {
+        summaryProvider.textContent = provider.nameAr;
+    }
 
 
-    /* =========================================
-       FORM
-    ========================================= */
+    /* =====================================================
+       Minimum Booking Date
+    ===================================================== */
 
-    const form =
-        document.getElementById(
-            "bookingForm"
+    if (bookingDate) {
+
+        const today = new Date();
+
+        const year =
+            today.getFullYear();
+
+        const month =
+            String(today.getMonth() + 1)
+                .padStart(2, "0");
+
+        const day =
+            String(today.getDate())
+                .padStart(2, "0");
+
+        bookingDate.min =
+            `${year}-${month}-${day}`;
+    }
+
+
+    /* =====================================================
+       Service From URL
+    ===================================================== */
+
+    const selectedService =
+        sessionStorage.getItem(
+            "tasbeehSelectedService"
         );
 
 
-    form.addEventListener(
+    if (
+        selectedService &&
+        service
+    ) {
+
+        const options =
+            Array.from(service.options);
+
+        const matchingOption =
+            options.find(option =>
+                option.value === selectedService ||
+                option.textContent.trim() === selectedService
+            );
+
+        if (matchingOption) {
+            service.value =
+                matchingOption.value;
+        }
+
+        sessionStorage.removeItem(
+            "tasbeehSelectedService"
+        );
+    }
+
+
+    /* =====================================================
+       Update Summary
+    ===================================================== */
+
+    function updateSummary() {
+
+        if (summaryService) {
+
+            const selectedOption =
+                service?.options[
+                    service.selectedIndex
+                ];
+
+            summaryService.textContent =
+                selectedOption &&
+                selectedOption.value
+                    ? selectedOption.textContent.trim()
+                    : "—";
+        }
+
+
+        if (summaryDate) {
+
+            if (bookingDate?.value) {
+
+                const date =
+                    new Date(
+                        bookingDate.value +
+                        "T00:00:00"
+                    );
+
+                summaryDate.textContent =
+                    date.toLocaleDateString(
+                        "ar-EG",
+                        {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric"
+                        }
+                    );
+
+            } else {
+
+                summaryDate.textContent = "—";
+            }
+        }
+
+
+        if (summaryTime) {
+
+            if (bookingTime?.value) {
+
+                const [hours, minutes] =
+                    bookingTime.value.split(":");
+
+                const date =
+                    new Date();
+
+                date.setHours(
+                    Number(hours),
+                    Number(minutes)
+                );
+
+                summaryTime.textContent =
+                    date.toLocaleTimeString(
+                        "ar-EG",
+                        {
+                            hour: "numeric",
+                            minute: "2-digit"
+                        }
+                    );
+
+            } else {
+
+                summaryTime.textContent = "—";
+            }
+        }
+    }
+
+
+    service?.addEventListener(
+        "change",
+        updateSummary
+    );
+
+    bookingDate?.addEventListener(
+        "change",
+        updateSummary
+    );
+
+    bookingTime?.addEventListener(
+        "change",
+        updateSummary
+    );
+
+
+    updateSummary();
+
+
+    /* =====================================================
+       Message Helper
+    ===================================================== */
+
+    function showMessage(
+        message,
+        type = "error"
+    ) {
+
+        if (!bookingMessage) {
+            return;
+        }
+
+        bookingMessage.textContent =
+            message;
+
+        bookingMessage.className =
+            `booking-message ${type}`;
+
+        bookingMessage.style.display =
+            "block";
+    }
+
+
+    function clearMessage() {
+
+        if (!bookingMessage) {
+            return;
+        }
+
+        bookingMessage.textContent = "";
+
+        bookingMessage.className =
+            "booking-message";
+
+        bookingMessage.style.display =
+            "none";
+    }
+
+
+    /* =====================================================
+       Loading State
+    ===================================================== */
+
+    function setLoading(isLoading) {
+
+        if (!bookingSubmit) {
+            return;
+        }
+
+        bookingSubmit.disabled =
+            isLoading;
+
+        if (submitText) {
+            submitText.hidden =
+                isLoading;
+        }
+
+        if (submitLoading) {
+            submitLoading.hidden =
+                !isLoading;
+        }
+    }
+
+
+    /* =====================================================
+       Validation
+    ===================================================== */
+
+    function validatePhone(phone) {
+
+        const cleanPhone =
+            phone.replace(
+                /[\s\-()+]/g,
+                ""
+            );
+
+        return /^[0-9]{10,15}$/.test(
+            cleanPhone
+        );
+    }
+
+
+    function validateForm() {
+
+        if (!service?.value) {
+
+            showMessage(
+                "من فضلك اختر نوع الخدمة."
+            );
+
+            service?.focus();
+
+            return false;
+        }
+
+
+        if (!sessionType?.value) {
+
+            showMessage(
+                "من فضلك اختر نوع الجلسة."
+            );
+
+            sessionType?.focus();
+
+            return false;
+        }
+
+
+        if (!bookingDate?.value) {
+
+            showMessage(
+                "من فضلك اختر تاريخ الجلسة."
+            );
+
+            bookingDate?.focus();
+
+            return false;
+        }
+
+
+        if (!bookingTime?.value) {
+
+            showMessage(
+                "من فضلك اختر وقت الجلسة."
+            );
+
+            bookingTime?.focus();
+
+            return false;
+        }
+
+
+        if (!clientName?.value.trim()) {
+
+            showMessage(
+                "من فضلك اكتب اسمك."
+            );
+
+            clientName?.focus();
+
+            return false;
+        }
+
+
+        if (!clientPhone?.value.trim()) {
+
+            showMessage(
+                "من فضلك اكتب رقم الهاتف."
+            );
+
+            clientPhone?.focus();
+
+            return false;
+        }
+
+
+        if (
+            !validatePhone(
+                clientPhone.value
+            )
+        ) {
+
+            showMessage(
+                "من فضلك أدخل رقم هاتف صحيح."
+            );
+
+            clientPhone?.focus();
+
+            return false;
+        }
+
+
+        if (
+            clientEmail?.value &&
+            !clientEmail.checkValidity()
+        ) {
+
+            showMessage(
+                "من فضلك أدخل بريدًا إلكترونيًا صحيحًا."
+            );
+
+            clientEmail?.focus();
+
+            return false;
+        }
+
+
+        if (!consent?.checked) {
+
+            showMessage(
+                "يجب الموافقة على إرسال بيانات الحجز."
+            );
+
+            consent?.focus();
+
+            return false;
+        }
+
+
+        return true;
+    }
+
+
+    /* =====================================================
+       Submit Booking
+    ===================================================== */
+
+    bookingForm?.addEventListener(
         "submit",
         async (event) => {
 
             event.preventDefault();
 
+            clearMessage();
+
+
+            if (!validateForm()) {
+                return;
+            }
+
+
+            setLoading(true);
+
+
+            /* =============================================
+               Booking Object
+            ============================================= */
 
             const booking = {
 
@@ -82,47 +519,31 @@ document.addEventListener("DOMContentLoaded", () => {
                     providerId,
 
                 provider_name:
-                    provider.name,
+                    provider.nameAr,
 
                 service:
-                    document.getElementById(
-                        "service"
-                    ).value,
+                    service.value,
 
                 session_type:
-                    document.getElementById(
-                        "sessionType"
-                    ).value,
+                    sessionType.value,
 
                 booking_date:
-                    document.getElementById(
-                        "bookingDate"
-                    ).value,
+                    bookingDate.value,
 
                 booking_time:
-                    document.getElementById(
-                        "bookingTime"
-                    ).value,
+                    bookingTime.value,
 
                 client_name:
-                    document.getElementById(
-                        "clientName"
-                    ).value.trim(),
+                    clientName.value.trim(),
 
                 client_phone:
-                    document.getElementById(
-                        "clientPhone"
-                    ).value.trim(),
+                    clientPhone.value.trim(),
 
                 client_email:
-                    document.getElementById(
-                        "clientEmail"
-                    ).value.trim(),
+                    clientEmail?.value.trim() || null,
 
                 notes:
-                    document.getElementById(
-                        "notes"
-                    ).value.trim(),
+                    notes?.value.trim() || null,
 
                 status:
                     "pending"
@@ -130,30 +551,130 @@ document.addEventListener("DOMContentLoaded", () => {
             };
 
 
-            console.log(
-                "Booking ready for Supabase:",
-                booking
-            );
+            try {
+
+                /* =========================================
+                   Check Supabase
+                ========================================= */
+
+                if (
+                    typeof supabaseClient ===
+                    "undefined"
+                ) {
+
+                    throw new Error(
+                        "Supabase client is not available."
+                    );
+                }
 
 
-            /*
-             * هنا بالضبط هنضع Supabase insert
-             *
-             * await supabase
-             *     .from("bookings")
-             *     .insert([booking]);
-             */
+                /* =========================================
+                   Insert Booking
+                ========================================= */
+
+                const {
+                    data,
+                    error
+                } = await supabaseClient
+
+                    .from("bookings")
+
+                    .insert([booking])
+
+                    .select();
 
 
-            document.getElementById(
-                "bookingMessage"
-            ).textContent =
-                "تم تجهيز طلب الحجز بنجاح.";
+                if (error) {
+
+                    console.error(
+                        "Supabase booking error:",
+                        error
+                    );
+
+                    throw error;
+                }
 
 
-            document.getElementById(
-                "bookingMessage"
-            ).classList.add("success");
+                /* =========================================
+                   Success
+                ========================================= */
+
+                console.log(
+                    "Booking created:",
+                    data
+                );
+
+
+                showMessage(
+                    "تم إرسال طلب الحجز بنجاح. سيتم التواصل معك لتأكيد الموعد.",
+                    "success"
+                );
+
+
+                bookingForm.reset();
+
+
+                /*
+                   Restore selected provider
+                */
+
+                if (providerName) {
+                    providerName.textContent =
+                        provider.nameAr;
+                }
+
+                if (summaryProvider) {
+                    summaryProvider.textContent =
+                        provider.nameAr;
+                }
+
+
+                updateSummary();
+
+
+            } catch (error) {
+
+                console.error(
+                    "Booking submission failed:",
+                    error
+                );
+
+
+                let message =
+                    "حدث خطأ أثناء إرسال الحجز. حاول مرة أخرى.";
+
+
+                if (
+                    error &&
+                    error.message
+                ) {
+
+                    console.log(
+                        "Supabase error message:",
+                        error.message
+                    );
+                }
+
+
+                if (
+                    error &&
+                    error.code === "42501"
+                ) {
+
+                    message =
+                        "لا توجد صلاحية لإرسال الحجز. يرجى مراجعة إعدادات Supabase.";
+                }
+
+
+                showMessage(
+                    message,
+                    "error"
+                );
+
+            } finally {
+
+                setLoading(false);
+            }
 
         }
     );
