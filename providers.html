@@ -1,903 +1,428 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>المختصون | Tasbeeh Mohamed</title>
+    <title>المختصون | Tasbeh Mohamed</title>
 
-    <meta
-        name="description"
-        content="اختر المختص المناسب لاحتياجك النفسي واحجز جلستك بسهولة."
-    >
+    <meta name="description"
+        content="تعرف على المختصين في Tasbeh Mohamed واحجز جلستك المناسبة بسهولة.">
 
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap"
-        rel="stylesheet"
-    >
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    >
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
+    <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
 
     <style>
         /* =========================================
-           PROVIDERS PAGE
+           Providers Page
         ========================================= */
 
-        .providers-page {
-            min-height: 100vh;
-            background:
-                radial-gradient(
-                    circle at 85% 10%,
-                    rgba(199, 166, 106, 0.10),
-                    transparent 28%
-                ),
-                var(--bg);
-            padding-top: 110px;
+        .providers-section {
+            padding: 80px 20px;
         }
 
-        .providers-hero {
-            padding: 55px 0 35px;
+        .providers-container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .providers-header {
             text-align: center;
+            margin-bottom: 45px;
         }
 
-        .providers-eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 14px;
-            border: 1px solid var(--gold-border);
-            border-radius: 999px;
-            background: rgba(255,255,255,.72);
-            color: var(--primary);
-            font-size: 13px;
-            font-weight: 700;
-            margin-bottom: 18px;
+        .providers-header h1 {
+            margin-bottom: 12px;
         }
 
-        .providers-eyebrow i {
-            font-size: 12px;
-        }
-
-        .providers-title {
-            margin: 0 auto 16px;
-            max-width: 780px;
-            color: var(--text);
-            font-size: clamp(32px, 5vw, 56px);
-            line-height: 1.15;
-            font-weight: 800;
-            letter-spacing: -1.5px;
-        }
-
-        .providers-description {
-            max-width: 680px;
-            margin: 0 auto;
-            color: var(--text-soft);
-            font-size: 16px;
+        .providers-header p {
+            max-width: 700px;
+            margin: auto;
             line-height: 1.9;
+            opacity: .8;
         }
 
-        /* Selected service */
+        /* Filters */
 
-        .selected-service {
-            display: none;
-            align-items: center;
+        .providers-filters {
+            display: flex;
             justify-content: center;
-            gap: 9px;
-            width: fit-content;
-            margin: 25px auto 0;
-            padding: 10px 17px;
-            border: 1px solid var(--gold-border);
-            border-radius: 999px;
-            background: rgba(155,116,58,.07);
-            color: var(--primary-dark);
-            font-size: 14px;
-            font-weight: 700;
-        }
-
-        .selected-service.show {
-            display: flex;
-        }
-
-        .selected-service i {
-            color: var(--primary);
-        }
-
-        /* Controls */
-
-        .providers-controls {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-            margin: 20px 0 30px;
-            padding: 18px 20px;
-            background: rgba(255,255,255,.75);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .providers-count {
-            color: var(--text-soft);
-            font-size: 14px;
-            font-weight: 600;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
         }
 
         .provider-filter {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .provider-filter label {
-            color: var(--text);
-            font-size: 14px;
-            font-weight: 700;
-        }
-
-        .provider-filter select {
-            min-width: 210px;
-            padding: 11px 14px;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            background: var(--white);
-            color: var(--text);
-            font-family: inherit;
-            font-size: 14px;
-            outline: none;
+            border: 1px solid rgba(155, 116, 58, .35);
+            background: transparent;
+            color: inherit;
+            padding: 10px 18px;
+            border-radius: 30px;
             cursor: pointer;
+            transition: .3s ease;
+            font-family: inherit;
         }
 
-        .provider-filter select:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(155,116,58,.10);
+        .provider-filter:hover,
+        .provider-filter.active {
+            background: #9b743a;
+            color: #fff;
+            border-color: #9b743a;
         }
 
-        /* Providers */
+        /* Grid */
 
         .providers-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 26px;
-            padding-bottom: 55px;
+            gap: 30px;
         }
+
+        /* Card */
 
         .provider-card {
             position: relative;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-sm);
-            transition:
-                transform .3s ease,
-                box-shadow .3s ease,
-                border-color .3s ease;
+            border-radius: 24px;
+            padding: 30px;
+            background: rgba(255, 255, 255, .8);
+            border: 1px solid rgba(155, 116, 58, .18);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, .07);
+            transition: transform .3s ease, box-shadow .3s ease;
         }
 
         .provider-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--gold-border);
-            box-shadow: var(--shadow-md);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 55px rgba(0, 0, 0, .11);
         }
 
-        .provider-card.hidden {
-            display: none;
-        }
-
-        .provider-cover {
-            position: relative;
-            min-height: 115px;
-            background:
-                radial-gradient(
-                    circle at 80% 20%,
-                    rgba(199,166,106,.28),
-                    transparent 34%
-                ),
-                linear-gradient(
-                    135deg,
-                    rgba(155,116,58,.12),
-                    rgba(245,241,234,.9)
-                );
-        }
-
-        .provider-avatar {
-            position: absolute;
-            right: 28px;
-            bottom: -46px;
-            width: 94px;
-            height: 94px;
+        .provider-top {
             display: flex;
             align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            border: 5px solid var(--white);
-            background: linear-gradient(
-                145deg,
-                var(--primary-light),
-                var(--primary)
-            );
-            color: var(--white);
-            font-size: 30px;
-            box-shadow: 0 10px 25px rgba(45,39,31,.13);
-        }
-
-        .provider-content {
-            padding: 62px 28px 28px;
-        }
-
-        .provider-name {
-            margin: 0 0 7px;
-            color: var(--text);
-            font-size: 23px;
-            font-weight: 800;
-        }
-
-        .provider-role {
-            margin: 0 0 16px;
-            color: var(--primary);
-            font-size: 14px;
-            font-weight: 700;
-        }
-
-        .provider-description {
-            margin: 0 0 22px;
-            color: var(--text-soft);
-            font-size: 14px;
-            line-height: 1.9;
-        }
-
-        .provider-specialties {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
+            gap: 20px;
             margin-bottom: 22px;
         }
 
-        .provider-specialty {
-            padding: 7px 11px;
-            border-radius: 999px;
-            background: var(--bg-soft);
-            color: var(--text-soft);
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .provider-meta {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 24px;
-        }
-
-        .provider-meta-item {
+        .provider-image {
+            width: 90px;
+            height: 90px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f5eee4, #e6d4ba);
             display: flex;
             align-items: center;
-            gap: 9px;
-            padding: 12px;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            color: var(--text-soft);
-            font-size: 12px;
+            justify-content: center;
+            color: #9b743a;
+            font-size: 30px;
         }
 
-        .provider-meta-item i {
-            color: var(--primary);
+        .provider-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .provider-info h2 {
+            margin: 0 0 7px;
+            font-size: 23px;
+        }
+
+        .provider-role {
+            margin: 0;
+            opacity: .7;
             font-size: 14px;
         }
 
+        .provider-description {
+            line-height: 1.9;
+            opacity: .82;
+            margin-bottom: 20px;
+        }
+
+        /* Services */
+
+        .provider-services {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        .provider-service {
+            padding: 7px 12px;
+            border-radius: 20px;
+            background: rgba(155, 116, 58, .09);
+            color: #8b652e;
+            font-size: 12px;
+        }
+
+        /* Buttons */
+
         .provider-actions {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
             gap: 10px;
+            flex-wrap: wrap;
         }
 
-        .provider-actions .btn {
-            width: 100%;
+        .provider-btn {
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
             justify-content: center;
-            text-align: center;
+            gap: 8px;
+            padding: 11px 18px;
+            border-radius: 12px;
+            font-family: inherit;
+            font-weight: 600;
+            transition: .3s ease;
         }
 
-        /* Empty state */
+        .provider-btn.primary {
+            background: #9b743a;
+            color: #fff;
+        }
+
+        .provider-btn.primary:hover {
+            background: #7f5c2d;
+            transform: translateY(-2px);
+        }
+
+        .provider-btn.secondary {
+            border: 1px solid rgba(155, 116, 58, .3);
+            color: #9b743a;
+            background: transparent;
+        }
+
+        .provider-btn.secondary:hover {
+            background: rgba(155, 116, 58, .08);
+        }
+
+        /* Loading */
+
+        .providers-loading {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            opacity: .7;
+        }
+
+        .providers-loading i {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        /* Empty */
 
         .providers-empty {
-            display: none;
-            padding: 60px 25px;
+            grid-column: 1 / -1;
             text-align: center;
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
+            padding: 60px 20px;
+            opacity: .7;
         }
 
-        .providers-empty.show {
-            display: block;
+        /* Error */
+
+        .providers-error {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 20px;
+            background: rgba(180, 50, 50, .06);
+            color: #a33;
         }
 
-        .providers-empty-icon {
-            width: 65px;
-            height: 65px;
+        /* Footer */
+
+        .providers-footer {
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .footer-social a {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 18px;
-            border-radius: 50%;
-            background: var(--bg-soft);
-            color: var(--primary);
-            font-size: 22px;
+            text-decoration: none;
+            border: 1px solid rgba(155, 116, 58, .25);
+            color: #9b743a;
+            transition: .3s ease;
         }
 
-        .providers-empty h3 {
-            margin: 0 0 8px;
-            color: var(--text);
-            font-size: 20px;
+        .footer-social a:hover {
+            background: #9b743a;
+            color: #fff;
         }
 
-        .providers-empty p {
-            margin: 0;
-            color: var(--text-soft);
-            line-height: 1.8;
-        }
-
-        /* Bottom note */
-
-        .providers-note {
-            max-width: 760px;
-            margin: 0 auto 70px;
-            padding: 18px 20px;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            border: 1px solid var(--gold-border);
-            border-radius: var(--radius-md);
-            background: rgba(155,116,58,.055);
-            color: var(--text-soft);
+        .footer-credit {
             font-size: 13px;
-            line-height: 1.8;
-        }
-
-        .providers-note i {
-            margin-top: 3px;
-            color: var(--primary);
+            opacity: .65;
         }
 
         /* Responsive */
 
-        @media (max-width: 850px) {
+        @media (max-width: 800px) {
+
             .providers-grid {
                 grid-template-columns: 1fr;
             }
+
+            .provider-card {
+                padding: 24px;
+            }
+
+            .providers-section {
+                padding: 60px 15px;
+            }
         }
 
-        @media (max-width: 650px) {
-            .providers-page {
-                padding-top: 92px;
+        @media (max-width: 500px) {
+
+            .provider-top {
+                align-items: flex-start;
             }
 
-            .providers-hero {
-                padding: 35px 0 25px;
+            .provider-image {
+                width: 70px;
+                height: 70px;
             }
 
-            .providers-title {
-                font-size: 34px;
-            }
-
-            .providers-description {
-                font-size: 14px;
-            }
-
-            .providers-controls {
-                align-items: stretch;
-                flex-direction: column;
-            }
-
-            .provider-filter {
-                align-items: stretch;
-                flex-direction: column;
-            }
-
-            .provider-filter select {
-                width: 100%;
-            }
-
-            .provider-content {
-                padding: 58px 20px 22px;
-            }
-
-            .provider-avatar {
-                right: 20px;
-            }
-
-            .provider-meta {
-                grid-template-columns: 1fr;
+            .provider-info h2 {
+                font-size: 19px;
             }
 
             .provider-actions {
-                grid-template-columns: 1fr;
+                flex-direction: column;
             }
-        }
 
-        html[dir="ltr"] .provider-avatar {
-            right: auto;
-            left: 28px;
-        }
-
-        @media (max-width: 650px) {
-            html[dir="ltr"] .provider-avatar {
-                left: 20px;
+            .provider-btn {
+                width: 100%;
             }
         }
     </style>
 </head>
 
+
 <body>
 
     <!-- =========================================
-         HEADER
+         Header
     ========================================= -->
 
-    <header class="site-header" id="siteHeader">
-        <div class="container header-inner">
+    <header class="site-header">
 
-            <a href="index.html" class="brand" aria-label="Tasbeeh Mohamed">
-                <span class="brand-mark">
-                    <i class="fa-solid fa-heart-pulse"></i>
-                </span>
+        <div class="container">
 
-                <span class="brand-text">
-                    <strong class="brand-name">Tasbeeh Mohamed</strong>
-                    <span class="brand-subtitle">
-                        العلاج النفسي والصحة النفسية
-                    </span>
-                </span>
+            <a href="index.html" class="logo">
+                Tasbeh Mohamed
             </a>
 
-            <nav class="navbar" id="navbar">
+            <nav class="navbar">
 
-                <a href="index.html#home" data-i18n="navHome">
+                <a href="index.html">
                     الرئيسية
                 </a>
 
-                <a href="index.html#how" data-i18n="navHow">
-                    كيف نبدأ
+                <a href="providers.html" class="active">
+                    المختصون
                 </a>
 
-                <a href="index.html#services" data-i18n="navServices">
+                <a href="index.html#services">
                     الخدمات
                 </a>
 
-                <a href="index.html#journey" data-i18n="navJourney">
-                    الرحلة
-                </a>
-
-                <a href="index.html#about" data-i18n="navAbout">
-                    عن المنصة
-                </a>
-
-                <a href="index.html#faq" data-i18n="navFaq">
-                    الأسئلة الشائعة
-                </a>
-
-                <button
-                    type="button"
-                    class="language-switch"
-                    id="languageSwitch"
-                    aria-label="Switch language"
-                >
-                    EN
-                </button>
-
-                <a
-                    href="index.html#assessment"
-                    class="btn btn-primary nav-cta"
-                    data-i18n="startNow"
-                >
-                    ابدأ الآن
+                <a href="index.html#contact">
+                    تواصل معنا
                 </a>
 
             </nav>
 
-            <button
-                type="button"
-                class="menu-toggle"
-                id="menuToggle"
-                aria-label="فتح القائمة"
-                aria-expanded="false"
-            >
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
         </div>
+
     </header>
 
 
     <!-- =========================================
-         PAGE
+         Providers Section
     ========================================= -->
 
-    <main class="providers-page">
-
-        <section class="providers-hero">
-
-            <div class="container">
-
-                <div class="providers-eyebrow">
-                    <i class="fa-solid fa-user-group"></i>
-                    <span data-i18n="providersEyebrow">
-                        اختر المختص المناسب
-                    </span>
-                </div>
-
-                <h1 class="providers-title" data-i18n="providersTitle">
-                    المختصون المتاحون لجلساتك
-                </h1>
-
-                <p class="providers-description" data-i18n="providersDescription">
-                    بعد اختيار نوع الدعم الذي تبحث عنه، يمكنك التعرف على المختصين
-                    المتاحين والانتقال إلى الملف الشخصي ثم حجز الجلسة المناسبة لك.
-                </p>
-
-                <div
-                    class="selected-service"
-                    id="selectedService"
-                    aria-live="polite"
-                >
-                    <i class="fa-solid fa-circle-check"></i>
-
-                    <span data-i18n="selectedServiceLabel">
-                        الخدمة المختارة:
-                    </span>
-
-                    <strong id="selectedServiceName"></strong>
-                </div>
-
-            </div>
-
-        </section>
-
+    <main>
 
         <section class="providers-section">
 
-            <div class="container">
+            <div class="providers-container">
 
-                <div class="providers-controls">
+                <div class="providers-header">
 
-                    <div class="providers-count" id="providersCount">
-                        <span data-i18n="providersCountPrefix">
-                            عدد المختصين:
-                        </span>
+                    <h1>
+                        المختصون
+                    </h1>
 
-                        <strong id="visibleCount">2</strong>
-                    </div>
-
-                    <div class="provider-filter">
-
-                        <label for="serviceFilter" data-i18n="filterLabel">
-                            فلترة حسب الخدمة
-                        </label>
-
-                        <select id="serviceFilter">
-
-                            <option
-                                value="all"
-                                data-i18n="filterAll"
-                            >
-                                كل الخدمات
-                            </option>
-
-                            <option
-                                value="Anxiety & Stress"
-                                data-i18n="serviceAnxiety"
-                            >
-                                القلق والتوتر
-                            </option>
-
-                            <option
-                                value="Relationships"
-                                data-i18n="serviceRelationships"
-                            >
-                                العلاقات
-                            </option>
-
-                            <option
-                                value="Self Esteem"
-                                data-i18n="serviceSelf"
-                            >
-                                تقدير الذات
-                            </option>
-
-                            <option
-                                value="Mental Health"
-                                data-i18n="serviceMental"
-                            >
-                                الصحة النفسية
-                            </option>
-
-                            <option
-                                value="Family Support"
-                                data-i18n="serviceFamily"
-                            >
-                                الدعم الأسري
-                            </option>
-
-                            <option
-                                value="Recovery & Change"
-                                data-i18n="serviceRecovery"
-                            >
-                                رحلة التعافي والتغيير
-                            </option>
-
-                        </select>
-
-                    </div>
-
-                </div>
-
-
-                <!-- =====================================
-                     PROVIDERS
-                ====================================== -->
-
-                <div class="providers-grid" id="providersGrid">
-
-
-                    <!-- TASBEEH -->
-                    <article
-                        class="provider-card"
-                        data-provider="tasbeeh-mohamed"
-                        data-services="Anxiety & Stress,Relationships,Self Esteem,Mental Health,Family Support,Recovery & Change"
-                    >
-
-                        <div class="provider-cover">
-
-                            <div class="provider-avatar">
-                                <i class="fa-solid fa-user"></i>
-                            </div>
-
-                        </div>
-
-                        <div class="provider-content">
-
-                            <h2 class="provider-name">
-                                Tasbeeh Mohamed
-                            </h2>
-
-                            <p
-                                class="provider-role"
-                                data-i18n="providerRole"
-                            >
-                                مختصة في الدعم النفسي
-                            </p>
-
-                            <p
-                                class="provider-description"
-                                data-i18n="tasbeehDescription"
-                            >
-                                مساحة داعمة تساعدك على التعبير عن مشاعرك وفهم
-                                التحديات التي تمر بها والعمل على خطوات مناسبة
-                                لاحتياجاتك النفسية.
-                            </p>
-
-                            <div class="provider-specialties">
-
-                                <span
-                                    class="provider-specialty"
-                                    data-i18n="serviceAnxiety"
-                                >
-                                    القلق والتوتر
-                                </span>
-
-                                <span
-                                    class="provider-specialty"
-                                    data-i18n="serviceRelationships"
-                                >
-                                    العلاقات
-                                </span>
-
-                                <span
-                                    class="provider-specialty"
-                                    data-i18n="serviceMental"
-                                >
-                                    الصحة النفسية
-                                </span>
-
-                            </div>
-
-                            <div class="provider-meta">
-
-                                <div class="provider-meta-item">
-                                    <i class="fa-solid fa-video"></i>
-
-                                    <span data-i18n="onlineSession">
-                                        جلسات أونلاين
-                                    </span>
-                                </div>
-
-                                <div class="provider-meta-item">
-                                    <i class="fa-regular fa-clock"></i>
-
-                                    <span data-i18n="sessionDuration">
-                                        مدة الجلسة تحدد عند الحجز
-                                    </span>
-                                </div>
-
-                            </div>
-
-                            <div class="provider-actions">
-
-                                <a
-                                    href="provider.html?id=tasbeeh-mohamed"
-                                    class="btn btn-secondary"
-                                    data-i18n="viewProfile"
-                                >
-                                    الملف الشخصي
-                                </a>
-
-                                <a
-                                    href="booking.html?provider=tasbeeh-mohamed"
-                                    class="btn btn-primary"
-                                    data-i18n="bookNow"
-                                >
-                                    احجز جلسة
-                                </a>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- MARIAM -->
-                    <article
-                        class="provider-card"
-                        data-provider="mariam-mahmoud"
-                        data-services="Anxiety & Stress,Relationships,Self Esteem,Mental Health,Family Support,Recovery & Change"
-                    >
-
-                        <div class="provider-cover">
-
-                            <div class="provider-avatar">
-                                <i class="fa-solid fa-user"></i>
-                            </div>
-
-                        </div>
-
-                        <div class="provider-content">
-
-                            <h2 class="provider-name">
-                                Mariam Mahmoud
-                            </h2>
-
-                            <p
-                                class="provider-role"
-                                data-i18n="providerRole"
-                            >
-                                مختصة في الدعم النفسي
-                            </p>
-
-                            <p
-                                class="provider-description"
-                                data-i18n="mariamDescription"
-                            >
-                                جلسات ومساحة حوارية تساعد على فهم المشاعر
-                                والتعامل مع الضغوط والتحديات اليومية بصورة
-                                منظمة وداعمة.
-                            </p>
-
-                            <div class="provider-specialties">
-
-                                <span
-                                    class="provider-specialty"
-                                    data-i18n="serviceSelf"
-                                >
-                                    تقدير الذات
-                                </span>
-
-                                <span
-                                    class="provider-specialty"
-                                    data-i18n="serviceRelationships"
-                                >
-                                    العلاقات
-                                </span>
-
-                                <span
-                                    class="provider-specialty"
-                                    data-i18n="serviceFamily"
-                                >
-                                    الدعم الأسري
-                                </span>
-
-                            </div>
-
-                            <div class="provider-meta">
-
-                                <div class="provider-meta-item">
-                                    <i class="fa-solid fa-video"></i>
-
-                                    <span data-i18n="onlineSession">
-                                        جلسات أونلاين
-                                    </span>
-                                </div>
-
-                                <div class="provider-meta-item">
-                                    <i class="fa-regular fa-clock"></i>
-
-                                    <span data-i18n="sessionDuration">
-                                        مدة الجلسة تحدد عند الحجز
-                                    </span>
-                                </div>
-
-                            </div>
-
-                            <div class="provider-actions">
-
-                                <a
-                                    href="provider.html?id=mariam-mahmoud"
-                                    class="btn btn-secondary"
-                                    data-i18n="viewProfile"
-                                >
-                                    الملف الشخصي
-                                </a>
-
-                                <a
-                                    href="booking.html?provider=mariam-mahmoud"
-                                    class="btn btn-primary"
-                                    data-i18n="bookNow"
-                                >
-                                    احجز جلسة
-                                </a>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-                </div>
-
-
-                <!-- EMPTY -->
-
-                <div class="providers-empty" id="providersEmpty">
-
-                    <div class="providers-empty-icon">
-                        <i class="fa-regular fa-face-meh"></i>
-                    </div>
-
-                    <h3 data-i18n="noProvidersTitle">
-                        لا يوجد مختص متاح لهذه الخدمة حاليًا
-                    </h3>
-
-                    <p data-i18n="noProvidersDescription">
-                        يمكنك اختيار خدمة أخرى أو عرض جميع المختصين المتاحين.
+                    <p>
+                        تعرف على فريق المختصين واختر الشخص المناسب
+                        لاحتياجاتك واحجز جلستك بسهولة.
                     </p>
 
                 </div>
 
 
-                <!-- NOTE -->
+                <!-- Filters -->
 
-                <div class="providers-note">
+                <div
+                    class="providers-filters"
+                    id="providersFilters">
 
-                    <i class="fa-solid fa-circle-info"></i>
+                    <button
+                        type="button"
+                        class="provider-filter active"
+                        data-filter="all">
 
-                    <span data-i18n="providersNote">
-                        المعلومات المعروضة هنا مخصصة للتعريف بالخدمات المتاحة.
-                        سيتم استكمال بيانات كل مختص ومواعيد الجلسات عند ربط
-                        الصفحة بقاعدة البيانات.
-                    </span>
+                        الكل
+
+                    </button>
+
+                </div>
+
+
+                <!-- Providers -->
+
+                <div
+                    class="providers-grid"
+                    id="providersGrid">
+
+                    <div class="providers-loading">
+
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+
+                        <p>
+                            جاري تحميل المختصين...
+                        </p>
+
+                    </div>
 
                 </div>
 
@@ -909,321 +434,531 @@
 
 
     <!-- =========================================
-         FOOTER
+         Footer
     ========================================= -->
 
-    <footer class="site-footer">
+    <footer class="providers-footer">
 
-        <div class="container footer-grid">
+        <div class="footer-social">
 
-            <div class="footer-brand">
+            <a
+                href="https://www.facebook.com/share/g/19NaR3nXEC/"
+                target="_blank"
+                rel="noopener"
+                aria-label="Facebook">
 
-                <div class="brand">
+                <i class="fa-brands fa-facebook-f"></i>
 
-                    <span class="brand-mark">
-                        <i class="fa-solid fa-heart-pulse"></i>
-                    </span>
+            </a>
 
-                    <span class="brand-text">
-                        <strong class="brand-name">
-                            Tasbeeh Mohamed
-                        </strong>
+            <a
+                href="https://www.instagram.com/handmade.mirrors_?stkn=d2dpMzF1bXozYm1x"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram">
 
-                        <span class="brand-subtitle">
-                            العلاج النفسي والصحة النفسية
-                        </span>
-                    </span>
+                <i class="fa-brands fa-instagram"></i>
 
-                </div>
+            </a>
 
-                <p data-i18n="footerDescription">
-                    مساحة هادئة وداعمة تهدف إلى مساعدتك على فهم نفسك
-                    والتعامل مع التحديات النفسية بخطوات أكثر وضوحًا.
-                </p>
+            <a
+                href="https://wa.me/201003089153"
+                target="_blank"
+                rel="noopener"
+                aria-label="WhatsApp">
 
-                <div class="footer-social">
+                <i class="fa-brands fa-whatsapp"></i>
 
-                    <a
-                        href="https://wa.me/201003089153"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="WhatsApp"
-                    >
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <div class="footer-links">
-
-                <h3 data-i18n="footerLinksTitle">
-                    روابط مهمة
-                </h3>
-
-                <a
-                    href="index.html#home"
-                    data-i18n="navHome"
-                >
-                    الرئيسية
-                </a>
-
-                <a
-                    href="providers.html"
-                    data-i18n="footerProviders"
-                >
-                    المختصون
-                </a>
-
-                <a
-                    href="index.html#services"
-                    data-i18n="navServices"
-                >
-                    الخدمات
-                </a>
-
-                <a
-                    href="index.html#faq"
-                    data-i18n="navFaq"
-                >
-                    الأسئلة الشائعة
-                </a>
-
-            </div>
+            </a>
 
         </div>
 
-
-        <div class="footer-bottom">
-
-            <div class="container">
-
-                <p>
-                    ©
-                    <span id="currentYear"></span>
-                    Tasbeeh Mohamed.
-                    <span data-i18n="rights">
-                        جميع الحقوق محفوظة.
-                    </span>
-                </p>
-
-                <p class="footer-credit">
-                    Prepared By: Eng Ahmad Ramadan
-                </p>
-
-            </div>
-
+        <div class="footer-credit">
+            Prepared By: Eng Ahmad Ramadan
         </div>
 
     </footer>
 
 
     <!-- =========================================
-         PAGE SCRIPT
+         Supabase
     ========================================= -->
 
-    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="supabase-config.js"></script>
+
+
+    <!-- =========================================
+         Providers JavaScript
+    ========================================= -->
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
+
+        document.addEventListener("DOMContentLoaded", async () => {
 
             "use strict";
 
-            const serviceFilter =
-                document.getElementById("serviceFilter");
 
-            const providerCards =
-                Array.from(
-                    document.querySelectorAll(".provider-card")
-                );
+            /* =========================================
+               Elements
+            ========================================= */
 
-            const providersEmpty =
-                document.getElementById("providersEmpty");
+            const providersGrid =
+                document.getElementById("providersGrid");
 
-            const visibleCount =
-                document.getElementById("visibleCount");
-
-            const selectedService =
-                document.getElementById("selectedService");
-
-            const selectedServiceName =
-                document.getElementById("selectedServiceName");
-
-            const params =
-                new URLSearchParams(window.location.search);
-
-            const requestedService =
-                params.get("service");
+            const providersFilters =
+                document.getElementById("providersFilters");
 
 
-            /*
-             * Service names shown to the user.
-             */
-
-            const serviceNames = {
-
-                "Anxiety & Stress":
-                    "القلق والتوتر",
-
-                "Relationships":
-                    "العلاقات",
-
-                "Self Esteem":
-                    "تقدير الذات",
-
-                "Mental Health":
-                    "الصحة النفسية",
-
-                "Family Support":
-                    "الدعم الأسري",
-
-                "Recovery & Change":
-                    "رحلة التعافي والتغيير"
-
-            };
-
-
-            /*
-             * Convert URL service into filter value.
-             */
+            /* =========================================
+               Check Supabase
+            ========================================= */
 
             if (
-                requestedService &&
-                serviceNames[requestedService]
+                typeof supabaseClient === "undefined" ||
+                !supabaseClient
             ) {
 
-                serviceFilter.value =
-                    requestedService;
+                providersGrid.innerHTML = `
+                    <div class="providers-error">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <p>
+                            تعذر الاتصال بقاعدة البيانات.
+                        </p>
+                    </div>
+                `;
 
-                selectedServiceName.textContent =
-                    serviceNames[requestedService];
-
-                selectedService.classList.add("show");
+                return;
             }
 
 
-            /*
-             * Filter providers.
-             */
+            /* =========================================
+               Escape HTML
+            ========================================= */
 
-            function filterProviders(service) {
+            function escapeHTML(value) {
 
-                let count = 0;
+                if (value === null || value === undefined) {
+                    return "";
+                }
 
-                providerCards.forEach(card => {
+                return String(value)
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#039;");
+            }
 
-                    const services =
-                        (card.dataset.services || "")
-                        .split(",")
-                        .map(item => item.trim());
 
-                    const matches =
-                        service === "all" ||
-                        services.includes(service);
+            /* =========================================
+               Get Providers
+            ========================================= */
 
-                    card.classList.toggle(
-                        "hidden",
-                        !matches
+            let providers = [];
+
+
+            async function loadProviders() {
+
+                providersGrid.innerHTML = `
+                    <div class="providers-loading">
+
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+
+                        <p>
+                            جاري تحميل المختصين...
+                        </p>
+
+                    </div>
+                `;
+
+
+                const { data, error } =
+                    await supabaseClient
+                        .from("providers")
+                        .select(`
+                            id,
+                            name_ar,
+                            name_en,
+                            slug,
+                            role_ar,
+                            role_en,
+                            description_ar,
+                            description_en,
+                            services,
+                            session_types,
+                            image_url,
+                            is_active
+                        `)
+                        .eq("is_active", true)
+                        .order("id", {
+                            ascending: true
+                        });
+
+
+                if (error) {
+
+                    console.error(
+                        "Supabase providers error:",
+                        error
                     );
 
-                    if (matches) {
-                        count++;
-                    }
+                    providersGrid.innerHTML = `
+                        <div class="providers-error">
+
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+
+                            <p>
+                                حدث خطأ أثناء تحميل المختصين.
+                            </p>
+
+                        </div>
+                    `;
+
+                    return;
+                }
+
+
+                providers = data || [];
+
+
+                if (!providers.length) {
+
+                    providersGrid.innerHTML = `
+                        <div class="providers-empty">
+
+                            <i class="fa-solid fa-user-group"></i>
+
+                            <p>
+                                لا يوجد مختصون متاحون حاليًا.
+                            </p>
+
+                        </div>
+                    `;
+
+                    return;
+                }
+
+
+                buildFilters();
+
+                renderProviders(providers);
+
+            }
+
+
+            /* =========================================
+               Build Filters
+            ========================================= */
+
+            function buildFilters() {
+
+                const allServices = [];
+
+
+                providers.forEach(provider => {
+
+                    const services =
+                        Array.isArray(provider.services)
+                            ? provider.services
+                            : [];
+
+
+                    services.forEach(service => {
+
+                        if (
+                            service &&
+                            !allServices.includes(service)
+                        ) {
+
+                            allServices.push(service);
+
+                        }
+
+                    });
 
                 });
 
-                visibleCount.textContent = count;
 
-                providersEmpty.classList.toggle(
-                    "show",
-                    count === 0
-                );
-            }
+                providersFilters.innerHTML = `
+                    <button
+                        type="button"
+                        class="provider-filter active"
+                        data-filter="all">
+
+                        الكل
+
+                    </button>
+                `;
 
 
-            /*
-             * Filter change.
-             */
+                allServices.forEach(service => {
 
-            if (serviceFilter) {
+                    const button =
+                        document.createElement("button");
 
-                serviceFilter.addEventListener(
-                    "change",
-                    () => {
+                    button.type = "button";
 
-                        const value =
-                            serviceFilter.value;
+                    button.className =
+                        "provider-filter";
 
-                        if (value === "all") {
+                    button.dataset.filter =
+                        service;
 
-                            selectedService.classList.remove(
-                                "show"
-                            );
+                    button.textContent =
+                        service;
 
-                        } else {
 
-                            selectedServiceName.textContent =
-                                serviceNames[value] || value;
+                    providersFilters.appendChild(button);
 
-                            selectedService.classList.add(
-                                "show"
-                            );
-                        }
+                });
 
-                        filterProviders(value);
 
-                        const url =
-                            new URL(
-                                window.location.href
-                            );
+                providersFilters
+                    .querySelectorAll(".provider-filter")
+                    .forEach(button => {
 
-                        if (value === "all") {
-                            url.searchParams.delete("service");
-                        } else {
-                            url.searchParams.set(
-                                "service",
-                                value
-                            );
-                        }
+                        button.addEventListener(
+                            "click",
+                            () => {
 
-                        window.history.replaceState(
-                            {},
-                            "",
-                            url
+                                providersFilters
+                                    .querySelectorAll(
+                                        ".provider-filter"
+                                    )
+                                    .forEach(btn => {
+
+                                        btn.classList.remove(
+                                            "active"
+                                        );
+
+                                    });
+
+
+                                button.classList.add(
+                                    "active"
+                                );
+
+
+                                const filter =
+                                    button.dataset.filter;
+
+
+                                if (filter === "all") {
+
+                                    renderProviders(
+                                        providers
+                                    );
+
+                                    return;
+                                }
+
+
+                                const filtered =
+                                    providers.filter(
+                                        provider => {
+
+                                            const services =
+                                                Array.isArray(
+                                                    provider.services
+                                                )
+                                                    ? provider.services
+                                                    : [];
+
+
+                                            return services.includes(
+                                                filter
+                                            );
+
+                                        }
+                                    );
+
+
+                                renderProviders(
+                                    filtered
+                                );
+
+                            }
                         );
-                    }
-                );
+
+                    });
 
             }
 
 
-            /*
-             * Initial filtering.
-             */
+            /* =========================================
+               Render Providers
+            ========================================= */
 
-            filterProviders(
-                serviceFilter
-                    ? serviceFilter.value
-                    : "all"
-            );
+            function renderProviders(list) {
+
+                if (!list.length) {
+
+                    providersGrid.innerHTML = `
+                        <div class="providers-empty">
+
+                            <i class="fa-solid fa-magnifying-glass"></i>
+
+                            <p>
+                                لا يوجد مختص متاح لهذه الخدمة.
+                            </p>
+
+                        </div>
+                    `;
+
+                    return;
+                }
 
 
-            /*
-             * Footer year.
-             */
+                providersGrid.innerHTML =
+                    list.map(provider => {
 
-            const currentYear =
-                document.getElementById("currentYear");
+                        const services =
+                            Array.isArray(provider.services)
+                                ? provider.services
+                                : [];
 
-            if (currentYear) {
-                currentYear.textContent =
-                    new Date().getFullYear();
+
+                        const image =
+                            provider.image_url;
+
+
+                        const imageHTML = image
+
+                            ? `
+                                <img
+                                    src="${escapeHTML(image)}"
+                                    alt="${escapeHTML(
+                                        provider.name_ar
+                                    )}"
+                                    loading="lazy"
+                                >
+                            `
+
+                            : `
+                                <i class="fa-solid fa-user"></i>
+                            `;
+
+
+                        const servicesHTML =
+                            services.map(service => {
+
+                                return `
+                                    <span class="provider-service">
+                                        ${escapeHTML(service)}
+                                    </span>
+                                `;
+
+                            }).join("");
+
+
+                        return `
+
+                            <article
+                                class="provider-card"
+                                data-provider="${escapeHTML(
+                                    provider.slug
+                                )}">
+
+                                <div class="provider-top">
+
+                                    <div class="provider-image">
+
+                                        ${imageHTML}
+
+                                    </div>
+
+
+                                    <div class="provider-info">
+
+                                        <h2>
+                                            ${escapeHTML(
+                                                provider.name_ar
+                                            )}
+                                        </h2>
+
+                                        <p class="provider-role">
+
+                                            ${escapeHTML(
+                                                provider.role_ar ||
+                                                provider.role_en ||
+                                                ""
+                                            )}
+
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="provider-description">
+
+                                    ${escapeHTML(
+                                        provider.description_ar ||
+                                        provider.description_en ||
+                                        ""
+                                    )}
+
+                                </div>
+
+
+                                <div class="provider-services">
+
+                                    ${servicesHTML}
+
+                                </div>
+
+
+                                <div class="provider-actions">
+
+                                    <a
+                                        href="provider.html?id=${encodeURIComponent(
+                                            provider.slug
+                                        )}"
+                                        class="provider-btn secondary">
+
+                                        <i class="fa-solid fa-user"></i>
+
+                                        الملف الشخصي
+
+                                    </a>
+
+
+                                    <a
+                                        href="booking.html?provider=${encodeURIComponent(
+                                            provider.slug
+                                        )}"
+                                        class="provider-btn primary">
+
+                                        <i class="fa-solid fa-calendar-check"></i>
+
+                                        احجز جلسة
+
+                                    </a>
+
+                                </div>
+
+                            </article>
+
+                        `;
+
+                    }).join("");
+
             }
+
+
+            /* =========================================
+               Start
+            ========================================= */
+
+            await loadProviders();
 
         });
+
     </script>
 
 </body>
-  </html>
+
+</html>
