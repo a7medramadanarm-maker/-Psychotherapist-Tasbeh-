@@ -1,6 +1,6 @@
 /* =========================================================
 Booking System
-Tasbeeh Mohamed - Psychotherapy Website
+Tasbeh Mohamed - Psychological Therapy & Mental Health
 Supabase Version
 WhatsApp: Disabled on Booking Page
 ========================================================= */
@@ -14,15 +14,17 @@ document.addEventListener("DOMContentLoaded", () => {
 ===================================================== */
 
 const providers = {
-    "tasbeeh-mohamed": {
+
+    "tasbeh-mohamed": {
         nameAr: "تسبيح محمد",
-        nameEn: "Tasbeeh Mohamed"
+        nameEn: "Tasbeh Mohamed"
     },
 
     "mariam-mahmoud": {
         nameAr: "مريم محمود",
         nameEn: "Mariam Mahmoud"
     }
+
 };
 
 
@@ -30,51 +32,91 @@ const providers = {
    Elements
 ===================================================== */
 
-const bookingForm = document.getElementById("bookingForm");
+const bookingForm =
+    document.getElementById("bookingForm");
 
-const providerName = document.getElementById("providerName");
-const summaryProvider = document.getElementById("summaryProvider");
+const providerName =
+    document.getElementById("providerName");
 
-const service = document.getElementById("service");
-const sessionType = document.getElementById("sessionType");
+const summaryProvider =
+    document.getElementById("summaryProvider");
 
-const bookingDate = document.getElementById("bookingDate");
-const bookingTime = document.getElementById("bookingTime");
+const service =
+    document.getElementById("service");
 
-const clientName = document.getElementById("clientName");
-const clientPhone = document.getElementById("clientPhone");
-const clientEmail = document.getElementById("clientEmail");
+const sessionType =
+    document.getElementById("sessionType");
 
-const notes = document.getElementById("notes");
-const consent = document.getElementById("consent");
+const bookingDate =
+    document.getElementById("bookingDate");
 
-const bookingSubmit = document.getElementById("bookingSubmit");
-const bookingMessage = document.getElementById("bookingMessage");
+const bookingTime =
+    document.getElementById("bookingTime");
 
-const submitText = document.querySelector(".submit-text");
-const submitLoading = document.querySelector(".submit-loading");
+const clientName =
+    document.getElementById("clientName");
 
-const summaryService = document.getElementById("summaryService");
-const summaryDate = document.getElementById("summaryDate");
-const summaryTime = document.getElementById("summaryTime");
+const clientPhone =
+    document.getElementById("clientPhone");
+
+const clientEmail =
+    document.getElementById("clientEmail");
+
+const notes =
+    document.getElementById("notes");
+
+const consent =
+    document.getElementById("consent");
+
+const bookingSubmit =
+    document.getElementById("bookingSubmit");
+
+const bookingMessage =
+    document.getElementById("bookingMessage");
+
+const submitText =
+    document.querySelector(".submit-text");
+
+const submitLoading =
+    document.querySelector(".submit-loading");
+
+const summaryService =
+    document.getElementById("summaryService");
+
+const summaryDate =
+    document.getElementById("summaryDate");
+
+const summaryTime =
+    document.getElementById("summaryTime");
 
 
 /* =====================================================
    Get Provider
 ===================================================== */
 
-const params = new URLSearchParams(
-    window.location.search
-);
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
 
-const providerId = params.get("provider");
+const providerId =
+    params.get("provider");
 
-if (!providerId || !providers[providerId]) {
-    window.location.href = "providers.html";
+
+if (
+    !providerId ||
+    !providers[providerId]
+) {
+
+    window.location.href =
+        "providers.html";
+
     return;
 }
 
-const provider = providers[providerId];
+
+const provider =
+    providers[providerId];
 
 
 /* =====================================================
@@ -82,11 +124,15 @@ const provider = providers[providerId];
 ===================================================== */
 
 if (providerName) {
-    providerName.textContent = provider.nameAr;
+
+    providerName.textContent =
+        provider.nameAr;
 }
 
 if (summaryProvider) {
-    summaryProvider.textContent = provider.nameAr;
+
+    summaryProvider.textContent =
+        provider.nameAr;
 }
 
 
@@ -96,17 +142,21 @@ if (summaryProvider) {
 
 if (bookingDate) {
 
-    const today = new Date();
+    const today =
+        new Date();
 
-    const year = today.getFullYear();
+    const year =
+        today.getFullYear();
 
-    const month = String(
-        today.getMonth() + 1
-    ).padStart(2, "0");
+    const month =
+        String(
+            today.getMonth() + 1
+        ).padStart(2, "0");
 
-    const day = String(
-        today.getDate()
-    ).padStart(2, "0");
+    const day =
+        String(
+            today.getDate()
+        ).padStart(2, "0");
 
     bookingDate.min =
         `${year}-${month}-${day}`;
@@ -122,20 +172,33 @@ const selectedService =
         "tasbeehSelectedService"
     );
 
-if (selectedService && service) {
+
+if (
+    selectedService &&
+    service
+) {
 
     const options =
-        Array.from(service.options);
-
-    const matchingOption =
-        options.find(option =>
-            option.value === selectedService ||
-            option.textContent.trim() === selectedService
+        Array.from(
+            service.options
         );
 
+    const matchingOption =
+        options.find(
+            option =>
+                option.value ===
+                    selectedService ||
+                option.textContent.trim() ===
+                    selectedService
+        );
+
+
     if (matchingOption) {
-        service.value = matchingOption.value;
+
+        service.value =
+            matchingOption.value;
     }
+
 
     sessionStorage.removeItem(
         "tasbeehSelectedService"
@@ -144,7 +207,7 @@ if (selectedService && service) {
 
 
 /* =====================================================
-   Update Booking Summary
+   Update Summary
 ===================================================== */
 
 function updateSummary() {
@@ -172,10 +235,11 @@ function updateSummary() {
 
         if (bookingDate?.value) {
 
-            const date = new Date(
-                bookingDate.value +
-                "T00:00:00"
-            );
+            const date =
+                new Date(
+                    bookingDate.value +
+                    "T00:00:00"
+                );
 
             summaryDate.textContent =
                 date.toLocaleDateString(
@@ -189,7 +253,8 @@ function updateSummary() {
 
         } else {
 
-            summaryDate.textContent = "—";
+            summaryDate.textContent =
+                "—";
         }
     }
 
@@ -200,15 +265,22 @@ function updateSummary() {
 
         if (bookingTime?.value) {
 
-            const [hours, minutes] =
+            const [
+                hours,
+                minutes
+            ] =
                 bookingTime.value.split(":");
 
-            const date = new Date();
+
+            const date =
+                new Date();
+
 
             date.setHours(
                 Number(hours),
                 Number(minutes)
             );
+
 
             summaryTime.textContent =
                 date.toLocaleTimeString(
@@ -221,17 +293,16 @@ function updateSummary() {
 
         } else {
 
-            summaryTime.textContent = "—";
+            summaryTime.textContent =
+                "—";
         }
     }
 }
 
 
 /* =====================================================
-   Form Change Events
-   IMPORTANT:
-   These events ONLY update the summary.
-   No WhatsApp action exists here.
+   Form Events
+   No WhatsApp / No Redirect
 ===================================================== */
 
 service?.addEventListener(
@@ -239,23 +310,34 @@ service?.addEventListener(
     updateSummary
 );
 
+
 sessionType?.addEventListener(
     "change",
     () => {
-        // Session type only changes the selected value.
-        // No redirect and no WhatsApp action.
+
+        /*
+         * Session type only changes
+         * the selected value.
+         *
+         * No WhatsApp.
+         * No redirect.
+         * No external link.
+         */
     }
 );
+
 
 bookingDate?.addEventListener(
     "change",
     updateSummary
 );
 
+
 bookingTime?.addEventListener(
     "change",
     updateSummary
 );
+
 
 updateSummary();
 
@@ -273,12 +355,17 @@ function showMessage(
         return;
     }
 
-    bookingMessage.textContent = message;
+
+    bookingMessage.textContent =
+        message;
+
 
     bookingMessage.className =
         `booking-message ${type}`;
 
-    bookingMessage.style.display = "block";
+
+    bookingMessage.style.display =
+        "block";
 }
 
 
@@ -288,12 +375,17 @@ function clearMessage() {
         return;
     }
 
-    bookingMessage.textContent = "";
+
+    bookingMessage.textContent =
+        "";
+
 
     bookingMessage.className =
         "booking-message";
 
-    bookingMessage.style.display = "none";
+
+    bookingMessage.style.display =
+        "none";
 }
 
 
@@ -301,20 +393,30 @@ function clearMessage() {
    Loading State
 ===================================================== */
 
-function setLoading(isLoading) {
+function setLoading(
+    isLoading
+) {
 
     if (!bookingSubmit) {
         return;
     }
 
-    bookingSubmit.disabled = isLoading;
+
+    bookingSubmit.disabled =
+        isLoading;
+
 
     if (submitText) {
-        submitText.hidden = isLoading;
+
+        submitText.hidden =
+            isLoading;
     }
 
+
     if (submitLoading) {
-        submitLoading.hidden = !isLoading;
+
+        submitLoading.hidden =
+            !isLoading;
     }
 }
 
@@ -323,13 +425,16 @@ function setLoading(isLoading) {
    Phone Validation
 ===================================================== */
 
-function validatePhone(phone) {
+function validatePhone(
+    phone
+) {
 
     const cleanPhone =
         phone.replace(
             /[\s\-()+]/g,
             ""
         );
+
 
     return /^[0-9]{10,15}$/.test(
         cleanPhone
@@ -415,7 +520,11 @@ function validateForm() {
     }
 
 
-    if (!validatePhone(clientPhone.value)) {
+    if (
+        !validatePhone(
+            clientPhone.value
+        )
+    ) {
 
         showMessage(
             "من فضلك أدخل رقم هاتف صحيح."
@@ -470,15 +579,17 @@ bookingForm?.addEventListener(
 
         clearMessage();
 
+
         if (!validateForm()) {
             return;
         }
+
 
         setLoading(true);
 
 
         /* =================================================
-           Booking Data
+           Booking Object
         ================================================= */
 
         const booking = {
@@ -508,10 +619,12 @@ bookingForm?.addEventListener(
                 clientPhone.value.trim(),
 
             client_email:
-                clientEmail?.value.trim() || null,
+                clientEmail?.value.trim() ||
+                null,
 
             notes:
-                notes?.value.trim() || null,
+                notes?.value.trim() ||
+                null,
 
             status:
                 "pending"
@@ -541,9 +654,12 @@ bookingForm?.addEventListener(
 
             const {
                 error
-            } = await supabaseClient
-                .from("bookings")
-                .insert([booking]);
+            } =
+                await supabaseClient
+                    .from("bookings")
+                    .insert([
+                        booking
+                    ]);
 
 
             if (error) {
@@ -567,19 +683,20 @@ bookingForm?.addEventListener(
             );
 
 
-            /* Reset Form */
-
             bookingForm.reset();
 
 
             /* Restore Provider */
 
             if (providerName) {
+
                 providerName.textContent =
                     provider.nameAr;
             }
 
+
             if (summaryProvider) {
+
                 summaryProvider.textContent =
                     provider.nameAr;
             }
@@ -600,8 +717,6 @@ bookingForm?.addEventListener(
                 "حدث خطأ أثناء إرسال الحجز. حاول مرة أخرى.";
 
 
-            /* Supabase Permission Error */
-
             if (
                 error &&
                 error.code === "42501"
@@ -611,8 +726,6 @@ bookingForm?.addEventListener(
                     "لا توجد صلاحية لإرسال الحجز. يرجى مراجعة إعدادات Supabase.";
             }
 
-
-            /* Network / Configuration Error */
 
             if (
                 error &&
@@ -630,10 +743,12 @@ bookingForm?.addEventListener(
                 "error"
             );
 
+
         } finally {
 
             setLoading(false);
         }
+
     }
 );
 
